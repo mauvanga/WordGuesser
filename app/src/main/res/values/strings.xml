@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">WordGuesser</string>
+    <string name="select_idioma">SELECT LANGUAGE</string>
+    <string name="select_dificultad">SELECT DIFFICULTY</string>
+    <string name="select_modo">SELECT GAME MODE</string>
+    <string name="es">SPANISH</string>
+    <string name="en">ENGLISH</string>
+    <string name="continuar">NEXT</string>
+    <string name="facil">EASY</string>
+    <string name="normal">NORMAL</string>
+    <string name="dificil">HARD</string>
+    <string name="gl">GALICIAN</string>
+    <string name="cientifico">SCIENTIFIC</string>
+    <string name="contrarreloj">TIME TRIAL</string>
+    <string name="clasico">CLASSIC</string>
 </resources>

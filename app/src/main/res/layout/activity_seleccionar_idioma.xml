@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/select_idioma" />
+
+    <Button
+        android:id="@+id/buttonIdiomaEspañol"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/es" />
+
+    <Button
+        android:id="@+id/buttonIdiomaIngles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/en" />
+
+    <Button
+        android:id="@+id/buttonIdiomaGallego"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/gl" />
+
+    <Button
+        android:id="@+id/buttonIdiomaContinuar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/continuar" />
+
+</LinearLayout>

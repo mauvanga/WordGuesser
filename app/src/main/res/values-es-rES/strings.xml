@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WordGuesser</string>
+    <string name="select_idioma">SELECCIONA EL IDIOMA CON EL QUE QUIERA JUGAR</string>
+    <string name="select_dificultad">SELECCIONA LA DIFICULTAD</string>
+    <string name="select_modo">SELECCIONA EL MODO DE JUEGO</string>
+    <string name="es">ESPAÑOL</string>
+    <string name="en">INGLÉS</string>
+    <string name="facil">FÁCIL</string>
+    <string name="normal">NORMAL</string>
+    <string name="dificil">DIFÍCIL</string>
+    <string name="continuar">SIGUIENTE</string>
+    <string name="gl">GALLEGO</string>
+    <string name="cientifico">CIENTÍFICO</string>
+    <string name="contrarreloj">CONTRARRELOJ</string>
+    <string name="clasico">CLÁSICO</string>
+</resources>
