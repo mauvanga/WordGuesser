@@ -13,4 +13,16 @@
     <string name="cientifico">SCIENTIFIC</string>
     <string name="contrarreloj">TIME TRIAL</string>
     <string name="clasico">CLASSIC</string>
+    <string name="partidas">GAMES</string>
+    <string name="victorias">VICTORIES</string>
+    <string name="racha_actual">WINNING STREAK</string>
+    <string name="mejor_racha">BEST STREAK</string>
+    <string name="estadisticas">STATISTICS</string>
+    <string name="historial">HISTORY</string>
+    <string name="username">Username</string>
+    <string name="passwd">Password</string>
+    <string name="login">LOGIN</string>
+    <string name="nueva_partida">NEW GAME</string>
+    <string name="historial_estadisticas">HISTORY/STATISTICS</string>
+    <string name="conf">SETTINGS</string>
 </resources>

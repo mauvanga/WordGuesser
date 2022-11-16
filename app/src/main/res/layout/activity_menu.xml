@@ -13,10 +13,10 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/buttonNuevoJuego"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="NUEVA PARTIDA"
+            android:text="@string/nueva_partida"
             android:textSize="24sp" />
     </LinearLayout>
 
@@ -27,11 +27,11 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/buttonHistorialEstadistica"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="HISTORIAL/ESTADÍSTICAS"
+            android:text="@string/historial_estadisticas"
             android:textSize="24sp" />
     </LinearLayout>
 
@@ -42,12 +42,12 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/buttonConfiguracion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:foregroundGravity="center"
-            android:text="CONFIGURACIÓN"
+            android:text="@string/conf"
             android:textSize="24sp" />
     </LinearLayout>
 
