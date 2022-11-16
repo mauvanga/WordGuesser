@@ -38,7 +38,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/editNombreRegistro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -64,7 +64,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/editTextTextPersonName3"
+            android:id="@+id/editApellidosRegistro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -91,7 +91,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/editTextTextPersonName4"
+            android:id="@+id/editUsuarioRegistro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -117,7 +117,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/editTextTextPassword2"
+            android:id="@+id/editPasswordRegistro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -144,7 +144,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/editTextTextPassword3"
+            android:id="@+id/editRepetirPasswordRegistro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -157,12 +157,13 @@
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ACEPTAR"
-            android:textSize="24sp" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/registroButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ACEPTAR"
+        android:textSize="24sp" />
 
 </LinearLayout>
