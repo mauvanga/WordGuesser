@@ -14,4 +14,16 @@
     <string name="cientifico">CIENTÍFICO</string>
     <string name="contrarreloj">CONTRARRELOJ</string>
     <string name="clasico">CLÁSICO</string>
+    <string name="partidas">PARTIDAS</string>
+    <string name="victorias">VICTORIAS</string>
+    <string name="racha_actual">RACHA ACTUAL</string>
+    <string name="mejor_racha">MEJOR RACHA</string>
+    <string name="estadisticas">ESTADÍSTICAS</string>
+    <string name="historial">HISTORIAL</string>
+    <string name="username">Usuario</string>
+    <string name="passwd">Contraseña</string>
+    <string name="login">ACCEDER</string>
+    <string name="nueva_partida">NUEVA PARTIDA</string>
+    <string name="historial_estadisticas">HISTORIAL/ESTADÍSTICAS</string>
+    <string name="conf">CONFIGURACIÓN</string>
 </resources>
