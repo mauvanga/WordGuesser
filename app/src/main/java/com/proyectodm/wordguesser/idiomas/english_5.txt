@@ -1,3 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+ <string-array name="english_5">
 aaron
 ababa
 abaca
@@ -11418,5 +11421,4 @@ zowie
 zulus
 zunis
 zygal
-zytem>zes<>
-zymic
+zygon
