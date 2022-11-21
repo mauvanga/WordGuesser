@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WordGuesser"
-        tools:targetApi="30">
+        tools:targetApi="29">
         <activity
             android:name=".iu.MainActivity"
             android:exported="true">
@@ -25,6 +25,8 @@
         <activity android:name=".iu.LoginActivity"></activity>
         <activity android:name=".iu.MenuActivity"></activity>
         <activity android:name=".iu.RegistroActivity"></activity>
+        <activity android:name=".iu.HistorialActivity"></activity>
+        <activity android:name=".iu.GameActivity"></activity>
     </application>
 
 </manifest>

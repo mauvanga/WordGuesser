@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+//import kotlinx.coroutines.scheduling.Task;
 
 public class DBAcciones {
 
@@ -12,7 +13,7 @@ public class DBAcciones {
     public DBAcciones(DBManager dbManager){
         this.dbManager = dbManager;
     }
-
+/*
     public static Task readTask(Cursor cursor){
         Task toret = null;
         if (cursor!=null){
@@ -149,4 +150,6 @@ public class DBAcciones {
         return toret;
 
     }
+
+ */
 }
