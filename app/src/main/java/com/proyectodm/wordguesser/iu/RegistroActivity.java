@@ -16,7 +16,7 @@ public class RegistroActivity extends AppCompatActivity {
 
         EditText editNombre=(EditText)findViewById(R.id.editNombreRegistro);
         EditText editApellidos=(EditText)findViewById(R.id.editApellidosRegistro);
-        EditText editUsuario=(EditText)findViewById(R.id.editUsuarioRegistro;
+        EditText editUsuario=(EditText)findViewById(R.id.editUsuarioRegistro);
         EditText editPassword=(EditText)findViewById(R.id.editPasswordRegistro);
         EditText editRepetirPassword=(EditText)findViewById(R.id.editRepetirPasswordRegistro);
 
