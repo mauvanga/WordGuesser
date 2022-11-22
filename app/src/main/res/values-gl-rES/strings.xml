@@ -25,5 +25,7 @@
     <string name="login">ACCEDER</string>
     <string name="nueva_partida">NOVO XOGO</string>
     <string name="historial_estadisticas">HISTORIAL/ESTATÍSTICAS</string>
-    <string name="conf">CONFIGURACIÓN</string>
+    <string name="conf">Configuración</string>
+    <string name="registrate">REXÍSTRATE</string>
+    <string name="cerrar_sesion">Pechar sesión</string>
 </resources>

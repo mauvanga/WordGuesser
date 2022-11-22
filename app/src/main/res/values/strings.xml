@@ -21,8 +21,11 @@
     <string name="historial">HISTORY</string>
     <string name="username">Username</string>
     <string name="passwd">Password</string>
-    <string name="login">LOGIN</string>
     <string name="nueva_partida">NEW GAME</string>
     <string name="historial_estadisticas">HISTORY/STATISTICS</string>
-    <string name="conf">SETTINGS</string>
+    <string name="conf">Settings</string>
+    <string name="registrate">SIGN UP</string>
+    <string name="login">SIGN IN</string>
+    <string name="cerrar_sesion">Sign out</string>
+
 </resources>
