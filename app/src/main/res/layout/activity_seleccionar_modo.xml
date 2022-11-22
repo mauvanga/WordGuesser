@@ -4,34 +4,77 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView21"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingVertical="50dp">
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/select_modo"
+            android:textSize="34sp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/select_modo" />
+        android:orientation="horizontal"
+        android:paddingVertical="20dp">
 
-    <Button
-        android:id="@+id/buttonModoClasico"
+        <Button
+            android:id="@+id/buttonModoClasico"
+            android:layout_width="159dp"
+            android:layout_height="wrap_content"
+            android:text="@string/clasico"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/clasico" />
+        android:gravity="center"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/buttonModoContrareloj"
+        <Button
+            android:id="@+id/buttonModoContrareloj"
+            android:layout_width="159dp"
+            android:layout_height="wrap_content"
+            android:text="@string/contrarreloj"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/contrarreloj" />
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingVertical="20dp">
 
-    <Button
-        android:id="@+id/buttonModoCientifico"
+        <Button
+            android:id="@+id/buttonModoCientifico"
+            android:layout_width="159dp"
+            android:layout_height="wrap_content"
+            android:text="@string/cientifico"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/cientifico" />
+        android:gravity="center"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/buttonModoContinuar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/continuar" />
+        <Button
+            android:id="@+id/buttonModoContinuar"
+            android:layout_width="159dp"
+            android:layout_height="wrap_content"
+            android:text="@string/continuar"
+            android:textSize="20sp" />
+    </LinearLayout>
+
 </LinearLayout>

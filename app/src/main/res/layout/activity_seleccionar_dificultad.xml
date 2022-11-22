@@ -4,34 +4,77 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView21"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingVertical="50dp">
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/select_dificultad"
+            android:textSize="34sp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/select_dificultad" />
+        android:orientation="horizontal"
+        android:paddingVertical="20dp">
 
-    <Button
-        android:id="@+id/buttonDificultadFacil"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="@string/facil" />
+        <Button
+            android:id="@+id/buttonDificultadFacil"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/facil"
+            android:textSize="20sp" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/buttonDificultadNormal"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/normal" />
+        android:gravity="center"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/buttonDificultadDificil"
+        <Button
+            android:id="@+id/buttonDificultadNormal"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/normal"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/dificil" />
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingVertical="20dp">
 
-    <Button
-        android:id="@+id/buttonDificultadContinuar"
+        <Button
+            android:id="@+id/buttonDificultadDificil"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/dificil"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/continuar" />
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonDificultadContinuar"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/continuar"
+            android:textSize="20sp" />
+    </LinearLayout>
+
 </LinearLayout>
