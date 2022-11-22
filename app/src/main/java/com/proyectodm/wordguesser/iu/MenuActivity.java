@@ -66,8 +66,8 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(i);
                 break;
             case R.id.cerrarSesionMenu:
-                AlertDialog.Builder sure = new AlertDialog.Builder(MenuActivity.this);
-                sure.setMessage("¿Seguro que quieres cerrar la sesión?").setCancelable(false)
+                AlertDialog.Builder seguroCerrarSesion = new AlertDialog.Builder(MenuActivity.this);
+                seguroCerrarSesion.setMessage("¿Seguro que quieres cerrar la sesión?").setCancelable(false)
                         .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -90,8 +90,8 @@ public class MenuActivity extends AppCompatActivity {
                             }
                         });
 
-                AlertDialog alert = sure.create();
-                alert.setTitle("Login out...");
+                AlertDialog alert = seguroCerrarSesion.create();
+               // alert.setTitle("...");
                 alert.show();
                 break;
         }

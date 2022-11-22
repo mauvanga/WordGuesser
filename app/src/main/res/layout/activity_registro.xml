@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingVertical="50dp">
 
         <TextView
             android:id="@+id/textView5"
@@ -22,7 +23,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingHorizontal="80dp">
 
         <TextView
             android:id="@+id/textView6"
@@ -35,7 +37,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingHorizontal="80dp">
 
         <EditText
             android:id="@+id/editNombreRegistro"
@@ -48,7 +51,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingHorizontal="80dp">
 
         <TextView
             android:id="@+id/textView7"
@@ -61,7 +65,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingHorizontal="80dp">
 
         <EditText
             android:id="@+id/editApellidosRegistro"
@@ -74,7 +79,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingHorizontal="80dp">
 
         <TextView
             android:id="@+id/textView8"
@@ -88,7 +94,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingHorizontal="80dp">
 
         <EditText
             android:id="@+id/editUsuarioRegistro"
@@ -101,7 +108,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingHorizontal="80dp">
 
         <TextView
             android:id="@+id/textView9"
@@ -114,7 +122,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingHorizontal="80dp">
 
         <EditText
             android:id="@+id/editPasswordRegistro"
@@ -127,7 +136,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingHorizontal="80dp">
 
         <TextView
             android:id="@+id/textView10"
@@ -141,7 +151,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingHorizontal="80dp">
 
         <EditText
             android:id="@+id/editRepetirPasswordRegistro"
@@ -153,17 +164,18 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:gravity="left"
+        android:orientation="horizontal"
+        android:paddingHorizontal="80dp"
+        android:paddingVertical="30dp">
 
+        <Button
+            android:id="@+id/registroButton"
+            android:layout_width="209dp"
+            android:layout_height="wrap_content"
+            android:text="ACEPTAR"
+            android:textSize="24sp" />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/registroButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ACEPTAR"
-        android:textSize="24sp" />
 
 </LinearLayout>
