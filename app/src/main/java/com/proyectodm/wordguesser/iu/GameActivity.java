@@ -10,14 +10,12 @@ import android.os.Bundle;
 import com.proyectodm.wordguesser.R;
 import com.proyectodm.wordguesser.core.Juego;
 
-import android.text.Layout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -55,7 +53,6 @@ public class GameActivity extends AppCompatActivity {
 
         String palabraJuego = palabrasIngles[random];
 
-
         Button buttonAceptarJuegoClasico = (Button) findViewById(R.id.buttonAceptarJuegoClasico);
 
         int intentos = 0;
@@ -68,10 +65,23 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String palabra = palabraUsuarioClasicoNormal.getText().toString();
+                boolean valida = false;
+
+                for(int j=0; j<palabrasIngles.length;j++){
+                    if(palabrasIngles[j].equalsIgnoreCase(palabra)){
+                        valida=true;
+                    }
+                }
 
                 if (!(palabra.length() == 5)) {
 
-                } else {
+                    Toast.makeText(getApplicationContext(),"La palabra tiene que tener 5 letras", Toast.LENGTH_SHORT).show();
+
+                } else if(!valida){
+                    Toast.makeText(getApplicationContext(),"La palabra no es válida", Toast.LENGTH_SHORT).show();
+
+                }
+                    else {
 
                     switch (juego.getIntentos()) {
                         case 0:
@@ -127,10 +137,17 @@ public class GameActivity extends AppCompatActivity {
 
                                     }
                                 })
-                                .setNegativeButton("Aceptar mi derrota", new DialogInterface.OnClickListener() {
+                                .setNegativeButton("Volver al menú de inicio", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        dialog.cancel();
+                                        //volvemos a la actividad de login
+                                        Intent i = new Intent(GameActivity.this, MenuActivity.class);
+                                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        i.putExtra("EXIT", true);
+                                        startActivity(i);
+                                        finish();
                                     }
                                 });
 
