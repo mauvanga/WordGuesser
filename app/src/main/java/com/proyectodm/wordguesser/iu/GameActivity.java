@@ -62,35 +62,6 @@ public class GameActivity extends AppCompatActivity {
         boolean partidaGanada = false;
         Juego juego = new Juego(intentos, partidaGanada);
 
-        if(juego.getIntentos()==5){
-            AlertDialog.Builder perdido = new AlertDialog.Builder(GameActivity.this);
-            perdido.setMessage("¡Has perdido! La palabra era: "+palabraJuego).setCancelable(false)
-                    .setPositiveButton("Volver a jugar", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-
-                            //volvemos a la actividad de login
-                            Intent i = new Intent(GameActivity.this, GameActivity.class);
-                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            i.putExtra("EXIT", true);
-                            startActivity(i);
-                            finish();
-
-                        }
-                    })
-                    .setNegativeButton("Aceptar mi derrota", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                        }
-                    });
-
-            AlertDialog alert = perdido.create();
-            alert.show();
-        }
-
         buttonAceptarJuegoClasico.setOnClickListener(new View.OnClickListener() {
 
 
@@ -138,14 +109,75 @@ public class GameActivity extends AppCompatActivity {
                         juego.incrementarIntento();
                     }
 
+                    if(juego.getIntentos()==5){
+                        AlertDialog.Builder perdido = new AlertDialog.Builder(GameActivity.this);
+                        perdido.setMessage("¡Has perdido! La palabra era: "+palabraJuego).setCancelable(false)
+                                .setPositiveButton("Volver a jugar", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                        //volvemos a la actividad de login
+                                        Intent i = new Intent(GameActivity.this, GameActivity.class);
+                                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        i.putExtra("EXIT", true);
+                                        startActivity(i);
+                                        finish();
+
+                                    }
+                                })
+                                .setNegativeButton("Aceptar mi derrota", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                    }
+                                });
+
+                        AlertDialog alert = perdido.create();
+                        alert.show();
+                    }
+
+                    if(juego.isPartidaGanada()==true){
+                        AlertDialog.Builder ganado = new AlertDialog.Builder(GameActivity.this);
+                        ganado.setMessage("¡Felicidades! Has acertado la palabra").setCancelable(false)
+                                .setPositiveButton("Volver a jugar", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                        //volvemos a la actividad de login
+                                        Intent i = new Intent(GameActivity.this, GameActivity.class);
+                                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        i.putExtra("EXIT", true);
+                                        startActivity(i);
+                                        finish();
+
+                                    }
+                                })
+                                .setNegativeButton("Volver al menú de inicio", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        //volvemos a la actividad de login
+                                        Intent i = new Intent(GameActivity.this, MenuActivity.class);
+                                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        i.putExtra("EXIT", true);
+                                        startActivity(i);
+                                        finish();
+                                    }
+                                });
+
+                        AlertDialog alert = ganado.create();
+                        alert.show();
+                    }
+
+
                 }
             }
         });
-
-        if(juego.isPartidaGanada()==true){
-
-        }
-
 
     }
 
