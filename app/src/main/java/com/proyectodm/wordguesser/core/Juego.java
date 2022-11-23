@@ -1,12 +1,36 @@
 package com.proyectodm.wordguesser.core;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Juego {
     int intentos=0;
+
+
+
+
+    boolean partidaGanada=false;
+
+    static String[] palabras;
     String palabraGanadora;
     String palabraUsuario;
 
-    int getIntentos(){
-        return intentos;
+public Juego(int intentos, boolean partidaGanada){
+    intentos=this.intentos;
+}
+
+    public int getIntentos(){
+    return intentos;
+    }
+
+    public void incrementarIntento(){
+    this.intentos++;
     }
 
     String getPalabraGanadora(){
@@ -15,6 +39,14 @@ public class Juego {
 
     String getPalabraUsuario(){
         return palabraUsuario;
+    }
+
+    public boolean isPartidaGanada() {
+        return partidaGanada;
+    }
+
+    public void setPartidaGanada(boolean partidaGanada) {
+        this.partidaGanada = partidaGanada;
     }
 
     //Comprueba si un caracter de la palabra introducida por el usuario es igual al de la palabra ganadora
