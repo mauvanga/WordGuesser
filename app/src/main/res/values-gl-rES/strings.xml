@@ -28,4 +28,8 @@
     <string name="conf">Configuración</string>
     <string name="registrate">REXÍSTRATE</string>
     <string name="cerrar_sesion">Pechar sesión</string>
+    <string name="language">IDIOMA</string>
+    <string name="mode">MODO</string>
+    <string name="difficulty">DIFICULTADE</string>
+    <string name="word">PALABRA</string>
 </resources>

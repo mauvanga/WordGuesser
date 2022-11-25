@@ -27,5 +27,9 @@
     <string name="registrate">SIGN UP</string>
     <string name="login">SIGN IN</string>
     <string name="cerrar_sesion">Sign out</string>
+    <string name="language">LANGUAGE</string>
+    <string name="mode">MODE</string>
+    <string name="difficulty">DIFFICULTY</string>
+    <string name="word">WORD</string>
 
 </resources>
