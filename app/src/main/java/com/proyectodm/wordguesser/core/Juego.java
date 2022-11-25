@@ -10,27 +10,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Juego {
+    private int id;
+    private String dificultad;
+    private String modo;
+    private String idioma;
+    private String palabra;
+    private boolean resultado; //false derrota, true victoria
+
     int intentos=0;
-
-
-
-
     boolean partidaGanada=false;
 
     static String[] palabras;
     String palabraGanadora;
     String palabraUsuario;
 
-public Juego(int intentos, boolean partidaGanada){
-    intentos=this.intentos;
-}
+    public Juego(int intentos, boolean partidaGanada){
+        intentos=this.intentos;
+    }
 
     public int getIntentos(){
-    return intentos;
+        return intentos;
     }
 
     public void incrementarIntento(){
-    this.intentos++;
+        this.intentos++;
     }
 
     String getPalabraGanadora(){

@@ -75,6 +75,7 @@
             android:layout_height="wrap_content"
             android:text="@string/continuar"
             android:textSize="20sp" />
+
     </LinearLayout>
 
 </LinearLayout>

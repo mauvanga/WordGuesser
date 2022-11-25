@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.SimpleCursorAdapter;
+
 import com.proyectodm.wordguesser.R;
+import com.proyectodm.wordguesser.database.DBManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        boolean logueado = true; //Calcular
+        boolean logueado = false; //Calcular
         if(logueado){
             this.startActivity( new Intent(this, MenuActivity.class));
         } else {
