@@ -5,14 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Button;
 import com.proyectodm.wordguesser.R;
 import android.content.DialogInterface;
 import androidx.appcompat.app.AlertDialog;
 
 
-public class MenuActivity extends AppCompatActivity {
+public class MenuActivity extends WordGuesserActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,10 +37,6 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-
-
-
     }
 
     //Creacion de menu

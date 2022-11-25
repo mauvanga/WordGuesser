@@ -31,5 +31,6 @@
     <string name="mode">MODE</string>
     <string name="difficulty">DIFFICULTY</string>
     <string name="word">WORD</string>
+    <string name="user_logged">Usuario logeado sin problemas</string>
 
 </resources>

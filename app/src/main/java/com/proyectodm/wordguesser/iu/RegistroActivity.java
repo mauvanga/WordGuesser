@@ -13,15 +13,12 @@ import android.view.View;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
-public class RegistroActivity extends AppCompatActivity {
-
-    private DBManager gestorDB;
+public class RegistroActivity extends WordGuesserActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
-        this.gestorDB = new DBManager(this.getApplicationContext());
 
         EditText editNombre=(EditText)findViewById(R.id.editNombreRegistro);
         EditText editApellidos=(EditText)findViewById(R.id.editApellidosRegistro);
@@ -41,8 +38,9 @@ public class RegistroActivity extends AppCompatActivity {
                 String password = editPassword.getText().toString();
                 String passwordRepetida = editRepetirPassword.getText().toString();
                 if (password.equals(passwordRepetida)){
-                    if(gestorDB.registerPlayer(usuario, password, nombre, apellidos)){
+                    if(getDbManager().registerPlayer(usuario, password, nombre, apellidos)){
                         Toast.makeText(getApplicationContext(),"Usuario registrado sin problemas", Toast.LENGTH_SHORT).show();
+                        RegistroActivity.this.finish();
                     }else{
                         Toast.makeText(getApplicationContext(),"El usuario ya está registrado", Toast.LENGTH_SHORT).show();
                     }

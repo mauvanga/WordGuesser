@@ -1,5 +1,6 @@
 package com.proyectodm.wordguesser.database;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -7,6 +8,9 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import com.proyectodm.wordguesser.core.Juego;
+import com.proyectodm.wordguesser.core.Jugador;
 
 public class DBManager extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "wordguesser_db";
@@ -28,7 +32,7 @@ public class DBManager extends SQLiteOpenHelper {
     public static final String GAME_COLUMN_DIFICULTAD = "dificultad";
     public static final String GAME_COLUMN_PALABRA = "palabra";
     public static final String GAME_COLUMN_RESULTADO = "resultado";
-    public static final String GAME_COLUMN_JUGADOR = "jugador";
+    public static final String GAME_COLUMN_JUGADOR = "id_jugador";
 
 
     public DBManager(Context context) {
@@ -123,9 +127,9 @@ public class DBManager extends SQLiteOpenHelper {
         return toret;
     }
 
-    public boolean checkLogin(String usuario, String passwd){
+    public Jugador checkLogin(String usuario, String passwd){
         Cursor cursor = null;
-        boolean toret = false;
+        Jugador toret = null;
         SQLiteDatabase db = this.getWritableDatabase();
 
         try{
@@ -135,8 +139,25 @@ public class DBManager extends SQLiteOpenHelper {
                     PLAYER_COLUMN_USUARIO + "=? AND " + PLAYER_COLUMN_PASSWORD + "=?",
                     new String[]{usuario, passwd},
                     null, null, null, null);
-            if(cursor.getCount() > 0){
-                toret = true;
+            if(cursor.moveToFirst()){
+                for (int i = 0; i < cursor.getColumnCount(); i++) {
+                    System.out.println(cursor.getColumnName(i));
+                }
+                int colId = cursor.getColumnIndex(PLAYER_COLUMN_ID);
+                int colNombre = cursor.getColumnIndex(PLAYER_COLUMN_NOMBRE);
+                int colApellido = cursor.getColumnIndex(PLAYER_COLUMN_APELLIDOS);
+                int colUsuario = cursor.getColumnIndex(PLAYER_COLUMN_USUARIO);
+                int colPassword = cursor.getColumnIndex(PLAYER_COLUMN_PASSWORD);
+                int colMejorRacha = cursor.getColumnIndex(PLAYER_COLUMN_RACHA_MEJOR);
+                int colRachaActual = cursor.getColumnIndex(PLAYER_COLUMN_RACHA_ACTUAL);
+
+                toret = new Jugador(cursor.getInt(colId),
+                        cursor.getString(colNombre),
+                        cursor.getString(colApellido),
+                        cursor.getString(colUsuario),
+                        cursor.getString(colPassword),
+                        cursor.getInt(colMejorRacha),
+                        cursor.getInt(colRachaActual));
             }
             db.setTransactionSuccessful();
         }catch(SQLException exc){
@@ -164,7 +185,6 @@ public class DBManager extends SQLiteOpenHelper {
         }finally {
             db.endTransaction();
         }
-
         return toret;
     }
 
@@ -193,9 +213,27 @@ public class DBManager extends SQLiteOpenHelper {
         return toret;
     }
 
-    public Cursor getGames(int idJugador){
+    public Cursor findGames(Integer idJugador){
         return this.getReadableDatabase().query(GAMES_TABLE_NAME,
                 null, GAME_COLUMN_JUGADOR + "=?", new String[]{String.valueOf(idJugador)}, null, null, null);
+    }
+
+    @SuppressLint("Range")
+    public static Juego readJuego(Cursor cursor){
+        Juego toret = null;
+        if (cursor!=null){
+            try {
+                toret = new Juego();
+                toret.setPalabra(cursor.getString(cursor.getColumnIndex(GAME_COLUMN_PALABRA)));
+                toret.setIdioma(cursor.getString(cursor.getColumnIndex(GAME_COLUMN_IDIOMA)));
+                toret.setModo(cursor.getString(cursor.getColumnIndex(GAME_COLUMN_MODO)));
+                toret.setDificultad(cursor.getString(cursor.getColumnIndex(GAME_COLUMN_DIFICULTAD)));
+                toret.setResultado(cursor.getInt(cursor.getColumnIndex(GAME_COLUMN_RESULTADO))==1);
+            }catch (Exception e){
+                Log.e(DBManager.class.getName(),"readJuego" ,e);
+            }
+        }
+        return toret;
     }
 }
 

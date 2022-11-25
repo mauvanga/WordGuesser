@@ -1,25 +1,56 @@
 package com.proyectodm.wordguesser.iu;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.SimpleCursorAdapter;
 
 import com.proyectodm.wordguesser.R;
-import com.proyectodm.wordguesser.database.DBManager;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends WordGuesserActivity {
+
+    private ActivityResultLauncher<Intent> activityResultLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        boolean logueado = false; //Calcular
-        if(logueado){
-            this.startActivity( new Intent(this, MenuActivity.class));
+
+        ActivityResultContract<Intent, ActivityResult> contract =
+                new ActivityResultContracts.StartActivityForResult();
+        ActivityResultCallback<ActivityResult> callback =
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == Activity.RESULT_OK) {
+                            goToMenuActivity();
+                        }
+                    }
+                };
+
+        activityResultLauncher = registerForActivityResult(contract, callback);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (hayJugadorLogueado()){
+            goToMenuActivity();
         } else {
-            this.startActivity( new Intent(this, LoginActivity.class));
+            goToLoginActivity();
         }
+    }
+
+    private void goToMenuActivity(){
+        this.startActivity(new Intent(this, MenuActivity.class));
+    }
+
+    private void goToLoginActivity(){
+        activityResultLauncher.launch(new Intent(this, LoginActivity.class));
     }
 }

@@ -12,8 +12,19 @@ public class Jugador {
     private String apellidos;
     private String usuario;
     private String contraseña;
+    private int mejorRacha;
+    private int rachaActual;
 
-    //getters
+    public Jugador(int idJugador, String nombre, String apellidos, String usuario, String contraseña, int mejorRacha, int rachaActual) {
+        this.idJugador = idJugador;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.usuario = usuario;
+        this.contraseña = contraseña;
+        this.mejorRacha = mejorRacha;
+        this.rachaActual = rachaActual;
+    }
+//getters
 
     public int getIdJugador() {
         return idJugador;
@@ -73,4 +84,23 @@ public class Jugador {
         return racha;
     }
 
+    public void setIdJugador(int idJugador) {
+        this.idJugador = idJugador;
+    }
+
+    public int getMejorRacha() {
+        return mejorRacha;
+    }
+
+    public void setMejorRacha(int mejorRacha) {
+        this.mejorRacha = mejorRacha;
+    }
+
+    public int getRachaActual() {
+        return rachaActual;
+    }
+
+    public void setRachaActual(int rachaActual) {
+        this.rachaActual = rachaActual;
+    }
 }

@@ -4,6 +4,7 @@
     package="com.proyectodm.wordguesser">
 
     <application
+        android:name=".core.WordGuesserApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -22,6 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".iu.WordGuesserActivity"></activity>
         <activity android:name=".iu.LoginActivity"></activity>
         <activity android:name=".iu.MenuActivity"></activity>
         <activity android:name=".iu.RegistroActivity"></activity>

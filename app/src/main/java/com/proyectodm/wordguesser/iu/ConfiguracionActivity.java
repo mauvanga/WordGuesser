@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.proyectodm.wordguesser.R;
 
 
-public class ConfiguracionActivity extends AppCompatActivity{
+public class ConfiguracionActivity extends WordGuesserActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
