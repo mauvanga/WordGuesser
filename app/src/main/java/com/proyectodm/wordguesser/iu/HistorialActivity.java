@@ -1,49 +1,62 @@
 package com.proyectodm.wordguesser.iu;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.proyectodm.wordguesser.R;
+import com.proyectodm.wordguesser.core.JuegoCursorAdapter;
 import com.proyectodm.wordguesser.database.DBManager;
 
 
 public class HistorialActivity extends WordGuesserActivity {
+
+    private JuegoCursorAdapter juegoCursorAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_historial); // Cargar la del modo correspondiente
+        setContentView(R.layout.activity_historial);
+        ListView lvHistorial = findViewById(R.id.lvHistorialPartidas);
+        TextView textViewRachaActual = findViewById(R.id.textViewRachaActual);
+        TextView textViewRachaMejor = findViewById(R.id.textViewMejorRacha);
+        TextView textViewNumPartidas = findViewById(R.id.textViewPartidasJugadas);
+        TextView textViewNumVictorias = findViewById(R.id.textViewVictorias);
 
-        this.gestorDB = new DBManager( this.getApplicationContext() );
+        textViewRachaActual.setText(String.valueOf(getJugadorLogueado().getRachaActual()));
+        textViewRachaMejor.setText(String.valueOf(getJugadorLogueado().getMejorRacha()));
+        juegoCursorAdapter = new JuegoCursorAdapter(HistorialActivity.this, null, getDbManager());
+        lvHistorial.setAdapter(juegoCursorAdapter);
+
+        Cursor cursor = getDbManager().findGames(getJugadorLogueado().getIdJugador());
+        int partidas = cursor.getCount();
+        if(partidas > 0){
+            textViewNumPartidas.setText(String.valueOf(partidas));
+            double victorias = getDbManager().findGamesResult(getJugadorLogueado().getIdJugador(), 1).getCount();
+            textViewNumVictorias.setText(Math.round((victorias/partidas)*100) + " %");
+        } else {
+            textViewNumPartidas.setText("0");
+            textViewNumVictorias.setText("0 %");
+        }
+
+        juegoCursorAdapter.changeCursor(cursor);
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-
-        final ListView lvHistorial = this.findViewById(R.id.lvHistorialPartidas);
-
-        this.adaptadorDB = new SimpleCursorAdapter(
-                this,
-                R.layout.activity_historial,
-                null,
-                new String[] {DBManager.GAME_COLUMN_PALABRA, DBManager.GAME_COLUMN_IDIOMA,DBManager.GAME_COLUMN_MODO, DBManager.GAME_COLUMN_DIFICULTAD},
-                new int[] {R.id.textViewPalabra,  R.id.textViewIdioma, R.id.textViewModo,  R.id.textViewDificultad},
-                0
-        );
-        lvHistorial.setAdapter(this.adaptadorDB);
+    protected void onResume() {
+        super.onResume();
+        Cursor cursor = getDbManager().findGames(getJugadorLogueado().getIdJugador());
+        juegoCursorAdapter.changeCursor(cursor);
     }
 
     @Override
-    public void onPause()
-    {
+    protected void onPause() {
         super.onPause();
-        this.gestorDB.close();
-        this.adaptadorDB.getCursor().close();
+        getDbManager().close();
+        this.juegoCursorAdapter.getCursor().close();
     }
-
-    private DBManager gestorDB;
-    private SimpleCursorAdapter adaptadorDB;
 }

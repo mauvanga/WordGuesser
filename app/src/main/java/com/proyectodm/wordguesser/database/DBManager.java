@@ -127,6 +127,7 @@ public class DBManager extends SQLiteOpenHelper {
         return toret;
     }
 
+    @SuppressLint("Range")
     public Jugador checkLogin(String usuario, String passwd){
         Cursor cursor = null;
         Jugador toret = null;
@@ -140,21 +141,13 @@ public class DBManager extends SQLiteOpenHelper {
                     new String[]{usuario, passwd},
                     null, null, null, null);
             if(cursor.moveToFirst()){
-                int colId = cursor.getColumnIndex(PLAYER_COLUMN_ID);
-                int colNombre = cursor.getColumnIndex(PLAYER_COLUMN_NOMBRE);
-                int colApellido = cursor.getColumnIndex(PLAYER_COLUMN_APELLIDOS);
-                int colUsuario = cursor.getColumnIndex(PLAYER_COLUMN_USUARIO);
-                int colPassword = cursor.getColumnIndex(PLAYER_COLUMN_PASSWORD);
-                int colMejorRacha = cursor.getColumnIndex(PLAYER_COLUMN_RACHA_MEJOR);
-                int colRachaActual = cursor.getColumnIndex(PLAYER_COLUMN_RACHA_ACTUAL);
-
-                toret = new Jugador(cursor.getInt(colId),
-                        cursor.getString(colNombre),
-                        cursor.getString(colApellido),
-                        cursor.getString(colUsuario),
-                        cursor.getString(colPassword),
-                        cursor.getInt(colMejorRacha),
-                        cursor.getInt(colRachaActual));
+                toret = new Jugador(cursor.getInt(cursor.getColumnIndex(PLAYER_COLUMN_ID)),
+                        cursor.getString(cursor.getColumnIndex(PLAYER_COLUMN_NOMBRE)),
+                        cursor.getString(cursor.getColumnIndex(PLAYER_COLUMN_APELLIDOS)),
+                        cursor.getString(cursor.getColumnIndex(PLAYER_COLUMN_USUARIO)),
+                        cursor.getString(cursor.getColumnIndex(PLAYER_COLUMN_PASSWORD)),
+                        cursor.getInt(cursor.getColumnIndex(PLAYER_COLUMN_RACHA_MEJOR)),
+                        cursor.getInt(cursor.getColumnIndex(PLAYER_COLUMN_RACHA_ACTUAL)));
             }
             db.setTransactionSuccessful();
         }catch(SQLException exc){
@@ -212,7 +205,12 @@ public class DBManager extends SQLiteOpenHelper {
 
     public Cursor findGames(Integer idJugador){
         return this.getReadableDatabase().query(GAMES_TABLE_NAME,
-                null, GAME_COLUMN_JUGADOR + "=?", new String[]{String.valueOf(idJugador)}, null, null, null);
+                null, GAME_COLUMN_JUGADOR + "=?", new String[]{String.valueOf(idJugador)}, null, null, GAME_COLUMN_ID+" DESC");
+    }
+
+    public Cursor findGamesResult(Integer idJugador, Integer resultado){
+        return this.getReadableDatabase().query(GAMES_TABLE_NAME,
+                null, GAME_COLUMN_JUGADOR + "=? AND "+ GAME_COLUMN_RESULTADO + "=?", new String[]{String.valueOf(idJugador), String.valueOf(resultado)}, null, null, GAME_COLUMN_ID+" DESC");
     }
 
     @SuppressLint("Range")

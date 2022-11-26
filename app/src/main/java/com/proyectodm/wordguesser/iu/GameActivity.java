@@ -53,7 +53,7 @@ public class GameActivity extends WordGuesserActivity {
 
         String palabraJuego = palabrasIngles[random];
 
-        Button buttonAceptarJuegoClasico = (Button) findViewById(R.id.buttonAceptarJuegoClasico);
+        Button buttonAceptarJuegoClasico = findViewById(R.id.buttonAceptarJuegoClasico);
 
         int intentos = 0;
         boolean partidaGanada = false;
@@ -120,6 +120,7 @@ public class GameActivity extends WordGuesserActivity {
                     }
 
                     if(juego.getIntentos()==5){
+                        getDbManager().addResultGame(palabraJuego, "CLASICO","NORMAL" , "INGLES", false, getJugadorLogueado().getIdJugador());
                         AlertDialog.Builder perdido = new AlertDialog.Builder(GameActivity.this);
                         perdido.setMessage("¡Has perdido! La palabra era: "+palabraJuego).setCancelable(false)
                                 .setPositiveButton("Volver a jugar", new DialogInterface.OnClickListener() {
@@ -156,6 +157,7 @@ public class GameActivity extends WordGuesserActivity {
                     }
 
                     if(juego.isPartidaGanada()==true){
+                        getDbManager().addResultGame(palabraJuego, "CLASICO","NORMAL" , "INGLES", true, getJugadorLogueado().getIdJugador());
                         AlertDialog.Builder ganado = new AlertDialog.Builder(GameActivity.this);
                         ganado.setMessage("¡Felicidades! Has acertado la palabra").setCancelable(false)
                                 .setPositiveButton("Volver a jugar", new DialogInterface.OnClickListener() {
@@ -190,7 +192,6 @@ public class GameActivity extends WordGuesserActivity {
                         AlertDialog alert = ganado.create();
                         alert.show();
                     }
-
 
                 }
             }
