@@ -51,12 +51,4 @@ public class WordGuesserActivity extends AppCompatActivity {
         editor.clear();
         editor.commit();
     }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        if (isJugadorLogueado()){
-            setJugadorLogueado(getJugadorLogueado());
-        }
-    }
 }

@@ -71,16 +71,16 @@ public class MenuActivity extends WordGuesserActivity {
                         .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
-                                //volvemos a la actividad de login
-                                Intent i = new Intent(MenuActivity.this, LoginActivity.class);
+                                // volvemos a la actividad MainActivity que nos llevará al LoginActivity
+                                // ya que no habrá usuario conectado
+                                Intent i = new Intent(MenuActivity.this, MainActivity.class);
                                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 i.putExtra("EXIT", true);
+                                clearJugadorLogueado();
                                 startActivity(i);
                                 finish();
-
                             }
                         })
                         .setNegativeButton("No", new DialogInterface.OnClickListener() {
