@@ -39,7 +39,7 @@ public class MainActivity extends WordGuesserActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (hayJugadorLogueado()){
+        if (isJugadorLogueado()){
             goToMenuActivity();
         } else {
             goToLoginActivity();

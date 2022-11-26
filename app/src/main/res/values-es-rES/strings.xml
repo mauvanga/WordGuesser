@@ -32,5 +32,12 @@
     <string name="mode">MODO</string>
     <string name="difficulty">DIFICULTAD</string>
     <string name="word">PALABRA</string>
-    <string name="user_logged">Usuario logeado sin problemas</string>
+    <string name="campos_no_vacios">Hay algún campo vacío</string>
+    <string name="dont_match_passwd">Las contraseñas no coinciden</string>
+    <string name="username_exist">El nombre de usuario ya existe</string>
+    <string name="username_passwd_dont_match">El nombre de usuario y la contraseña no coinciden</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellidos">Apellidos</string>
+    <string name="repetir_passwd">Repite la contraseña</string>
+    <string name="aceptar_registro">ACEPTAR</string>
 </resources>

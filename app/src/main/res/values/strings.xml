@@ -31,6 +31,12 @@
     <string name="mode">MODE</string>
     <string name="difficulty">DIFFICULTY</string>
     <string name="word">WORD</string>
-    <string name="user_logged">Usuario logeado sin problemas</string>
-
+    <string name="campos_no_vacios">There is an empty field</string>
+    <string name="dont_match_passwd">Passwords do not match</string>
+    <string name="username_exist">Username already exists</string>
+    <string name="username_passwd_dont_match">Username and password do not match</string>
+    <string name="nombre">Name</string>
+    <string name="apellidos">Surname</string>
+    <string name="repetir_passwd">Repeat password</string>
+    <string name="aceptar_registro">SUBMIT</string>
 </resources>

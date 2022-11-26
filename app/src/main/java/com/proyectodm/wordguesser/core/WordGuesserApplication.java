@@ -13,8 +13,6 @@ public class WordGuesserApplication extends Application {
     public void onCreate() {
         super.onCreate();
         this.dbManager = new DBManager(this);
-        //ASDtodo acceder a las preferencias y ver si existe un jugador logueado
-        //recuperar jugador de la db y establecerlo con setJugadorLogueado
     }
 
     public DBManager getDbManager(){
@@ -35,6 +33,5 @@ public class WordGuesserApplication extends Application {
 
     public void clearJugador(){
         jugador = null;
-        //ASDtodo borrar jugador de las preferencias
     }
 }

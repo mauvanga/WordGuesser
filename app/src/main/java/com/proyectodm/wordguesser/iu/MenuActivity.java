@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.widget.Button;
 import com.proyectodm.wordguesser.R;
 import android.content.DialogInterface;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AlertDialog;
 
 
@@ -17,8 +19,11 @@ public class MenuActivity extends WordGuesserActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        Button buttonNuevoJuego = (Button) findViewById(R.id.buttonNuevoJuego);
-        Button buttonHistorialEstadistica = (Button) findViewById(R.id.buttonHistorialEstadistica);
+        Button buttonNuevoJuego = findViewById(R.id.buttonNuevoJuego);
+        Button buttonHistorialEstadistica = findViewById(R.id.buttonHistorialEstadistica);
+
+        TextView textViewActualUsername = findViewById(R.id.textViewActualUsername);
+        textViewActualUsername.setText(getJugadorLogueado().getUsuario());
 
         //boton que permite al usuario empezar una nueva partida
         buttonNuevoJuego.setOnClickListener(new View.OnClickListener() {

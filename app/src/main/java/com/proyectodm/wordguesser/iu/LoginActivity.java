@@ -5,9 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.google.android.material.snackbar.Snackbar;
 import com.proyectodm.wordguesser.R;
 import com.proyectodm.wordguesser.core.Jugador;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,11 +24,12 @@ public class LoginActivity extends WordGuesserActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        EditText editTextUsername = (EditText) findViewById(R.id.editTextTextUsername);
-        EditText editTextPassword = (EditText) findViewById(R.id.editTextTextPassword);
+        EditText editTextUsername = findViewById(R.id.editTextTextUsername);
+        EditText editTextPassword = findViewById(R.id.editTextTextPassword);
 
-        Button buttonLogin = (Button) findViewById(R.id.buttonLogin);
-        Button buttonRegistro = (Button) findViewById(R.id.buttonRegistro);
+        Button buttonLogin = findViewById(R.id.buttonLogin);
+        Button buttonRegistro = findViewById(R.id.buttonRegistro);
+        buttonLogin.setEnabled(false);
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,15 +38,39 @@ public class LoginActivity extends WordGuesserActivity{
                 String password = editTextPassword.getText().toString();
                 Jugador jugador = getDbManager().checkLogin(usuario, password);
                 if(jugador != null){
-                    Toast.makeText(getApplicationContext(), getString(R.string.user_logged), Toast.LENGTH_SHORT).show(); //ASDStodo cambiar Snakbar
                     setJugadorLogueado(jugador);
                     LoginActivity.this.setResult(Activity.RESULT_OK);
                     LoginActivity.this.finish();
                 }else{
-                    Toast.makeText(getApplicationContext(),"El nombre de usuario o la contraseña están incorrectos", Toast.LENGTH_SHORT).show();
+                    Snackbar.make(findViewById(R.id.loginLayout), getString(R.string.username_passwd_dont_match), Snackbar.LENGTH_SHORT).show();
                 }
             }
         });
+
+        TextWatcher textWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(editTextUsername.getText().toString().trim().length() > 0 &&
+                        editTextPassword.getText().toString().trim().length() > 0){
+                    buttonLogin.setEnabled(true);
+                }else{
+                    buttonLogin.setEnabled(false);
+                    Snackbar.make(findViewById(R.id.loginLayout), getString(R.string.campos_no_vacios), Snackbar.LENGTH_SHORT).show();
+                }
+            }
+        };
+        editTextUsername.addTextChangedListener(textWatcher);
+        editTextPassword.addTextChangedListener(textWatcher);
 
         buttonRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +79,6 @@ public class LoginActivity extends WordGuesserActivity{
                 startActivity(i);
             }
         });
-
     }
 
 }

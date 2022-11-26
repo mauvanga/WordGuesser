@@ -140,9 +140,6 @@ public class DBManager extends SQLiteOpenHelper {
                     new String[]{usuario, passwd},
                     null, null, null, null);
             if(cursor.moveToFirst()){
-                for (int i = 0; i < cursor.getColumnCount(); i++) {
-                    System.out.println(cursor.getColumnName(i));
-                }
                 int colId = cursor.getColumnIndex(PLAYER_COLUMN_ID);
                 int colNombre = cursor.getColumnIndex(PLAYER_COLUMN_NOMBRE);
                 int colApellido = cursor.getColumnIndex(PLAYER_COLUMN_APELLIDOS);
