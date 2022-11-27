@@ -24,10 +24,10 @@
     <string name="passwd">Contrasinal</string>
     <string name="login">ACCEDER</string>
     <string name="nueva_partida">NOVO XOGO</string>
-    <string name="historial_estadisticas">HISTORIAL/ESTATÍSTICAS</string>
-    <string name="conf">Configuración</string>
+    <string name="my_games">MEUS XOGOS</string>
+    <string name="perfil">MEU PERFIL</string>
     <string name="registrate">REXÍSTRATE</string>
-    <string name="cerrar_sesion">Pechar sesión</string>
+    <string name="cerrar_sesion">PECHAR SESIÓN</string>
     <string name="language">IDIOMA</string>
     <string name="mode">MODO</string>
     <string name="difficulty">DIFICULTADE</string>
@@ -40,4 +40,5 @@
     <string name="apellidos">Apelidos</string>
     <string name="repetir_passwd">Repite o contrasinal</string>
     <string name="aceptar_registro">ACEPTAR</string>
+    <string name="welcome">BENVIDO</string>
 </resources>

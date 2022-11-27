@@ -22,11 +22,11 @@
     <string name="username">Username</string>
     <string name="passwd">Password</string>
     <string name="nueva_partida">NEW GAME</string>
-    <string name="historial_estadisticas">HISTORY/STATISTICS</string>
-    <string name="conf">Settings</string>
+    <string name="my_games">MY GAMES</string>
+    <string name="perfil">MY PROFILE</string>
     <string name="registrate">SIGN UP</string>
     <string name="login">SIGN IN</string>
-    <string name="cerrar_sesion">Sign out</string>
+    <string name="cerrar_sesion">SIGN OUT</string>
     <string name="language">LANGUAGE</string>
     <string name="mode">MODE</string>
     <string name="difficulty">DIFFICULTY</string>
@@ -39,4 +39,5 @@
     <string name="apellidos">Surname</string>
     <string name="repetir_passwd">Repeat password</string>
     <string name="aceptar_registro">SUBMIT</string>
+    <string name="welcome">WELCOME</string>
 </resources>

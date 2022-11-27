@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/configuracionMenu"
-        android:title="@string/conf" />
+        android:title="@string/perfil" />
     <item
         android:id="@+id/cerrarSesionMenu"
         android:title="@string/cerrar_sesion" />

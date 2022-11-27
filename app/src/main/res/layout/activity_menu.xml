@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="150dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
@@ -16,19 +16,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Bienvenido" />
+            android:gravity="center"
+            android:text="@string/welcome"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/textViewActualUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="TextView" />
+            android:textSize="24sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="164dp"
+        android:layout_height="150dp"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -42,7 +44,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -50,24 +52,7 @@
             android:id="@+id/buttonHistorialEstadistica"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/historial_estadisticas"
-            android:textSize="24sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="152dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/buttonConfiguracion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:foregroundGravity="center"
-            android:text="@string/conf"
+            android:text="@string/my_games"
             android:textSize="24sp" />
     </LinearLayout>
 
