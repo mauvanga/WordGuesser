@@ -46,6 +46,8 @@ public class HistorialActivity extends WordGuesserActivity {
         juegoCursorAdapter.changeCursor(cursor);
     }
 
+    // todo hay que añadir filtros el profe me dijo que lo podiamos ver el miercoles
+
     @Override
     protected void onResume() {
         super.onResume();

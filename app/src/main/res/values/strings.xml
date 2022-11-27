@@ -40,4 +40,7 @@
     <string name="repetir_passwd">Repeat password</string>
     <string name="aceptar_registro">SUBMIT</string>
     <string name="welcome">WELCOME</string>
+    <string name="eliminar_cuenta">DELETE ACCOUNT</string>
+    <string name="cambiar_pass">CHANGE PASSWORD</string>
+    <string name="modificar_datos">MODIFY MY DATA</string>
 </resources>

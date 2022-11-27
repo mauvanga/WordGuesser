@@ -41,4 +41,7 @@
     <string name="repetir_passwd">Repite o contrasinal</string>
     <string name="aceptar_registro">ACEPTAR</string>
     <string name="welcome">BENVIDO</string>
+    <string name="eliminar_cuenta">ELIMINAR CONTA</string>
+    <string name="cambiar_pass">CAMBIAR CONTRASINAL</string>
+    <string name="modificar_datos">MODIFICAR MEUS DATOS</string>
 </resources>

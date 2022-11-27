@@ -213,6 +213,9 @@ public class DBManager extends SQLiteOpenHelper {
                 null, GAME_COLUMN_JUGADOR + "=? AND "+ GAME_COLUMN_RESULTADO + "=?", new String[]{String.valueOf(idJugador), String.valueOf(resultado)}, null, null, GAME_COLUMN_ID+" DESC");
     }
 
+    // todo añadir un par de funciones más o una más que reciba 2 parametros más:
+    //  donde se quiere hacer el filtro y cual, p.e. "MODO" y "DIFICIL"
+
     @SuppressLint("Range")
     public static Juego readJuego(Cursor cursor){
         Juego toret = null;
