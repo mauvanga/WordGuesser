@@ -75,9 +75,6 @@ public class MenuActivity extends WordGuesserActivity {
                                 // ya que no habrá usuario conectado
                                 Intent i = new Intent(MenuActivity.this, MainActivity.class);
                                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                i.putExtra("EXIT", true);
                                 clearJugadorLogueado();
                                 startActivity(i);
                                 finish();

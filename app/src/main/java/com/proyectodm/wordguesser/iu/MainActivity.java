@@ -48,12 +48,10 @@ public class MainActivity extends WordGuesserActivity {
     }
 
     private void goToMenuActivity(){
-        activityResultLauncher.launch(new Intent(this, MenuActivity.class));
-        //this.startActivity(new Intent(this, MenuActivity.class));
-        // todo preguntarle al profesor la solución actual es un poco bruta
-        //  ya que al finalizar el menu se volvía a lanzar el menu en el onResume()
-        //  una vez que te registras tienes que darle 2 veces a atrás para salir
-        //  pero ya no se genera un bucle
+        Intent i = new Intent(this, MenuActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        this.startActivity(i);
+        finish();
     }
 
     private void goToLoginActivity(){
