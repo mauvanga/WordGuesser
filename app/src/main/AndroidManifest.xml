@@ -30,6 +30,7 @@
         <activity android:name=".iu.HistorialActivity"></activity>
         <activity android:name=".iu.GameActivity"></activity>
         <activity android:name=".iu.ConfiguracionActivity"></activity>
+        <activity android:name=".iu.ChangePlayerDataActivity"></activity>
     </application>
 
 </manifest>

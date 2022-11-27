@@ -117,11 +117,55 @@ public class DBManager extends SQLiteOpenHelper {
                 toret = true;
             }
         }catch(SQLException exc){
-            Log.e("DBManager.addUser", exc.getMessage());
+            Log.e("DBManager.registerPlayer", exc.getMessage());
         }finally{
             if(cursor != null){
                 cursor.close();
             }
+            db.endTransaction();
+        }
+        return toret;
+    }
+
+    public boolean editPlayerPassword(Integer idJugador, String newPasswd){
+        boolean toret = false;
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(PLAYER_COLUMN_PASSWORD, newPasswd);
+
+        try{
+            db.beginTransaction();
+            db.update(PLAYERS_TABLE_NAME, contentValues,
+                    PLAYER_COLUMN_ID + "=?",
+                    new String[]{String.valueOf(idJugador)});
+            db.setTransactionSuccessful();
+            toret = true;
+        }catch(SQLException exc){
+            Log.e("DBManager.editPlayerPassword", exc.getMessage());
+        }finally{
+            db.endTransaction();
+        }
+        return toret;
+    }
+
+    public boolean editPlayerData(Integer idJugador, String newName, String newSurname, String newUsername){
+        boolean toret = false;
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(PLAYER_COLUMN_NOMBRE, newName);
+        contentValues.put(PLAYER_COLUMN_APELLIDOS, newSurname);
+        contentValues.put(PLAYER_COLUMN_USUARIO, newUsername);
+
+        try{
+            db.beginTransaction();
+            db.update(PLAYERS_TABLE_NAME, contentValues,
+                    PLAYER_COLUMN_ID + "=?",
+                    new String[]{String.valueOf(idJugador)});
+            db.setTransactionSuccessful();
+            toret = true;
+        }catch(SQLException exc){
+            Log.e("DBManager.editPlayerData", exc.getMessage());
+        }finally{
             db.endTransaction();
         }
         return toret;

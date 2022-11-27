@@ -22,9 +22,6 @@ public class MenuActivity extends WordGuesserActivity {
         Button buttonNuevoJuego = findViewById(R.id.buttonNuevoJuego);
         Button buttonHistorialEstadistica = findViewById(R.id.buttonHistorialEstadistica);
 
-        TextView textViewActualUsername = findViewById(R.id.textViewActualUsername);
-        textViewActualUsername.setText(getJugadorLogueado().getUsuario());
-
         //boton que permite al usuario empezar una nueva partida
         buttonNuevoJuego.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +39,13 @@ public class MenuActivity extends WordGuesserActivity {
                 startActivity(i);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        TextView textViewActualUsername = findViewById(R.id.textViewActualUsername);
+        textViewActualUsername.setText(getJugadorLogueado().getUsuario());
     }
 
     //Creacion de menu

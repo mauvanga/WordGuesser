@@ -3,14 +3,10 @@ package com.proyectodm.wordguesser.iu;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.proyectodm.wordguesser.R;
 import com.proyectodm.wordguesser.core.JuegoCursorAdapter;
-import com.proyectodm.wordguesser.database.DBManager;
 
 
 public class HistorialActivity extends WordGuesserActivity {

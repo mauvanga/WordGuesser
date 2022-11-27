@@ -1,12 +1,6 @@
 package com.proyectodm.wordguesser.core;
 
 public class Jugador {
-
-    //variables que considero importantes en esta clase
-    private int partidas = 0; //Cambiar por racha actual
-    private int victorias = 0; //Cambiar por mejor racha
-    private int perdidas = 0; //Eliminar esto se calcula a partir de la db
-
     private int idJugador;
     private String nombre;
     private String apellidos;
@@ -28,18 +22,6 @@ public class Jugador {
 
     public int getIdJugador() {
         return idJugador;
-    }
-
-    public int getPartidas(){
-        return partidas;
-    }
-
-    public int getVictorias(){
-        return victorias;
-    }
-
-    public int getPerdidas(){
-        return perdidas;
     }
 
     public String getNombre(){
