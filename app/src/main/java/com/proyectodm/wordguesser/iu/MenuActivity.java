@@ -21,6 +21,7 @@ public class MenuActivity extends WordGuesserActivity {
 
         Button buttonNuevoJuego = findViewById(R.id.buttonNuevoJuego);
         Button buttonHistorialEstadistica = findViewById(R.id.buttonHistorialEstadistica);
+        Button buttonComoJugar = findViewById(R.id.buttonComoJugar);
 
         //boton que permite al usuario empezar una nueva partida
         buttonNuevoJuego.setOnClickListener(new View.OnClickListener() {
@@ -36,6 +37,15 @@ public class MenuActivity extends WordGuesserActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MenuActivity.this, HistorialActivity.class);
+                startActivity(i);
+            }
+        });
+
+        //boton que lleva al usuario a una explicacion del juego
+        buttonComoJugar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MenuActivity.this, ComoJugarActivity.class);
                 startActivity(i);
             }
         });

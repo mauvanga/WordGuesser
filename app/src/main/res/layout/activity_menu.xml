@@ -36,8 +36,8 @@
 
         <Button
             android:id="@+id/buttonNuevoJuego"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="215dp"
+            android:layout_height="85dp"
             android:text="@string/nueva_partida"
             android:textSize="24sp" />
     </LinearLayout>
@@ -50,9 +50,23 @@
 
         <Button
             android:id="@+id/buttonHistorialEstadistica"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="210dp"
+            android:layout_height="86dp"
             android:text="@string/my_games"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonComoJugar"
+            android:layout_width="205dp"
+            android:layout_height="wrap_content"
+            android:text="@string/como_jugar"
             android:textSize="24sp" />
     </LinearLayout>
 

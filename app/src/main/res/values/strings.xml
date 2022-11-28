@@ -46,4 +46,8 @@
     <string name="new_passwd">New password</string>
     <string name="new_passwd_repeat">Repeat new password</string>
     <string name="accept">ACCEPT</string>
+    <string name="como_jugar">HOW TO PLAY?</string>
+    <string name="texto_como_jugar1">You have to guess the secret word in 3, 5 or 7 attempts (it depends of the level difficulty). Each attemp must be one valid word and if the word does not exist the game will notice you.</string>
+    <string name="texto_como_jugar2">Before each attemp the color of the boxes change to show how close you are to guess the word.</string>
+    <string name="texto_como_jugar3">The word will change to green if the letter is in the correct position, to orange if the word is in the word but not in that position and to grey if the letter is not in the word.</string>
 </resources>

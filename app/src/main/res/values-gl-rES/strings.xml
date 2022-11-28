@@ -47,4 +47,8 @@
     <string name="new_passwd">Novo contrasinal</string>
     <string name="new_passwd_repeat">Repite o novo contrasinal</string>
     <string name="accept">ACEPTAR</string>
+    <string name="como_jugar">COMO XOGAR?</string>
+    <string name="texto_como_jugar1">Tes que adiviñar a palabra oculta en 3, 5 ou 7 intentos (dependendo do nivel de dificultade). Cada intento debe ser unha palabra válida e se a palabra non existe o xogo vaite avisar.</string>
+    <string name="texto_como_jugar2">Despois de cada intento a cor das casillas cambia para mostrar que tan preto estás de acertar a palabra.</string>
+    <string name="texto_como_jugar3">A palabra cambiará a verde se a letra está na posición correcta, a laranxa se a letra está na palabra pero non nesa posición e a gris se a letra non está na palabra</string>
 </resources>
