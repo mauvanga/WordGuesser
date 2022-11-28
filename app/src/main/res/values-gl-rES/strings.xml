@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">WordGuesser</string>
-    <string name="select_idioma">SELECCIONA O IDIOMA</string>
-    <string name="select_dificultad">SELECCIONA A DIFICULTADE</string>
-    <string name="select_modo">SELECCIONA O MODO DE XOGO</string>
+    <string name="select_idioma">IDIOMA</string>
+    <string name="select_dificultad">DIFICULTADE</string>
+    <string name="select_modo">XOGO</string>
     <string name="es">ESPAÑOL</string>
     <string name="en">INGLÉS</string>
     <string name="continuar">SEGUINTE</string>
@@ -51,4 +51,5 @@
     <string name="texto_como_jugar1">Tes que adiviñar a palabra oculta en 3, 5 ou 7 intentos (dependendo do nivel de dificultade). Cada intento debe ser unha palabra válida e se a palabra non existe o xogo vaite avisar.</string>
     <string name="texto_como_jugar2">Despois de cada intento a cor das casillas cambia para mostrar que tan preto estás de acertar a palabra.</string>
     <string name="texto_como_jugar3">A palabra cambiará a verde se a letra está na posición correcta, a laranxa se a letra está na palabra pero non nesa posición e a gris se a letra non está na palabra</string>
+    <string name="manten_pulsado">MANTÉN PULSADO NOS TÍTULOS PARA MODIFICAR</string>
 </resources>

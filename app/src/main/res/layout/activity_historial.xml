@@ -18,6 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/estadisticas"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="34sp" />
 
     </LinearLayout>
@@ -51,6 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/partidas"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="20sp" />
 
         <TextView
@@ -59,6 +61,7 @@
             android:layout_height="wrap_content"
             android:gravity="right"
             android:text="@string/victorias"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="20sp" />
     </LinearLayout>
 
@@ -91,6 +94,7 @@
             android:layout_width="99dp"
             android:layout_height="71dp"
             android:text="@string/racha_actual"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="20sp" />
 
         <TextView
@@ -99,6 +103,7 @@
             android:layout_height="75dp"
             android:gravity="right"
             android:text="@string/mejor_racha"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="20sp" />
     </LinearLayout>
 
@@ -113,6 +118,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/historial"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="34sp" />
 
     </LinearLayout>
@@ -127,28 +133,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/word" />
+            android:text="@string/word"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
         <TextView
             android:id="@+id/textViewTituloIdioma"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/language" />
+            android:text="@string/language"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
         <TextView
             android:id="@+id/textViewTituloModo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/mode" />
+            android:text="@string/mode"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
         <TextView
             android:id="@+id/textViewTituloDificultad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/difficulty" />
+            android:text="@string/difficulty"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
     </LinearLayout>
 

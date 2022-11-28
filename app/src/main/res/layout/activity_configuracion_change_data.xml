@@ -9,11 +9,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp">
 
         <TextView
             android:id="@+id/textView51"
-            android:layout_width="match_parent"
+            android:layout_width="182dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="right"
@@ -22,9 +23,8 @@
 
         <EditText
             android:id="@+id/editTextCurrentPlayerName"
-            android:layout_width="match_parent"
+            android:layout_width="207dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="@string/nombre"
@@ -34,7 +34,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp">
 
         <TextView
             android:id="@+id/textView52"
@@ -47,9 +48,8 @@
 
         <EditText
             android:id="@+id/editTextCurrentPlayerSurname"
-            android:layout_width="match_parent"
+            android:layout_width="204dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="@string/apellidos"
@@ -59,7 +59,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp">
 
         <TextView
             android:id="@+id/textView54"
@@ -72,20 +73,27 @@
 
         <EditText
             android:id="@+id/editTextCurrentPlayerUsername"
-            android:layout_width="match_parent"
+            android:layout_width="204dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="@string/username"
             android:textSize="24sp" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/buttonChangeData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/accept"
-        android:textSize="24sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="158dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonChangeData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/accept"
+            android:textSize="24sp" />
+    </LinearLayout>
+
 </LinearLayout>
