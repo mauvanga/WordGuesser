@@ -193,7 +193,7 @@ public class GameActivity extends WordGuesserActivity {
 
                     //si el jugador agota el numero de intentos correspondiente a la dificultad escogida significa que ha perdido
                     if(juego.getIntentos()==juego.getMaximo_intentos()){
-                        getDbManager().addResultGame(palabraJuego, "CLASICO","NORMAL" , "INGLES", false, getJugadorLogueado().getIdJugador());
+                        getDbManager().addResultGame(palabraJuego, juego.getModo(), juego.getDificultad() , juego.getIdioma(), false, getJugadorLogueado().getIdJugador());
                         AlertDialog.Builder perdido = new AlertDialog.Builder(GameActivity.this);
                         perdido.setMessage("¡Has perdido! La palabra era: "+palabraJuego).setCancelable(false)
                                 .setPositiveButton("Volver a jugar", new DialogInterface.OnClickListener() {
@@ -232,13 +232,12 @@ public class GameActivity extends WordGuesserActivity {
                     //si el jugador ha acertado la palabra antes de agotar el numero de intentos:
 
                     if(juego.isPartidaGanada()==true){
-                        getDbManager().addResultGame(palabraJuego, "CLASICO","NORMAL" , "INGLES", true, getJugadorLogueado().getIdJugador());
+                        getDbManager().addResultGame(palabraJuego, juego.getModo(), juego.getDificultad() , juego.getIdioma(), true, getJugadorLogueado().getIdJugador());
                         AlertDialog.Builder ganado = new AlertDialog.Builder(GameActivity.this);
                         ganado.setMessage("¡Felicidades! Has acertado la palabra").setCancelable(false)
                                 .setPositiveButton("Volver a jugar", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-
                                         //volvemos a la seleccion de juego
                                         Intent i = new Intent(GameActivity.this, GameActivity.class);
                                         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

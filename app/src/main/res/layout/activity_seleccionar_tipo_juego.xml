@@ -6,78 +6,64 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/textView42"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginBottom="50dp"
+        android:text="MANTEN PULSADO LOS TEXTOS &quot;SELECCIONA&quot; PARA MODIFICAR"
+        android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/textView42"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
-            android:text="AQUÍ SE EXPLICA LO PREDETERMINADO Y QUE HAY QUE DEJAR PULSADO PARA CAMBIAR"
-            android:textSize="24sp" />
-    </LinearLayout>
-
-    <LinearLayout
+    <TextView
+        android:id="@+id/textViewGameMode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingVertical="30dp">
-
-        <TextView
-            android:id="@+id/textViewGameMode"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/select_modo"
-            android:textSize="24sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        tools:paddingVertical="30dp">
-
-        <TextView
-            android:id="@+id/textViewGameLanguage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/select_idioma"
-            android:textSize="24sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingVertical="30dp">
-
-        <TextView
-            android:id="@+id/textViewGameDifficulty"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/select_dificultad"
-            android:textSize="24sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="20dp"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:text="@string/select_modo"
+        android:textSize="24sp" />
 
-        <Button
-            android:id="@+id/buttonIniciarPartida"
-            android:layout_width="159dp"
-            android:layout_height="wrap_content"
-            android:text="@string/continuar"
-            android:textSize="20sp" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/textViewModeSelected"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textViewGameLanguage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/select_idioma"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textViewIdiomaSelected"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textViewGameDifficulty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/select_dificultad"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textViewDificultadSelected"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/buttonIniciarPartida"
+        android:layout_width="159dp"
+        android:layout_height="wrap_content"
+        android:text="@string/continuar"
+        android:textSize="20sp" />
 
 </LinearLayout>

@@ -12,9 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.proyectodm.wordguesser.R;
 
-public class SelectGameActivity extends AppCompatActivity {
+public class SelectGameActivity extends WordGuesserActivity {
 
-    String modo_partida = "cientifico";
+    String modo_partida = "clasico";
     String lenguaje_partida = "es";
     String dificultad_partida = "normal";
     int maximo_intentos=5;
@@ -46,6 +46,21 @@ public class SelectGameActivity extends AppCompatActivity {
         this.registerForContextMenu(changueGameDifficulty);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        actualizarAjustesPartida();
+    }
+
+    protected void actualizarAjustesPartida(){
+        TextView viewMode = (TextView) this.findViewById(R.id.textViewModeSelected);
+        TextView viewLanguage = (TextView) this.findViewById(R.id.textViewIdiomaSelected);
+        TextView viewDifficulty = (TextView) this.findViewById(R.id.textViewDificultadSelected);
+
+        viewMode.setText(modo_partida);
+        viewLanguage.setText(lenguaje_partida);
+        viewDifficulty.setText(dificultad_partida);
+    }
 
     public void onCreateContextMenu(ContextMenu contxt, View v, ContextMenu.ContextMenuInfo cmi) {
         if (v.getId() == R.id.textViewGameMode) {
@@ -104,6 +119,7 @@ public class SelectGameActivity extends AppCompatActivity {
                 toret = true;
                 break;
         }
+        actualizarAjustesPartida();
         return toret;
     }
 
