@@ -31,7 +31,7 @@ public class RegistroActivity extends WordGuesserActivity{
             public void onClick(View v) {
                 String nombre = editNombre.getText().toString();
                 String apellidos = editApellidos.getText().toString();
-                String usuario = editUsuario.getText().toString();
+                String usuario = editUsuario.getText().toString().toLowerCase();
                 String password = editPassword.getText().toString();
                 String passwordRepetida = editRepetirPassword.getText().toString();
                 if (password.equals(passwordRepetida)){

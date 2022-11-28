@@ -30,7 +30,7 @@ public class LoginActivity extends WordGuesserActivity{
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String usuario = editTextUsername.getText().toString();
+                String usuario = editTextUsername.getText().toString().toLowerCase();
                 String password = editTextPassword.getText().toString();
                 Jugador jugador = getDbManager().checkLogin(usuario, password);
                 if(jugador != null){
