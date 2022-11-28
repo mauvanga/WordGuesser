@@ -57,7 +57,7 @@ public class ChangePlayerDataActivity extends WordGuesserActivity{
             public void onClick(View v) {
                 String nuevoNombre = editTextPlayerName.getText().toString();
                 String nuevoApellido = editTextPlayerSurname.getText().toString();
-                String nuevoUsername = editTextPlayerUsername.getText().toString();
+                String nuevoUsername = editTextPlayerUsername.getText().toString().toLowerCase();
 
                 if (getDbManager().editPlayerData(getJugadorLogueado().getIdJugador(),
                         nuevoNombre,nuevoApellido,nuevoUsername)){
