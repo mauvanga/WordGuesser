@@ -17,7 +17,7 @@
     <TextView
         android:id="@+id/textViewGameMode"
         android:layout_width="match_parent"
-        android:layout_height="47dp"
+        android:layout_height="71dp"
         android:gravity="center"
         android:text="@string/select_modo"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -34,7 +34,7 @@
     <TextView
         android:id="@+id/textViewGameLanguage"
         android:layout_width="match_parent"
-        android:layout_height="47dp"
+        android:layout_height="61dp"
         android:gravity="center"
         android:text="@string/select_idioma"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -51,7 +51,7 @@
     <TextView
         android:id="@+id/textViewGameDifficulty"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="65dp"
         android:gravity="center"
         android:text="@string/select_dificultad"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
