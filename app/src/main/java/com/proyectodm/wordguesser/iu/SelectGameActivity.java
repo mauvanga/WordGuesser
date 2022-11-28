@@ -8,15 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.proyectodm.wordguesser.R;
 
 public class SelectGameActivity extends WordGuesserActivity {
 
-    String modo_partida = "clasico";
-    String lenguaje_partida = "es";
-    String dificultad_partida = "normal";
+    String modo_partida = CLASICO;
+    String lenguaje_partida = CASTELLANO;
+    String dificultad_partida = NORMAL;
     int maximo_intentos=5;
 
     @Override
@@ -57,9 +55,9 @@ public class SelectGameActivity extends WordGuesserActivity {
         TextView viewLanguage = (TextView) this.findViewById(R.id.textViewIdiomaSelected);
         TextView viewDifficulty = (TextView) this.findViewById(R.id.textViewDificultadSelected);
 
-        viewMode.setText(modo_partida);
-        viewLanguage.setText(lenguaje_partida);
-        viewDifficulty.setText(dificultad_partida);
+        viewMode.setText(getTranslatedText(modo_partida));
+        viewLanguage.setText(getTranslatedText(lenguaje_partida));
+        viewDifficulty.setText(getTranslatedText(dificultad_partida));
     }
 
     public void onCreateContextMenu(ContextMenu contxt, View v, ContextMenu.ContextMenuInfo cmi) {
@@ -80,42 +78,42 @@ public class SelectGameActivity extends WordGuesserActivity {
         boolean toret = false;
         switch (menuItem.getItemId()) {
             case R.id.facil:
-                this.dificultad_partida = "facil";
+                this.dificultad_partida = FACIL;
                 this.maximo_intentos=7;
                 toret = true;
                 break;
             case R.id.normal:
-                this.dificultad_partida = "normal";
+                this.dificultad_partida = NORMAL;
                 this.maximo_intentos=5;
                 toret = true;
                 break;
             case R.id.dificil:
-                this.dificultad_partida = "dificil";
+                this.dificultad_partida = DIFICIL;
                 this.maximo_intentos=3;
                 toret = true;
                 break;
             case R.id.es:
-                this.lenguaje_partida = "es";
+                this.lenguaje_partida = CASTELLANO;
                 toret = true;
                 break;
             case R.id.en:
-                this.lenguaje_partida = "en";
+                this.lenguaje_partida = INGLES;
                 toret = true;
                 break;
             case R.id.gl:
-                this.lenguaje_partida = "gl";
+                this.lenguaje_partida = GALLEGO;
                 toret = true;
                 break;
             case R.id.clasico:
-                this.modo_partida = "clasico";
+                this.modo_partida = CLASICO;
                 toret = true;
                 break;
             case R.id.contrarreloj:
-                this.modo_partida = "contrarreloj";
+                this.modo_partida = CONTRARRELOJ;
                 toret = true;
                 break;
             case R.id.cientifico:
-                this.modo_partida = "cientifico";
+                this.modo_partida = CIENTIFICO;
                 toret = true;
                 break;
         }

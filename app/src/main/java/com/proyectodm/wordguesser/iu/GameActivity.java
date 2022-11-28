@@ -45,68 +45,67 @@ public class GameActivity extends WordGuesserActivity {
         maximo_intentos = bundle.getInt("maximo_intentos");
 
         //dependiendo de la dificultad escogida se mostrara un layout u otro debido a que el numero de filas cambia
-        if(dificultad_partida.equalsIgnoreCase("normal") ){
+        if(dificultad_partida.equalsIgnoreCase(NORMAL) ){
             setContentView(R.layout.activity_juego_normal); // Cargar la del modo correspondiente
         }
-        if(dificultad_partida.equalsIgnoreCase("facil") ){
+        if(dificultad_partida.equalsIgnoreCase(FACIL) ){
             setContentView(R.layout.activity_juego_facil); // Cargar la del modo correspondiente
         }
-        if(dificultad_partida.equalsIgnoreCase("dificil") ){
+        if(dificultad_partida.equalsIgnoreCase(DIFICIL) ){
             setContentView(R.layout.activity_juego_dificil); // Cargar la del modo correspondiente
         }
 
-        EditText palabraUsuarioClasicoNormal = (EditText) findViewById(R.id.palabraUsuarioClasicoNormal);
+        EditText palabraUsuario = (EditText) findViewById(R.id.palabraUsuario);
 
-        //creamos una variable random para poder escoger una palabra aleatoria del array
-        int random = 0;
-
-        //Leemos los ficheros de texto con las palabras correspondientes a cada modo e idioma
-        List<String> builder = new ArrayList<String>();
+        String palabraJuego;
+        List<String> listaPalabras = new ArrayList<String>();
+        List<String> cientifico = new ArrayList<String>();
 
         try {
             String line;
             InputStream in = null;
-
-                    if(modo_partida.equalsIgnoreCase("cientifico")){
-                        random = (int) (Math.random() * 31 + 1);
-                        if (lenguaje_partida.equalsIgnoreCase("gl")) {
-                            in = this.getAssets().open("CIENTIFICO_GALEGO_30.txt");
-                        }
-                        if (lenguaje_partida.equalsIgnoreCase("en")) {
-                            in = this.getAssets().open("CIENTIFICO_ENGLISH_30.txt");
-                        }
-                        if (lenguaje_partida.equalsIgnoreCase("es")) {
-                            in = this.getAssets().open("CIENTIFICO_ESPANOL_30.txt");
-                        }
-
-                    } else {
-                        if (lenguaje_partida.equalsIgnoreCase("gl")) {
-                            random = (int) (Math.random() * 970 + 1);
-                            in = this.getAssets().open("gl_5.txt");
-                        }
-                        if (lenguaje_partida.equalsIgnoreCase("en")) {
-                            in = this.getAssets().open("en_5.txt");
-                            random = (int) (Math.random() * 11422 + 1);
-                        }
-                        if (lenguaje_partida.equalsIgnoreCase("es")) {
-                            in = this.getAssets().open("es_5.txt");
-                            random = (int) (Math.random() * 9574 + 1);
-                        }
-                    }
-
-
+            if (lenguaje_partida.equalsIgnoreCase(GALLEGO)) {
+                in = this.getAssets().open("gl_5.txt");
+            }
+            if (lenguaje_partida.equalsIgnoreCase(INGLES)) {
+                in = this.getAssets().open("en_5.txt");
+            }
+            if (lenguaje_partida.equalsIgnoreCase(CASTELLANO)) {
+                in = this.getAssets().open("es_5.txt");
+            }
             BufferedReader inf = new BufferedReader(new InputStreamReader(in));
             while ((line = inf.readLine()) != null) {
-                builder.add(line);
+                listaPalabras.add(line);
             }
         } catch (IOException e) {
-            builder.add("error");
+            listaPalabras.add("error");
         }
 
-        //creamos el array que contendra las palabras del modo e idioma elegido
-        String[] palabrasIngles = builder.toArray(new String[0]);
-
-        String palabraJuego = palabrasIngles[random];
+        //Leemos los ficheros de texto con las palabras cientificas si corresponde
+        if(modo_partida.equalsIgnoreCase(CIENTIFICO)) {
+            try {
+                String line;
+                InputStream in = null;
+                if (lenguaje_partida.equalsIgnoreCase(GALLEGO)) {
+                    in = this.getAssets().open("CIENTIFICO_GALEGO_30.txt");
+                }
+                if (lenguaje_partida.equalsIgnoreCase(INGLES)) {
+                    in = this.getAssets().open("CIENTIFICO_ENGLISH_30.txt");
+                }
+                if (lenguaje_partida.equalsIgnoreCase(CASTELLANO)) {
+                    in = this.getAssets().open("CIENTIFICO_ESPANOL_30.txt");
+                }
+                BufferedReader inf = new BufferedReader(new InputStreamReader(in));
+                while ((line = inf.readLine()) != null) {
+                    cientifico.add(line);
+                }
+            } catch (IOException e) {
+                cientifico.add("error");
+            }
+            palabraJuego = cientifico.get((int) (Math.random() * cientifico.size()));
+        } else {
+            palabraJuego = listaPalabras.get((int) (Math.random() * listaPalabras.size()));
+        }
 
         Button buttonAceptarJuegoClasico = findViewById(R.id.buttonAceptarJuegoClasico);
 
@@ -114,34 +113,24 @@ public class GameActivity extends WordGuesserActivity {
         boolean partidaGanada = false;
 
         //inicializamos el constructor del objeto juego que representara la partida actual
-        Juego juego = new Juego(intentos, partidaGanada,maximo_intentos,modo_partida,dificultad_partida,lenguaje_partida);
+        Juego juego = new Juego(intentos, partidaGanada, maximo_intentos, modo_partida, dificultad_partida, lenguaje_partida);
 
         buttonAceptarJuegoClasico.setOnClickListener(new View.OnClickListener() {
-
-
             @Override
             public void onClick(View v) {
-                String palabra = palabraUsuarioClasicoNormal.getText().toString();
-                boolean valida = false;
-
-                //comprobamos que la palabra introducida por el usuario este contenida en el array de palabras
-                for(int j=0; j<palabrasIngles.length;j++){
-                    if(palabrasIngles[j].equalsIgnoreCase(palabra)){
-                        valida=true;
-                    }
-                }
+                String palabra = palabraUsuario.getText().toString();
 
                 //comprobamos que la palabra sea de longitud 5
-                if (!(palabra.length() == 5)) {
-
+                if (palabra.length() != 5) {
+                    // todo cambiarlo por snackbar
+                    // Snackbar.make(findViewById(R.id.loginLayout), getString(R.string.username_passwd_dont_match), Snackbar.LENGTH_SHORT).show();
                     Toast.makeText(getApplicationContext(),"La palabra tiene que tener 5 letras", Toast.LENGTH_SHORT).show();
-
-                } else if(!valida){
+                } else if(!listaPalabras.contains(palabra.toLowerCase()) && !cientifico.contains(palabra.toLowerCase())){
+                    // todo cambiarlo por snackbar
+                    // Snackbar.make(findViewById(R.id.loginLayout), getString(R.string.username_passwd_dont_match), Snackbar.LENGTH_SHORT).show();
                     Toast.makeText(getApplicationContext(),"La palabra no es válida", Toast.LENGTH_SHORT).show();
-
-                }
-                    else {
-                //segun el numero de intentos que lleve el usuario se comprobara una fila u otra
+                } else {
+                    //segun el numero de intentos que lleve el usuario se comprobara una fila u otra
                     //el numero de filas va hasta 7 ya que es el numero de intentos maximo que puede llegar a tener una partida
                     switch (juego.getIntentos()) {
                         case 0:
@@ -195,31 +184,20 @@ public class GameActivity extends WordGuesserActivity {
                     if(juego.getIntentos()==juego.getMaximo_intentos()){
                         getDbManager().addResultGame(palabraJuego, juego.getModo(), juego.getDificultad() , juego.getIdioma(), false, getJugadorLogueado().getIdJugador());
                         AlertDialog.Builder perdido = new AlertDialog.Builder(GameActivity.this);
-                        perdido.setMessage("¡Has perdido! La palabra era: "+palabraJuego).setCancelable(false)
+                        perdido.setMessage("¡Has perdido! La palabra era: " + palabraJuego).setCancelable(false)
                                 .setPositiveButton("Volver a jugar", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-
-                                        //volvemos a la actividad de login
-                                        Intent i = new Intent(GameActivity.this, SelectGameActivity.class);
-                                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                        i.putExtra("EXIT", true);
-                                        startActivity(i);
+                                        //cerramos el juego para volver a la actividad de selección de juego
                                         finish();
-
                                     }
                                 })
                                 .setNegativeButton("Volver al menú de inicio", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        //volvemos a la actividad de login
+                                        //volvemos a la actividad de menú
                                         Intent i = new Intent(GameActivity.this, MenuActivity.class);
                                         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                        i.putExtra("EXIT", true);
                                         startActivity(i);
                                         finish();
                                     }
@@ -230,7 +208,6 @@ public class GameActivity extends WordGuesserActivity {
                     }
 
                     //si el jugador ha acertado la palabra antes de agotar el numero de intentos:
-
                     if(juego.isPartidaGanada()==true){
                         getDbManager().addResultGame(palabraJuego, juego.getModo(), juego.getDificultad() , juego.getIdioma(), true, getJugadorLogueado().getIdJugador());
                         AlertDialog.Builder ganado = new AlertDialog.Builder(GameActivity.this);
@@ -239,12 +216,6 @@ public class GameActivity extends WordGuesserActivity {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         //volvemos a la seleccion de juego
-                                        Intent i = new Intent(GameActivity.this, GameActivity.class);
-                                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                        i.putExtra("EXIT", true);
-                                        startActivity(i);
                                         finish();
 
                                     }
@@ -252,12 +223,9 @@ public class GameActivity extends WordGuesserActivity {
                                 .setNegativeButton("Volver al menú de inicio", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        //volvemos al menu de inicio
+                                        //volvemos a la actividad de menú
                                         Intent i = new Intent(GameActivity.this, MenuActivity.class);
                                         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                        i.putExtra("EXIT", true);
                                         startActivity(i);
                                         finish();
                                     }
@@ -266,11 +234,9 @@ public class GameActivity extends WordGuesserActivity {
                         AlertDialog alert = ganado.create();
                         alert.show();
                     }
-
                 }
             }
         });
-
     }
 
     //escribimos las letras de la palabra introducida por el usuario en una fila
@@ -290,27 +256,24 @@ public class GameActivity extends WordGuesserActivity {
             }
             juego.setPartidaGanada(true);
         } else {
+            for (int i = 0; i < l.getChildCount(); i++) {
+                TextView aux = (TextView) l.getChildAt(i);
+                char caracter1 = palabraJuego.charAt(i);
+                char caracter2 = palabra.charAt(i);
 
-                    for (int i = 0; i < l.getChildCount(); i++) {
-                        TextView aux = (TextView) l.getChildAt(i);
-                        char caracter1 = palabraJuego.charAt(i);
-                        char caracter2 = palabra.charAt(i);
-
-                        //si la letra esta en la misma posicion, el cuadrado correspondiente se pone en verde
-                        if (caracter2 == caracter1) {
-                            aux.setBackgroundColor(Color.parseColor("#019A01"));
-                        }
-                        //si la letra esta en la palabra, pero no en la misma posicion, el cuadrado correspondiente se pone en naranja
-                        else if (palabraJuego.indexOf(caracter2)!=-1) {
-                            aux.setBackgroundColor(Color.parseColor("#ffc425"));
-                        }
-                        //si la letra no esta en la palabra, el cuadrado correspondiente se pone en gris
-                        else{
-                            aux.setBackgroundColor(Color.parseColor("#737272"));
-                        }
+                //si la letra esta en la misma posicion, el cuadrado correspondiente se pone en verde
+                if (caracter2 == caracter1) {
+                    aux.setBackgroundColor(Color.parseColor("#019A01"));
                 }
-
+                //si la letra esta en la palabra, pero no en la misma posicion, el cuadrado correspondiente se pone en naranja
+                else if (palabraJuego.indexOf(caracter2)!=-1) {
+                    aux.setBackgroundColor(Color.parseColor("#ffc425"));
+                }
+                //si la letra no esta en la palabra, el cuadrado correspondiente se pone en gris
+                else{
+                    aux.setBackgroundColor(Color.parseColor("#737272"));
+                }
+            }
         }
-
     }
 }

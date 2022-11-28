@@ -55,6 +55,6 @@ public class HistorialActivity extends WordGuesserActivity {
     protected void onPause() {
         super.onPause();
         getDbManager().close();
-        this.juegoCursorAdapter.getCursor().close();
+        juegoCursorAdapter.getCursor().close();
     }
 }
