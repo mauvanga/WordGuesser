@@ -1,6 +1,8 @@
 package com.proyectodm.wordguesser.iu;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +23,35 @@ public class ChangePlayerDataActivity extends WordGuesserActivity{
         editTextPlayerUsername.setText(getJugadorLogueado().getUsuario());
 
         Button buttonChangeData = findViewById(R.id.buttonChangeData);
+        buttonChangeData.setEnabled(false);
+
+        TextWatcher textWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(editTextPlayerName.getText().toString().trim().length() > 0 &&
+                        editTextPlayerSurname.getText().toString().trim().length() > 0 &&
+                        editTextPlayerUsername.getText().toString().trim().length() > 0){
+                    buttonChangeData.setEnabled(true);
+                }else{
+                    buttonChangeData.setEnabled(false);
+                    Snackbar.make(findViewById(R.id.changePlayerDataLayout), getString(R.string.campos_no_vacios), Snackbar.LENGTH_SHORT).show();
+                }
+            }
+        };
+        editTextPlayerName.addTextChangedListener(textWatcher);
+        editTextPlayerSurname.addTextChangedListener(textWatcher);
+        editTextPlayerUsername.addTextChangedListener(textWatcher);
+
         buttonChangeData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

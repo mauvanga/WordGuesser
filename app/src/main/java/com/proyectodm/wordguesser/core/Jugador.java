@@ -66,6 +66,10 @@ public class Jugador {
         return racha;
     }
 
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
     public void setIdJugador(int idJugador) {
         this.idJugador = idJugador;
     }

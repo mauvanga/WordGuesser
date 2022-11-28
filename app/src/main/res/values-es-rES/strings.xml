@@ -44,4 +44,7 @@
     <string name="cambiar_pass">CAMBIAR CONTRASEÑA</string>
     <string name="eliminar_cuenta">ELIMINAR CUENTA</string>
     <string name="modificar_datos">MODIFICAR MIS DATOS</string>
+    <string name="new_passwd">Nueva contraseña</string>
+    <string name="new_passwd_repeat">Repite la nueva contraseña</string>
+    <string name="accept">ACEPTAR</string>
 </resources>

@@ -12,20 +12,22 @@
 
         <TextView
             android:id="@+id/textView51"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="right"
-            android:text="@string/nombre" />
+            android:text="@string/nombre"
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/editTextCurrentPlayerName"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@string/nombre" />
+            android:text="@string/nombre"
+            android:textSize="24sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -35,20 +37,22 @@
 
         <TextView
             android:id="@+id/textView52"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="right"
-            android:text="@string/apellidos" />
+            android:text="@string/apellidos"
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/editTextCurrentPlayerSurname"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@string/apellidos" />
+            android:text="@string/apellidos"
+            android:textSize="24sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -58,24 +62,29 @@
 
         <TextView
             android:id="@+id/textView54"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="right"
-            android:text="@string/username" />
+            android:text="@string/username"
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/editTextCurrentPlayerUsername"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@string/username" />
+            android:text="@string/username"
+            android:textSize="24sp" />
     </LinearLayout>
 
     <Button
         android:id="@+id/buttonChangeData"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/accept"
+        android:textSize="24sp" />
 </LinearLayout>
