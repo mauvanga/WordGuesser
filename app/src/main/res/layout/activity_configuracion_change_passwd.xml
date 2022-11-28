@@ -18,6 +18,14 @@
             android:gravity="right"
             android:text="@string/passwd" />
 
+        <EditText
+            android:id="@+id/editTextOldPasswd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPassword" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -33,6 +41,14 @@
             android:gravity="right"
             android:text="@string/apellidos" />
 
+        <EditText
+            android:id="@+id/editTextNewPasswd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPassword" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -47,6 +63,14 @@
             android:layout_weight="1"
             android:gravity="right"
             android:text="@string/username" />
+
+        <EditText
+            android:id="@+id/editTextNewPasswdRepeat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPassword" />
 
     </LinearLayout>
 </LinearLayout>

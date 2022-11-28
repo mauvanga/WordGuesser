@@ -35,8 +35,8 @@ public class ConfiguracionActivity extends WordGuesserActivity{
         buttonChangePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(findViewById(R.id.profileLayout), "Proximamente", Snackbar.LENGTH_SHORT).show();
-                // todo implementar cambios
+                Intent i = new Intent(ConfiguracionActivity.this, ChangePlayerPasswdActivity.class);
+                startActivity(i);
             }
         });
 
