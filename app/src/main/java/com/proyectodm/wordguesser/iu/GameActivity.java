@@ -65,15 +65,15 @@ public class GameActivity extends WordGuesserActivity {
             InputStream in = null;
 
                     if(modo_partida.equalsIgnoreCase("cientifico")){
-                        random = (int) (Math.random() * 30 + 1);
+                        random = (int) (Math.random() * 31 + 1);
                         if (lenguaje_partida.equalsIgnoreCase("gl")) {
                             in = this.getAssets().open("CIENTIFICO_GALEGO_30.txt");
                         }
                         if (lenguaje_partida.equalsIgnoreCase("en")) {
-                            in = this.getAssets().open("CIENTIFICO_ENGLISH.txt");
+                            in = this.getAssets().open("CIENTIFICO_ENGLISH_30.txt");
                         }
                         if (lenguaje_partida.equalsIgnoreCase("es")) {
-                            in = this.getAssets().open("CIENTIFICO_ESPAÑOL.txt");
+                            in = this.getAssets().open("CIENTIFICO_ESPANOL_30.txt");
                         }
 
                     } else {
@@ -90,7 +90,6 @@ public class GameActivity extends WordGuesserActivity {
                             random = (int) (Math.random() * 9574 + 1);
                         }
                     }
-
 
 
             BufferedReader inf = new BufferedReader(new InputStreamReader(in));
