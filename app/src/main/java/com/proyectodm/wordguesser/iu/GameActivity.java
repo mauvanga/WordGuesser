@@ -183,6 +183,9 @@ public class GameActivity extends WordGuesserActivity {
                     //si el jugador agota el numero de intentos correspondiente a la dificultad escogida significa que ha perdido
                     if(juego.getIntentos()==juego.getMaximo_intentos()){
                         getDbManager().addResultGame(palabraJuego, juego.getModo(), juego.getDificultad() , juego.getIdioma(), false, getJugadorLogueado().getIdJugador());
+                        if (getDbManager().editPlayerRacha(getJugadorLogueado().getIdJugador(), 0)){
+                            getJugadorLogueado().setRachaActual(0);
+                        }
                         AlertDialog.Builder perdido = new AlertDialog.Builder(GameActivity.this);
                         perdido.setMessage("¡Has perdido! La palabra era: " + palabraJuego).setCancelable(false)
                                 .setPositiveButton("Volver a jugar", new DialogInterface.OnClickListener() {
@@ -210,6 +213,15 @@ public class GameActivity extends WordGuesserActivity {
                     //si el jugador ha acertado la palabra antes de agotar el numero de intentos:
                     if(juego.isPartidaGanada()==true){
                         getDbManager().addResultGame(palabraJuego, juego.getModo(), juego.getDificultad() , juego.getIdioma(), true, getJugadorLogueado().getIdJugador());
+                        int nuevaRachaActual = getJugadorLogueado().getRachaActual() + 1;
+                        if (getDbManager().editPlayerRacha(getJugadorLogueado().getIdJugador(), nuevaRachaActual)){
+                            getJugadorLogueado().setRachaActual(nuevaRachaActual);
+                        }
+                        if (getJugadorLogueado().getMejorRacha() < nuevaRachaActual){
+                            if (getDbManager().editPlayerMejorRacha(getJugadorLogueado().getIdJugador(), nuevaRachaActual)){
+                                getJugadorLogueado().setMejorRacha(nuevaRachaActual);
+                            }
+                        }
                         AlertDialog.Builder ganado = new AlertDialog.Builder(GameActivity.this);
                         ganado.setMessage("¡Felicidades! Has acertado la palabra").setCancelable(false)
                                 .setPositiveButton("Volver a jugar", new DialogInterface.OnClickListener() {

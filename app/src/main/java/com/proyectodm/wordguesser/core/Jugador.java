@@ -18,7 +18,6 @@ public class Jugador {
         this.mejorRacha = mejorRacha;
         this.rachaActual = rachaActual;
     }
-//getters
 
     public int getIdJugador() {
         return idJugador;
@@ -40,7 +39,13 @@ public class Jugador {
         return contraseña;
     }
 
-    //setters
+    public int getRachaActual() {
+        return rachaActual;
+    }
+
+    public int getMejorRacha() {
+        return mejorRacha;
+    }
 
     public void setNombre(String nombre){
         this.nombre=nombre;
@@ -54,36 +59,12 @@ public class Jugador {
         this.usuario = usuario;
     }
 
-    //metodo que devuelve la mejor racha
-    public int calcularMejorRacha(){
-        int racha=0;
-        return racha;
-    }
-
-    //metodo que devuelve la racha actual
-    public int calcularRachaActual(){
-        int racha=0;
-        return racha;
-    }
-
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
 
-    public void setIdJugador(int idJugador) {
-        this.idJugador = idJugador;
-    }
-
-    public int getMejorRacha() {
-        return mejorRacha;
-    }
-
     public void setMejorRacha(int mejorRacha) {
         this.mejorRacha = mejorRacha;
-    }
-
-    public int getRachaActual() {
-        return rachaActual;
     }
 
     public void setRachaActual(int rachaActual) {

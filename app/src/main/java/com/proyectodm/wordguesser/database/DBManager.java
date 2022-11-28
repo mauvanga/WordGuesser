@@ -171,6 +171,48 @@ public class DBManager extends SQLiteOpenHelper {
         return toret;
     }
 
+    public boolean editPlayerRacha(Integer idJugador, Integer nuevaRacha){
+        boolean toret = false;
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(PLAYER_COLUMN_RACHA_ACTUAL, nuevaRacha);
+
+        try{
+            db.beginTransaction();
+            db.update(PLAYERS_TABLE_NAME, contentValues,
+                    PLAYER_COLUMN_ID + "=?",
+                    new String[]{String.valueOf(idJugador)});
+            db.setTransactionSuccessful();
+            toret = true;
+        }catch(SQLException exc){
+            Log.e("DBManager.editPlayerData", exc.getMessage());
+        }finally{
+            db.endTransaction();
+        }
+        return toret;
+    }
+
+    public boolean editPlayerMejorRacha(Integer idJugador, Integer nuevaRachaMejor){
+        boolean toret = false;
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(PLAYER_COLUMN_RACHA_MEJOR, nuevaRachaMejor);
+
+        try{
+            db.beginTransaction();
+            db.update(PLAYERS_TABLE_NAME, contentValues,
+                    PLAYER_COLUMN_ID + "=?",
+                    new String[]{String.valueOf(idJugador)});
+            db.setTransactionSuccessful();
+            toret = true;
+        }catch(SQLException exc){
+            Log.e("DBManager.editPlayerData", exc.getMessage());
+        }finally{
+            db.endTransaction();
+        }
+        return toret;
+    }
+
     @SuppressLint("Range")
     public Jugador checkLogin(String usuario, String passwd){
         Cursor cursor = null;
@@ -222,8 +264,7 @@ public class DBManager extends SQLiteOpenHelper {
         return toret;
     }
 
-    public boolean addResultGame(String palabra, String modo, String dificultad, String idioma, boolean resultado, int idJugador){
-        boolean toret = false;
+    public void addResultGame(String palabra, String modo, String dificultad, String idioma, boolean resultado, int idJugador){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
@@ -238,13 +279,11 @@ public class DBManager extends SQLiteOpenHelper {
             db.beginTransaction();
             db.insert(GAMES_TABLE_NAME, null, contentValues);
             db.setTransactionSuccessful();
-            toret = true;
         }catch(SQLException exc){
             Log.e("DBManager.addGame", exc.getMessage());
         }finally{
             db.endTransaction();
         }
-        return toret;
     }
 
     public Cursor findGames(Integer idJugador){
