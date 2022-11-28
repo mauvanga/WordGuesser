@@ -17,9 +17,10 @@
     <TextView
         android:id="@+id/textViewGameMode"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="47dp"
         android:gravity="center"
         android:text="@string/select_modo"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="24sp" />
 
     <TextView
@@ -27,14 +28,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
         android:id="@+id/textViewGameLanguage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="47dp"
         android:gravity="center"
         android:text="@string/select_idioma"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="24sp" />
 
     <TextView
@@ -42,14 +45,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
         android:id="@+id/textViewGameDifficulty"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:gravity="center"
         android:text="@string/select_dificultad"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="24sp" />
 
     <TextView
@@ -57,13 +62,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-    <Button
-        android:id="@+id/buttonIniciarPartida"
-        android:layout_width="159dp"
-        android:layout_height="wrap_content"
-        android:text="@string/continuar"
-        android:textSize="20sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="136dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonIniciarPartida"
+            android:layout_width="159dp"
+            android:layout_height="wrap_content"
+            android:text="@string/continuar"
+            android:textSize="20sp" />
+    </LinearLayout>
 
 </LinearLayout>
