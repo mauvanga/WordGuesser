@@ -18,6 +18,7 @@
             android:gravity="center"
             android:paddingVertical="30dp"
             android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="34sp" />
     </LinearLayout>
 
@@ -245,28 +246,28 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
+        android:gravity="center_horizontal"
         android:orientation="horizontal">
 
         <EditText
             android:id="@+id/palabraUsuario"
-            android:layout_width="257dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="178dp"
-        android:layout_height="64dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/buttonAceptarJuegoClasico"
             android:layout_width="214dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Button" />
+            android:layout_height="match_parent"
+            android:text="@string/accept" />
     </LinearLayout>
 
 </LinearLayout>

@@ -18,309 +18,310 @@
             android:gravity="center"
             android:paddingVertical="30dp"
             android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="34sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="498dp"
+        android:layout_height="447dp"
         android:gravity="center"
         android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/fila1"
-            android:layout_width="343dp"
-            android:layout_height="76dp"
+            android:layout_width="323dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/cuadroClasicoNormal1"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/cuadroClasicoNormal2"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/cuadroClasicoNormal3"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/cuadroClasicoNormal4"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/cuadroClasicoNormal5"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/fila2"
-            android:layout_width="343dp"
-            android:layout_height="wrap_content"
+            android:layout_width="323dp"
+            android:layout_height="56dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textView23"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView24"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView25"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView26"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView27"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/fila3"
-            android:layout_width="343dp"
-            android:layout_height="wrap_content"
+            android:layout_width="325dp"
+            android:layout_height="55dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textView32"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView31"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView30"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView28"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView29"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/fila4"
-            android:layout_width="343dp"
-            android:layout_height="wrap_content"
+            android:layout_width="323dp"
+            android:layout_height="59dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textView37"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView34"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView36"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView35"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView33"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/fila5"
-            android:layout_width="343dp"
-            android:layout_height="69dp"
+            android:layout_width="323dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textView43"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView47"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView45"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView46"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView44"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/fila6"
-            android:layout_width="342dp"
-            android:layout_height="65dp"
+            android:layout_width="322dp"
+            android:layout_height="57dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textView4"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView12"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView14"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView17"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView19"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/fila7"
-            android:layout_width="342dp"
-            android:layout_height="73dp"
+            android:layout_width="321dp"
+            android:layout_height="58dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textView22"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView38"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView39"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView40"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView41"
                 style="@style/letras"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1" />
         </LinearLayout>
 
@@ -329,28 +330,28 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
+        android:gravity="center_horizontal"
         android:orientation="horizontal">
 
         <EditText
             android:id="@+id/palabraUsuario"
-            android:layout_width="257dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="251dp"
+        android:layout_width="match_parent"
         android:layout_height="64dp"
+        android:gravity="center_horizontal"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/buttonAceptarJuegoClasico"
-            android:layout_width="301dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:text="Button" />
+            android:layout_width="212dp"
+            android:layout_height="wrap_content"
+            android:text="@string/accept" />
     </LinearLayout>
 
 </LinearLayout>
