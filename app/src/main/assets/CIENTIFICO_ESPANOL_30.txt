@@ -1,3 +1,4 @@
+
 aroma
 bocio
 cutis
@@ -28,5 +29,3 @@ tisis
 torso
 utero
 vatio
-
-

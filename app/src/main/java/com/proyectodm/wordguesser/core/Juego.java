@@ -9,14 +9,29 @@ public class Juego {
     private boolean resultado; //false derrota, true victoria
 
     int intentos=0;
+
+    public int getMaximo_intentos() {
+        return maximo_intentos;
+    }
+
+    public void setMaximo_intentos(int maximo_intentos) {
+        this.maximo_intentos = maximo_intentos;
+    }
+
+    int maximo_intentos;
     boolean partidaGanada=false;
 
     static String[] palabras;
     String palabraGanadora;
     String palabraUsuario;
 
-    public Juego(int intentos, boolean partidaGanada){
-        intentos=this.intentos;
+    public Juego(int intentos, boolean partidaGanada, int maximo_intentos,String modo, String dificultad, String idioma){
+        this.intentos=intentos;
+        this.partidaGanada=partidaGanada;
+        this.maximo_intentos=maximo_intentos;
+        this.modo=modo;
+        this.dificultad=dificultad;
+        this.idioma=idioma;
     }
 
     public Juego() {

@@ -29,6 +29,7 @@
         <activity android:name=".iu.RegistroActivity"></activity>
         <activity android:name=".iu.HistorialActivity"></activity>
         <activity android:name=".iu.GameActivity"></activity>
+        <activity android:name=".iu.SelectGameActivity"></activity>
         <activity android:name=".iu.ConfiguracionActivity"></activity>
         <activity android:name=".iu.ChangePlayerDataActivity"></activity>
         <activity android:name=".iu.ChangePlayerPasswdActivity"></activity>

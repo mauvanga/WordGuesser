@@ -28,7 +28,7 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/filaClasicoNormal1"
+            android:id="@+id/fila1"
             android:layout_width="343dp"
             android:layout_height="76dp"
             android:gravity="center"
@@ -71,7 +71,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/filaClasicoNormal2"
+            android:id="@+id/fila2"
             android:layout_width="343dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -113,7 +113,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/filaClasicoNormal3"
+            android:id="@+id/fila3"
             android:layout_width="343dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal">

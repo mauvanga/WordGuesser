@@ -26,7 +26,7 @@ public class MenuActivity extends WordGuesserActivity {
         buttonNuevoJuego.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MenuActivity.this, GameActivity.class);
+                Intent i = new Intent(MenuActivity.this, SelectGameActivity.class);
                 startActivity(i);
             }
         });

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/clasico" android:id="@+id/clasico" />
+    <item android:title="@string/contrarreloj" android:id="@+id/contrarreloj" />
+    <item android:title="@string/cientifico" android:id="@+id/cientifico" />
+</menu>

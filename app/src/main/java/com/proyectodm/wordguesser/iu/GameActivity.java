@@ -25,21 +25,74 @@ import java.util.List;
 
 
 public class GameActivity extends WordGuesserActivity {
+
+    Bundle bundle;
+    String modo_partida;
+    String lenguaje_partida;
+    String dificultad_partida;
+    int maximo_intentos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_juego_clasico_normal); // Cargar la del modo correspondiente
+
+        bundle = getIntent().getExtras();
+        modo_partida = bundle.getString("modo_partida");
+        lenguaje_partida = bundle.getString("lenguaje_partida");
+        dificultad_partida = bundle.getString("dificultad_partida");
+        maximo_intentos = bundle.getInt("maximo_intentos");
+
+        if(dificultad_partida.equalsIgnoreCase("normal") ){
+            setContentView(R.layout.activity_juego_normal); // Cargar la del modo correspondiente
+
+        }
+        if(dificultad_partida.equalsIgnoreCase("facil") ){
+            setContentView(R.layout.activity_juego_facil); // Cargar la del modo correspondiente
+        }
+        if(dificultad_partida.equalsIgnoreCase("dificil") ){
+            setContentView(R.layout.activity_juego_dificil); // Cargar la del modo correspondiente
+        }
 
         EditText palabraUsuarioClasicoNormal = (EditText) findViewById(R.id.palabraUsuarioClasicoNormal);
 
-        int random = (int) (Math.random() * 11422 + 1);
+        int random = 0;
 
         List<String> builder = new ArrayList<String>();
 
         try {
             String line;
-            InputStream in = this.getAssets().open("en_5.txt");
+            InputStream in = null;
+
+                    if(modo_partida.equalsIgnoreCase("cientifico")){
+                        random = (int) (Math.random() * 30 + 1);
+                        if (lenguaje_partida.equalsIgnoreCase("gl")) {
+                            in = this.getAssets().open("CIENTIFICO_GALEGO_30.txt");
+                        }
+                        if (lenguaje_partida.equalsIgnoreCase("en")) {
+                            in = this.getAssets().open("CIENTIFICO_ENGLISH.txt");
+                        }
+                        if (lenguaje_partida.equalsIgnoreCase("es")) {
+                            in = this.getAssets().open("CIENTIFICO_ESPAÑOL.txt");
+                        }
+
+                    } else {
+                        if (lenguaje_partida.equalsIgnoreCase("gl")) {
+                            random = (int) (Math.random() * 970 + 1);
+                            in = this.getAssets().open("gl_5.txt");
+                        }
+                        if (lenguaje_partida.equalsIgnoreCase("en")) {
+                            in = this.getAssets().open("en_5.txt");
+                            random = (int) (Math.random() * 11422 + 1);
+                        }
+                        if (lenguaje_partida.equalsIgnoreCase("es")) {
+                            in = this.getAssets().open("es_5.txt");
+                            random = (int) (Math.random() * 9574 + 1);
+                        }
+                    }
+
+
+
             BufferedReader inf = new BufferedReader(new InputStreamReader(in));
             while ((line = inf.readLine()) != null) {
                 builder.add(line);
@@ -56,7 +109,7 @@ public class GameActivity extends WordGuesserActivity {
 
         int intentos = 0;
         boolean partidaGanada = false;
-        Juego juego = new Juego(intentos, partidaGanada);
+        Juego juego = new Juego(intentos, partidaGanada,maximo_intentos,modo_partida,dificultad_partida,lenguaje_partida);
 
         buttonAceptarJuegoClasico.setOnClickListener(new View.OnClickListener() {
 
@@ -84,33 +137,45 @@ public class GameActivity extends WordGuesserActivity {
 
                     switch (juego.getIntentos()) {
                         case 0:
-                            LinearLayout l = (LinearLayout) findViewById(R.id.filaClasicoNormal1);
+                            LinearLayout l = (LinearLayout) findViewById(R.id.fila1);
                             escribirFila(l, palabra);
                             comprobacionCorrecta(l, juego, palabra, palabraJuego);
                             break;
 
                         case 1:
-                            LinearLayout l2 = (LinearLayout) findViewById(R.id.filaClasicoNormal2);
+                            LinearLayout l2 = (LinearLayout) findViewById(R.id.fila2);
                             escribirFila(l2, palabra);
                             comprobacionCorrecta(l2, juego, palabra, palabraJuego);
                             break;
 
                         case 2:
-                            LinearLayout l3 = (LinearLayout) findViewById(R.id.filaClasicoNormal3);
+                            LinearLayout l3 = (LinearLayout) findViewById(R.id.fila3);
                             escribirFila(l3, palabra);
                             comprobacionCorrecta(l3, juego, palabra, palabraJuego);
                             break;
 
                         case 3:
-                            LinearLayout l4 = (LinearLayout) findViewById(R.id.filaClasicoNormal4);
+                            LinearLayout l4 = (LinearLayout) findViewById(R.id.fila4);
                             escribirFila(l4, palabra);
                             comprobacionCorrecta(l4, juego, palabra, palabraJuego);
                             break;
 
                         case 4:
-                            LinearLayout l5 = (LinearLayout) findViewById(R.id.filaClasicoNormal5);
+                            LinearLayout l5 = (LinearLayout) findViewById(R.id.fila5);
                             escribirFila(l5, palabra);
                             comprobacionCorrecta(l5, juego, palabra, palabraJuego);
+                            break;
+
+                        case 5:
+                            LinearLayout l6 = (LinearLayout) findViewById(R.id.fila6);
+                            escribirFila(l6, palabra);
+                            comprobacionCorrecta(l6, juego, palabra, palabraJuego);
+                            break;
+
+                        case 6:
+                            LinearLayout l7 = (LinearLayout) findViewById(R.id.fila7);
+                            escribirFila(l7, palabra);
+                            comprobacionCorrecta(l7, juego, palabra, palabraJuego);
                             break;
                     }
 
@@ -118,7 +183,7 @@ public class GameActivity extends WordGuesserActivity {
                         juego.incrementarIntento();
                     }
 
-                    if(juego.getIntentos()==5){
+                    if(juego.getIntentos()==juego.getMaximo_intentos()){
                         getDbManager().addResultGame(palabraJuego, "CLASICO","NORMAL" , "INGLES", false, getJugadorLogueado().getIdJugador());
                         AlertDialog.Builder perdido = new AlertDialog.Builder(GameActivity.this);
                         perdido.setMessage("¡Has perdido! La palabra era: "+palabraJuego).setCancelable(false)
@@ -127,7 +192,7 @@ public class GameActivity extends WordGuesserActivity {
                                     public void onClick(DialogInterface dialog, int which) {
 
                                         //volvemos a la actividad de login
-                                        Intent i = new Intent(GameActivity.this, GameActivity.class);
+                                        Intent i = new Intent(GameActivity.this, SelectGameActivity.class);
                                         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

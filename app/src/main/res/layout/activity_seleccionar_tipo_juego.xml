@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -8,8 +9,22 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView42"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:text="AQUÍ SE EXPLICA LO PREDETERMINADO Y QUE HAY QUE DEJAR PULSADO PARA CAMBIAR"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingVertical="10dp">
+        android:paddingVertical="30dp">
 
         <TextView
             android:id="@+id/textViewGameMode"
@@ -17,117 +32,29 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/select_modo"
-            android:textSize="34sp" />
+            android:textSize="24sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/buttonModoContrareloj"
-            android:layout_width="159dp"
-            android:layout_height="wrap_content"
-            android:text="@string/contrarreloj"
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
         android:orientation="horizontal"
-        android:paddingVertical="5dp">
-
-        <Button
-            android:id="@+id/buttonModoClasico"
-            android:layout_width="159dp"
-            android:layout_height="wrap_content"
-            android:text="@string/clasico"
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingVertical="5dp">
-
-        <Button
-            android:id="@+id/buttonModoCientifico"
-            android:layout_width="159dp"
-            android:layout_height="wrap_content"
-            android:text="@string/cientifico"
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        tools:paddingVertical="30dp">
 
         <TextView
             android:id="@+id/textViewGameLanguage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:paddingVertical="10dp"
             android:text="@string/select_idioma"
-            android:textSize="34sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/buttonIdiomaIngles"
-            android:layout_width="157dp"
-            android:layout_height="wrap_content"
-            android:text="@string/en"
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingVertical="5dp">
-
-        <Button
-            android:id="@+id/buttonIdiomaEspañol"
-            android:layout_width="157dp"
-            android:layout_height="wrap_content"
-            android:text="@string/es"
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingVertical="5dp">
-
-        <Button
-            android:id="@+id/buttonIdiomaGallego"
-            android:layout_width="157dp"
-            android:layout_height="wrap_content"
-            android:text="@string/gl"
-            android:textSize="20sp" />
+            android:textSize="24sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingVertical="10dp">
+        android:paddingVertical="30dp">
 
         <TextView
             android:id="@+id/textViewGameDifficulty"
@@ -135,50 +62,21 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/select_dificultad"
-            android:textSize="34sp" />
+            android:textSize="24sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingVertical="5dp">
-
-        <Button
-            android:id="@+id/buttonDificultadFacil"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="@string/facil"
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
         android:gravity="center"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/buttonDificultadNormal"
-            android:layout_width="150dp"
+            android:id="@+id/buttonIniciarPartida"
+            android:layout_width="159dp"
             android:layout_height="wrap_content"
-            android:text="@string/normal"
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingVertical="5dp">
-
-        <Button
-            android:id="@+id/buttonDificultadDificil"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="@string/dificil"
+            android:text="@string/continuar"
             android:textSize="20sp" />
     </LinearLayout>
 
