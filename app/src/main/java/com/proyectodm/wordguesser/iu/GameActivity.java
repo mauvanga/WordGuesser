@@ -37,15 +37,16 @@ public class GameActivity extends WordGuesserActivity {
 
         super.onCreate(savedInstanceState);
 
+        //variables obtenidas de SelectGameActivity
         bundle = getIntent().getExtras();
         modo_partida = bundle.getString("modo_partida");
         lenguaje_partida = bundle.getString("lenguaje_partida");
         dificultad_partida = bundle.getString("dificultad_partida");
         maximo_intentos = bundle.getInt("maximo_intentos");
 
+        //dependiendo de la dificultad escogida se mostrara un layout u otro debido a que el numero de filas cambia
         if(dificultad_partida.equalsIgnoreCase("normal") ){
             setContentView(R.layout.activity_juego_normal); // Cargar la del modo correspondiente
-
         }
         if(dificultad_partida.equalsIgnoreCase("facil") ){
             setContentView(R.layout.activity_juego_facil); // Cargar la del modo correspondiente
@@ -56,8 +57,10 @@ public class GameActivity extends WordGuesserActivity {
 
         EditText palabraUsuarioClasicoNormal = (EditText) findViewById(R.id.palabraUsuarioClasicoNormal);
 
+        //creamos una variable random para poder escoger una palabra aleatoria del array
         int random = 0;
 
+        //Leemos los ficheros de texto con las palabras correspondientes a cada modo e idioma
         List<String> builder = new ArrayList<String>();
 
         try {
@@ -100,6 +103,7 @@ public class GameActivity extends WordGuesserActivity {
             builder.add("error");
         }
 
+        //creamos el array que contendra las palabras del modo e idioma elegido
         String[] palabrasIngles = builder.toArray(new String[0]);
 
         String palabraJuego = palabrasIngles[random];
@@ -108,6 +112,8 @@ public class GameActivity extends WordGuesserActivity {
 
         int intentos = 0;
         boolean partidaGanada = false;
+
+        //inicializamos el constructor del objeto juego que representara la partida actual
         Juego juego = new Juego(intentos, partidaGanada,maximo_intentos,modo_partida,dificultad_partida,lenguaje_partida);
 
         buttonAceptarJuegoClasico.setOnClickListener(new View.OnClickListener() {
@@ -118,12 +124,14 @@ public class GameActivity extends WordGuesserActivity {
                 String palabra = palabraUsuarioClasicoNormal.getText().toString();
                 boolean valida = false;
 
+                //comprobamos que la palabra introducida por el usuario este contenida en el array de palabras
                 for(int j=0; j<palabrasIngles.length;j++){
                     if(palabrasIngles[j].equalsIgnoreCase(palabra)){
                         valida=true;
                     }
                 }
 
+                //comprobamos que la palabra sea de longitud 5
                 if (!(palabra.length() == 5)) {
 
                     Toast.makeText(getApplicationContext(),"La palabra tiene que tener 5 letras", Toast.LENGTH_SHORT).show();
@@ -133,7 +141,8 @@ public class GameActivity extends WordGuesserActivity {
 
                 }
                     else {
-
+                //segun el numero de intentos que lleve el usuario se comprobara una fila u otra
+                    //el numero de filas va hasta 7 ya que es el numero de intentos maximo que puede llegar a tener una partida
                     switch (juego.getIntentos()) {
                         case 0:
                             LinearLayout l = (LinearLayout) findViewById(R.id.fila1);
@@ -177,11 +186,12 @@ public class GameActivity extends WordGuesserActivity {
                             comprobacionCorrecta(l7, juego, palabra, palabraJuego);
                             break;
                     }
-
+                    //si el jugador no ha acertado la palabra, se incrementa un intento
                     if (juego.isPartidaGanada() == false) {
                         juego.incrementarIntento();
                     }
 
+                    //si el jugador agota el numero de intentos correspondiente a la dificultad escogida significa que ha perdido
                     if(juego.getIntentos()==juego.getMaximo_intentos()){
                         getDbManager().addResultGame(palabraJuego, "CLASICO","NORMAL" , "INGLES", false, getJugadorLogueado().getIdJugador());
                         AlertDialog.Builder perdido = new AlertDialog.Builder(GameActivity.this);
@@ -219,6 +229,8 @@ public class GameActivity extends WordGuesserActivity {
                         alert.show();
                     }
 
+                    //si el jugador ha acertado la palabra antes de agotar el numero de intentos:
+
                     if(juego.isPartidaGanada()==true){
                         getDbManager().addResultGame(palabraJuego, "CLASICO","NORMAL" , "INGLES", true, getJugadorLogueado().getIdJugador());
                         AlertDialog.Builder ganado = new AlertDialog.Builder(GameActivity.this);
@@ -227,7 +239,7 @@ public class GameActivity extends WordGuesserActivity {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
 
-                                        //volvemos a la actividad de login
+                                        //volvemos a la seleccion de juego
                                         Intent i = new Intent(GameActivity.this, GameActivity.class);
                                         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -241,7 +253,7 @@ public class GameActivity extends WordGuesserActivity {
                                 .setNegativeButton("Volver al menú de inicio", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        //volvemos a la actividad de login
+                                        //volvemos al menu de inicio
                                         Intent i = new Intent(GameActivity.this, MenuActivity.class);
                                         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -262,6 +274,7 @@ public class GameActivity extends WordGuesserActivity {
 
     }
 
+    //escribimos las letras de la palabra introducida por el usuario en una fila
     public void escribirFila(LinearLayout l, String palabra) {
         for (int i = 0; i < l.getChildCount(); i++) {
             TextView aux = (TextView) l.getChildAt(i);
@@ -269,6 +282,7 @@ public class GameActivity extends WordGuesserActivity {
         }
     }
 
+    //comprobamos que la palabra del usuario sea correcta
     public void comprobacionCorrecta(LinearLayout l, Juego juego, String palabra, String palabraJuego) {
         if (palabra.equalsIgnoreCase(palabraJuego)) {
             for (int i = 0; i < l.getChildCount(); i++) {
@@ -283,11 +297,16 @@ public class GameActivity extends WordGuesserActivity {
                         char caracter1 = palabraJuego.charAt(i);
                         char caracter2 = palabra.charAt(i);
 
+                        //si la letra esta en la misma posicion, el cuadrado correspondiente se pone en verde
                         if (caracter2 == caracter1) {
                             aux.setBackgroundColor(Color.parseColor("#019A01"));
-                        } else if (palabraJuego.indexOf(caracter2)!=-1) {
+                        }
+                        //si la letra esta en la palabra, pero no en la misma posicion, el cuadrado correspondiente se pone en naranja
+                        else if (palabraJuego.indexOf(caracter2)!=-1) {
                             aux.setBackgroundColor(Color.parseColor("#ffc425"));
-                        } else{
+                        }
+                        //si la letra no esta en la palabra, el cuadrado correspondiente se pone en gris
+                        else{
                             aux.setBackgroundColor(Color.parseColor("#737272"));
                         }
                 }
