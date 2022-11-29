@@ -51,4 +51,9 @@
     <string name="texto_como_jugar2">Before each attemp the color of the boxes change to show how close you are to guess the word.</string>
     <string name="texto_como_jugar3">The word will change to green if the letter is in the correct position, to orange if the word is in the word but not in that position and to grey if the letter is not in the word.</string>
     <string name="manten_pulsado">LONG PRESS ON THE TITLES TO MODIFY</string>
+    <string name="error_edit_passwd">Password could not be changed</string>
+    <string name="new_passwd_not_match">New password does not match</string>
+    <string name="old_passwd_not_match">Old password does not match</string>
+    <string name="must_5_letters">The word must be 5 letters long</string>
+    <string name="word_not_valid">The word is not valid</string>
 </resources>

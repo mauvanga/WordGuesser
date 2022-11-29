@@ -52,4 +52,9 @@
     <string name="texto_como_jugar2">Después de cada intento el color de las casillas cambia para mostrar qué tan cerca estás de acertar la palabra.</string>
     <string name="texto_como_jugar3">La palabra cambiará a verde si la letra está en la posición correcta, a naranja si la letra está en la palabra pero no en esa posición y a gris si la letra no está en la palabra</string>
     <string name="manten_pulsado">MANTÉN PULSADO EN LOS TÍTULOS PARA MODIFICAR</string>
+    <string name="error_edit_passwd">No se ha podido modificar la contraseña</string>
+    <string name="new_passwd_not_match">La contraseña nueva no coincide</string>
+    <string name="old_passwd_not_match">La contraseña antigua no coincide</string>
+    <string name="must_5_letters">La palabra tiene que tener 5 letras</string>
+    <string name="word_not_valid">La palabra no es válida</string>
 </resources>

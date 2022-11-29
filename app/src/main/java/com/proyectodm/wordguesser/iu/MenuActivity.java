@@ -100,9 +100,7 @@ public class MenuActivity extends WordGuesserActivity {
                                 dialog.cancel();
                             }
                         });
-
                 AlertDialog alert = seguroCerrarSesion.create();
-               // alert.setTitle("...");
                 alert.show();
                 break;
         }

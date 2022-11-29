@@ -9,10 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.proyectodm.wordguesser.R;
 import com.proyectodm.wordguesser.core.Juego;
 
@@ -122,13 +122,9 @@ public class GameActivity extends WordGuesserActivity {
 
                 //comprobamos que la palabra sea de longitud 5
                 if (palabra.length() != 5) {
-                    // todo cambiarlo por snackbar
-                    // Snackbar.make(findViewById(R.id.loginLayout), getString(R.string.username_passwd_dont_match), Snackbar.LENGTH_SHORT).show();
-                    Toast.makeText(getApplicationContext(),"La palabra tiene que tener 5 letras", Toast.LENGTH_SHORT).show();
+                    Snackbar.make(findViewById(R.id.gameLayout), getString(R.string.must_5_letters), Snackbar.LENGTH_SHORT).show();
                 } else if(!listaPalabras.contains(palabra.toLowerCase()) && !cientifico.contains(palabra.toLowerCase())){
-                    // todo cambiarlo por snackbar
-                    // Snackbar.make(findViewById(R.id.loginLayout), getString(R.string.username_passwd_dont_match), Snackbar.LENGTH_SHORT).show();
-                    Toast.makeText(getApplicationContext(),"La palabra no es válida", Toast.LENGTH_SHORT).show();
+                    Snackbar.make(findViewById(R.id.gameLayout), getString(R.string.word_not_valid), Snackbar.LENGTH_SHORT).show();
                 } else {
                     //segun el numero de intentos que lleve el usuario se comprobara una fila u otra
                     //el numero de filas va hasta 7 ya que es el numero de intentos maximo que puede llegar a tener una partida

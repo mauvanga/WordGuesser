@@ -35,9 +35,9 @@ public class SelectGameActivity extends WordGuesserActivity {
                 startActivity(i);
             }
         });
-        TextView changueGameMode = (TextView) this.findViewById(R.id.textViewGameMode);
-        TextView changueGameLanguage = (TextView) this.findViewById(R.id.textViewGameLanguage);
-        TextView changueGameDifficulty = (TextView) this.findViewById(R.id.textViewGameDifficulty);
+        TextView changueGameMode = (TextView) this.findViewById(R.id.textViewModeSelected);
+        TextView changueGameLanguage = (TextView) this.findViewById(R.id.textViewIdiomaSelected);
+        TextView changueGameDifficulty = (TextView) this.findViewById(R.id.textViewDificultadSelected);
 
         this.registerForContextMenu(changueGameMode);
         this.registerForContextMenu(changueGameLanguage);
@@ -61,13 +61,13 @@ public class SelectGameActivity extends WordGuesserActivity {
     }
 
     public void onCreateContextMenu(ContextMenu contxt, View v, ContextMenu.ContextMenuInfo cmi) {
-        if (v.getId() == R.id.textViewGameMode) {
+        if (v.getId() == R.id.textViewModeSelected) {
             this.getMenuInflater().inflate(R.menu.menu_contextual_modo, contxt);
         }
-        if (v.getId() == R.id.textViewGameLanguage) {
+        if (v.getId() == R.id.textViewIdiomaSelected) {
             this.getMenuInflater().inflate(R.menu.menu_contextual_lenguaje, contxt);
         }
-        if (v.getId() == R.id.textViewGameDifficulty) {
+        if (v.getId() == R.id.textViewDificultadSelected) {
             this.getMenuInflater().inflate(R.menu.menu_contextual_dificultad, contxt);
         }
     }

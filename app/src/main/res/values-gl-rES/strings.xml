@@ -52,4 +52,9 @@
     <string name="texto_como_jugar2">Despois de cada intento a cor das casillas cambia para mostrar que tan preto estás de acertar a palabra.</string>
     <string name="texto_como_jugar3">A palabra cambiará a verde se a letra está na posición correcta, a laranxa se a letra está na palabra pero non nesa posición e a gris se a letra non está na palabra</string>
     <string name="manten_pulsado">MANTÉN PULSADO NOS TÍTULOS PARA MODIFICAR</string>
+    <string name="error_edit_passwd">Non se puido cambiar o contrasinal</string>
+    <string name="new_passwd_not_match">O novo contrasinal non coincide</string>
+    <string name="old_passwd_not_match">O contrasinal antigo non coincide</string>
+    <string name="must_5_letters">A palabra ten que ter 5 letras</string>
+    <string name="word_not_valid">A palabra non é válida</string>
 </resources>

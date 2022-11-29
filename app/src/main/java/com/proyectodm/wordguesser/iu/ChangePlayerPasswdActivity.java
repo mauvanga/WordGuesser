@@ -63,13 +63,13 @@ public class ChangePlayerPasswdActivity extends WordGuesserActivity{
                             setJugadorLogueado(getJugadorLogueado());
                             finish();
                         } else {
-                            Snackbar.make(findViewById(R.id.changePlayerPasswdLayout), "No se ha podido modificar la contraseña", Snackbar.LENGTH_SHORT).show();
-                        }   // todo cambiar los mensajes por traducciones
+                            Snackbar.make(findViewById(R.id.changePlayerPasswdLayout), getString(R.string.error_edit_passwd), Snackbar.LENGTH_SHORT).show();
+                        }
                     } else{
-                        Snackbar.make(findViewById(R.id.changePlayerPasswdLayout), "La contraseña nueva no coincide", Snackbar.LENGTH_SHORT).show();
+                        Snackbar.make(findViewById(R.id.changePlayerPasswdLayout), getString(R.string.new_passwd_not_match), Snackbar.LENGTH_SHORT).show();
                     }
                 } else {
-                    Snackbar.make(findViewById(R.id.changePlayerPasswdLayout), "La contraseña antigua no coincide", Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(findViewById(R.id.changePlayerPasswdLayout), getString(R.string.old_passwd_not_match), Snackbar.LENGTH_SHORT).show();
                 }
             }
         });
