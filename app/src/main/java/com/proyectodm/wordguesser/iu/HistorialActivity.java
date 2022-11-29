@@ -8,10 +8,15 @@ import android.widget.TextView;
 import com.proyectodm.wordguesser.R;
 import com.proyectodm.wordguesser.core.JuegoCursorAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class HistorialActivity extends WordGuesserActivity {
 
     private JuegoCursorAdapter juegoCursorAdapter;
+    List<String> filtro;
+    List<String> filtroValores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +33,17 @@ public class HistorialActivity extends WordGuesserActivity {
         juegoCursorAdapter = new JuegoCursorAdapter(HistorialActivity.this, null, getDbManager());
         lvHistorial.setAdapter(juegoCursorAdapter);
 
+        filtro = new ArrayList<>();
+        filtroValores = new ArrayList<>();
         Cursor cursor = getDbManager().findGames(getJugadorLogueado().getIdJugador());
         int partidas = cursor.getCount();
         if(partidas > 0){
             textViewNumPartidas.setText(String.valueOf(partidas));
-            double victorias = getDbManager().findGamesResult(getJugadorLogueado().getIdJugador(), 1).getCount();
+            filtro.add(getDbManager().GAME_COLUMN_JUGADOR);
+            filtro.add(getDbManager().GAME_COLUMN_RESULTADO);
+            filtroValores.add(String.valueOf(getJugadorLogueado().getIdJugador()));
+            filtroValores.add(String.valueOf(1));
+            double victorias = getDbManager().findGamesResult(filtro, filtroValores).getCount();
             textViewNumVictorias.setText(Math.round((victorias/partidas)*100) + " %");
         } else {
             textViewNumPartidas.setText("0");

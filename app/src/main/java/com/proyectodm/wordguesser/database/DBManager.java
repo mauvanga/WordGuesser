@@ -12,6 +12,8 @@ import android.util.Log;
 import com.proyectodm.wordguesser.core.Juego;
 import com.proyectodm.wordguesser.core.Jugador;
 
+import java.util.List;
+
 public class DBManager extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "wordguesser_db";
     private static final int DATABASE_VERSION = 2;
@@ -291,13 +293,21 @@ public class DBManager extends SQLiteOpenHelper {
                 null, GAME_COLUMN_JUGADOR + "=?", new String[]{String.valueOf(idJugador)}, null, null, GAME_COLUMN_ID+" DESC");
     }
 
-    public Cursor findGamesResult(Integer idJugador, Integer resultado){
+    public Cursor findGamesResult(List<String> filtros, List<String> valoresFiltro){
+        String expresion = "";
+        if (filtros.size() == valoresFiltro.size()){
+            StringBuilder str = new StringBuilder();
+            for (int i = 0; i < filtros.size(); i++) {
+                str.append(filtros.get(i) + "=?");
+                if (i < filtros.size() - 1){
+                    str.append(" AND ");
+                }
+            }
+            expresion = str.toString();
+        }
         return this.getReadableDatabase().query(GAMES_TABLE_NAME,
-                null, GAME_COLUMN_JUGADOR + "=? AND "+ GAME_COLUMN_RESULTADO + "=?", new String[]{String.valueOf(idJugador), String.valueOf(resultado)}, null, null, GAME_COLUMN_ID+" DESC");
+                null, expresion, valoresFiltro.toArray(new String[0]), null, null, GAME_COLUMN_ID+" DESC");
     }
-
-    // todo añadir un par de funciones más o una más que reciba 2 parametros más:
-    //  donde se quiere hacer el filtro y cual, p.e. "MODO" y "DIFICIL"
 
     @SuppressLint("Range")
     public static Juego readJuego(Cursor cursor){
