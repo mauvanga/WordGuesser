@@ -58,8 +58,8 @@ public class GameActivity extends WordGuesserActivity {
         EditText palabraUsuario = (EditText) findViewById(R.id.palabraUsuario);
 
         String palabraJuego;
-        List<String> listaPalabras = new ArrayList<String>();
-        List<String> cientifico = new ArrayList<String>();
+        List<String> listaPalabras = new ArrayList<>();
+        List<String> cientifico = new ArrayList<>();
 
         try {
             String line;
@@ -176,7 +176,7 @@ public class GameActivity extends WordGuesserActivity {
                             break;
                     }
                     //si el jugador no ha acertado la palabra, se incrementa un intento
-                    if (juego.isPartidaGanada() == false) {
+                    if (!juego.isPartidaGanada()) {
                         juego.incrementarIntento();
                     }
 
@@ -211,7 +211,7 @@ public class GameActivity extends WordGuesserActivity {
                     }
 
                     //si el jugador ha acertado la palabra antes de agotar el numero de intentos:
-                    if(juego.isPartidaGanada()==true){
+                    if(juego.isPartidaGanada()){
                         getDbManager().addResultGame(palabraJuego, juego.getModo(), juego.getDificultad() , juego.getIdioma(), true, getJugadorLogueado().getIdJugador());
                         int nuevaRachaActual = getJugadorLogueado().getRachaActual() + 1;
                         if (getDbManager().editPlayerRacha(getJugadorLogueado().getIdJugador(), nuevaRachaActual)){

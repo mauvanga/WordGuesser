@@ -14,14 +14,9 @@ public class Juego {
         return maximo_intentos;
     }
 
-    public void setMaximo_intentos(int maximo_intentos) {
-        this.maximo_intentos = maximo_intentos;
-    }
-
     int maximo_intentos;
     boolean partidaGanada=false;
 
-    static String[] palabras;
     String palabraGanadora;
     String palabraUsuario;
 
@@ -44,14 +39,6 @@ public class Juego {
 
     public void incrementarIntento(){
         this.intentos++;
-    }
-
-    String getPalabraGanadora(){
-        return palabraGanadora;
-    }
-
-    String getPalabraUsuario(){
-        return palabraUsuario;
     }
 
     public boolean isPartidaGanada() {
@@ -77,30 +64,6 @@ public class Juego {
 
         return "gris";
 
-    }
-
-    //metodo que comprueba si la palabra que mete el usuario esta registrada en el diccionario
-    public boolean comprobarPalabraExiste(String palabra)  {
-
-        //String[] igualar=this.palabras;
-//10836 seria el supuesto numero de palabras, pero eso lo obtenemos con un array.lenght
-
-        for (int i = 0; i < 10836; i++) {
-/*
-            if (igualar[i].compareToIgnoreCase(palabraUsuario)==0) {
-                return true;
-                */
-        }
-        System.out.println("La palabra introducida ha de existir en el diccionario");
-        return false;
-    }
-
-    //metodo para contar los intentos que lleva el jugador
-    public boolean seguirJugando(int intentos) {
-        if (intentos < 5) {
-            return true;
-        }
-        return false;
     }
 
     public String getDificultad() {
