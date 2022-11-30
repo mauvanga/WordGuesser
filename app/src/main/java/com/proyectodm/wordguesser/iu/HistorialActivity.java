@@ -1,6 +1,5 @@
 package com.proyectodm.wordguesser.iu;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -76,23 +75,15 @@ public class HistorialActivity extends WordGuesserActivity {
         buttonLimpiar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                filterGameDifficulty.setText(getString(R.string.difficulty));
-                filterGameMode.setText(getString(R.string.mode));
-                filterGameLanguage.setText(getString(R.string.language));
+                filtroModo = MODO;
+                filtroLenguaje = IDIOMA;
+                filtroDificultad = DIFICULTAD;
+                actualizarFiltros();
                 Cursor cursor = getDbManager().findGames(getJugadorLogueado().getIdJugador());
-                filtro.add(getDbManager().GAME_COLUMN_JUGADOR);
-                filtro.add(getDbManager().GAME_COLUMN_RESULTADO);
-                filtroValores.add(String.valueOf(getJugadorLogueado().getIdJugador()));
-                filtroValores.add(String.valueOf(1));
                 juegoCursorAdapter.changeCursor(cursor);
-
             }
         });
-
     }
-
-    // todo hay que añadir filtros
 
     @Override
     protected void onResume() {
