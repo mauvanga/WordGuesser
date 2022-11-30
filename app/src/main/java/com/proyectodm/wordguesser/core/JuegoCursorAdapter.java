@@ -55,7 +55,7 @@ public class JuegoCursorAdapter extends CursorAdapter {
 
         final Juego juego = dbManager.readJuego(cursor);
         viewHolder.textViewPalabra.setText(juego.getPalabra().toUpperCase());
-        viewHolder.textViewIdioma.setText(juego.getIdioma().toUpperCase()); //TODO ver con cual nos quedamos
+        viewHolder.textViewIdioma.setText(juego.getIdioma().toUpperCase());
         String modo = ((WordGuesserActivity) context).getTranslatedText(juego.getModo());
         viewHolder.textViewModo.setText(modo);
         String dificultad = ((WordGuesserActivity) context).getTranslatedText(juego.getDificultad());

@@ -4,10 +4,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -26,11 +28,15 @@ import java.util.List;
 
 public class GameActivity extends WordGuesserActivity {
 
-    Bundle bundle;
-    String modo_partida;
-    String lenguaje_partida;
-    String dificultad_partida;
-    int maximo_intentos;
+    private Bundle bundle;
+    private String modo_partida;
+    private String lenguaje_partida;
+    private String dificultad_partida;
+    private int maximo_intentos;
+    private long TIEMPO_CUENTAATRAS_SEG = 200;
+    private long SEGUNDO = 1000;
+    private long MINUTO = 60;
+    private long PUNTO_PROGRESSBAR = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,15 +50,35 @@ public class GameActivity extends WordGuesserActivity {
         dificultad_partida = bundle.getString("dificultad_partida");
         maximo_intentos = bundle.getInt("maximo_intentos");
 
-        //dependiendo de la dificultad escogida se mostrara un layout u otro debido a que el numero de filas cambia
-        if(dificultad_partida.equalsIgnoreCase(NORMAL) ){
-            setContentView(R.layout.activity_juego_normal); // Cargar la del modo correspondiente
-        }
-        if(dificultad_partida.equalsIgnoreCase(FACIL) ){
-            setContentView(R.layout.activity_juego_facil); // Cargar la del modo correspondiente
-        }
-        if(dificultad_partida.equalsIgnoreCase(DIFICIL) ){
-            setContentView(R.layout.activity_juego_dificil); // Cargar la del modo correspondiente
+        TextView tempText = null;
+        ProgressBar progressBar = null;
+        if(modo_partida.equalsIgnoreCase(CONTRARRELOJ)){
+            if(dificultad_partida.equalsIgnoreCase(NORMAL) ){
+                setContentView(R.layout.activity_juego_normal_time_trial); // Cargar la del modo correspondiente
+                tempText = findViewById(R.id.textViewTemporizadorNormal);
+                progressBar = findViewById(R.id.progressBarNormal);
+            }
+            if(dificultad_partida.equalsIgnoreCase(FACIL) ){
+                setContentView(R.layout.activity_juego_facil_time_trial); // Cargar la del modo correspondiente
+                tempText = findViewById(R.id.textViewTemporizadorFacil);
+                progressBar = findViewById(R.id.progressBarFacil);
+            }
+            if(dificultad_partida.equalsIgnoreCase(DIFICIL) ){
+                setContentView(R.layout.activity_juego_dificil_time_trial); // Cargar la del modo correspondiente
+                tempText = findViewById(R.id.textViewTemporizadorDificil);
+                progressBar = findViewById(R.id.progressBarDificil);
+            }
+        } else {
+            //dependiendo de la dificultad escogida se mostrara un layout u otro debido a que el numero de filas cambia
+            if(dificultad_partida.equalsIgnoreCase(NORMAL) ){
+                setContentView(R.layout.activity_juego_normal); // Cargar la del modo correspondiente
+            }
+            if(dificultad_partida.equalsIgnoreCase(FACIL) ){
+                setContentView(R.layout.activity_juego_facil); // Cargar la del modo correspondiente
+            }
+            if(dificultad_partida.equalsIgnoreCase(DIFICIL) ){
+                setContentView(R.layout.activity_juego_dificil); // Cargar la del modo correspondiente
+            }
         }
 
         EditText palabraUsuario = (EditText) findViewById(R.id.palabraUsuario);
@@ -107,7 +133,6 @@ public class GameActivity extends WordGuesserActivity {
             palabraJuego = listaPalabras.get((int) (Math.random() * listaPalabras.size()));
         }
 
-        // todo introducir método contrarreloj
         Button buttonAceptarJuegoClasico = findViewById(R.id.buttonAceptarJuegoClasico);
 
         int intentos = 0;
@@ -115,6 +140,36 @@ public class GameActivity extends WordGuesserActivity {
 
         //inicializamos el constructor del objeto juego que representara la partida actual
         Juego juego = new Juego(intentos, partidaGanada, maximo_intentos, modo_partida, dificultad_partida, lenguaje_partida);
+
+        if(modo_partida.equalsIgnoreCase(CONTRARRELOJ)) {
+            TextView finalTempText = tempText;
+            ProgressBar finalProgressBar = progressBar;
+            CountDownTimer countDownTimer = new CountDownTimer(TIEMPO_CUENTAATRAS_SEG*SEGUNDO,SEGUNDO) {
+                int cont = 100;
+                boolean decrementar = false;
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    long second = (millisUntilFinished / SEGUNDO) % MINUTO;
+                    long minute = (millisUntilFinished / (SEGUNDO * MINUTO)) % MINUTO;
+
+                    String time = String.format("%02d:%02d", minute, second);
+                    finalTempText.setText(time);
+                    if (!decrementar){
+                        cont -= PUNTO_PROGRESSBAR;
+                        decrementar = true;
+                    } else{
+                        decrementar = false;
+                    }
+                    finalProgressBar.setProgress(cont,true);
+                }
+
+                @Override
+                public void onFinish() {
+                    partidaPerdida(palabraJuego, juego, getString(R.string.derrota_msg));
+                }
+            };
+            countDownTimer.start();
+        }
 
         buttonAceptarJuegoClasico.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,33 +234,8 @@ public class GameActivity extends WordGuesserActivity {
 
                     //si el jugador agota el numero de intentos correspondiente a la dificultad escogida significa que ha perdido
                     if(juego.getIntentos()==juego.getMaximo_intentos()){
-                        getDbManager().addResultGame(palabraJuego, juego.getModo(), juego.getDificultad() , juego.getIdioma(), false, getJugadorLogueado().getIdJugador());
-                        if (getDbManager().editPlayerRacha(getJugadorLogueado().getIdJugador(), 0)){
-                            getJugadorLogueado().setRachaActual(0);
-                        }
-                        AlertDialog.Builder perdido = new AlertDialog.Builder(GameActivity.this);
-                        perdido.setMessage(getString(R.string.derrota_msg) + " " + palabraJuego).setCancelable(false)
-                                .setPositiveButton(getString(R.string.play_again), new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        //cerramos el juego para volver a la actividad de selección de juego
-                                        finish();
-                                    }
-                                })
-                                .setNegativeButton(getString(R.string.return_menu), new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        //volvemos a la actividad de menú
-                                        Intent i = new Intent(GameActivity.this, MenuActivity.class);
-                                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                        startActivity(i);
-                                        finish();
-                                    }
-                                });
-
-                        AlertDialog alert = perdido.create();
-                        alert.show();
-                    }
+                        partidaPerdida(palabraJuego, juego, getString(R.string.derrota_msg));
+                    } // TODO extraer a un método
 
                     //si el jugador ha acertado la palabra antes de agotar el numero de intentos:
                     if(juego.isPartidaGanada()){
@@ -245,6 +275,35 @@ public class GameActivity extends WordGuesserActivity {
                 }
             }
         });
+    }
+
+    private void partidaPerdida(String palabraJuego, Juego juego, String derrota) {
+        getDbManager().addResultGame(palabraJuego, juego.getModo(), juego.getDificultad() , juego.getIdioma(), false, getJugadorLogueado().getIdJugador());
+        if (getDbManager().editPlayerRacha(getJugadorLogueado().getIdJugador(), 0)){
+            getJugadorLogueado().setRachaActual(0);
+        }
+        AlertDialog.Builder perdido = new AlertDialog.Builder(GameActivity.this);
+        perdido.setMessage(derrota + " " + palabraJuego).setCancelable(false)
+                .setPositiveButton(getString(R.string.play_again), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //cerramos el juego para volver a la actividad de selección de juego
+                        finish();
+                    }
+                })
+                .setNegativeButton(getString(R.string.return_menu), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //volvemos a la actividad de menú
+                        Intent i = new Intent(GameActivity.this, MenuActivity.class);
+                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(i);
+                        finish();
+                    }
+                });
+
+        AlertDialog alert = perdido.create();
+        alert.show();
     }
 
     //escribimos las letras de la palabra introducida por el usuario en una fila
