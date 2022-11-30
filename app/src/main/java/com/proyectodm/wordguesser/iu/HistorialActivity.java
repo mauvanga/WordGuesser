@@ -23,6 +23,7 @@ public class HistorialActivity extends WordGuesserActivity {
     String filtroModo;
     String filtroLenguaje;
     String filtroDificultad;
+    boolean hayFiltro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +37,16 @@ public class HistorialActivity extends WordGuesserActivity {
 
         textViewRachaActual.setText(String.valueOf(getJugadorLogueado().getRachaActual()));
         textViewRachaMejor.setText(String.valueOf(getJugadorLogueado().getMejorRacha()));
-        filtroModo = "<" + getTranslatedText(MODO) + ">";
-        filtroLenguaje = "<" + getTranslatedText(IDIOMA) + ">";
-        filtroDificultad = "<" + getTranslatedText(DIFICULTAD) + ">";
+        filtroModo = MODO;
+        filtroLenguaje = IDIOMA;
+        filtroDificultad = DIFICULTAD;
+        TextView filterGameMode = (TextView) this.findViewById(R.id.textViewFiltroModo);
+        TextView filterGameLanguage = (TextView) this.findViewById(R.id.textViewFiltroIdioma);
+        TextView filterGameDifficulty = (TextView) this.findViewById(R.id.textViewFiltroDificultad);
+
+        this.registerForContextMenu(filterGameMode);
+        this.registerForContextMenu(filterGameLanguage);
+        this.registerForContextMenu(filterGameDifficulty);
 
         juegoCursorAdapter = new JuegoCursorAdapter(HistorialActivity.this, null, getDbManager());
         lvHistorial.setAdapter(juegoCursorAdapter);
@@ -70,12 +78,12 @@ public class HistorialActivity extends WordGuesserActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Cursor cursor = getDbManager().findGames(getJugadorLogueado().getIdJugador());
+        actualizarFiltros();
+        Cursor cursor = filtrar();
         juegoCursorAdapter.changeCursor(cursor);
-        actualizarAjustesPartida();
     }
 
-    protected void actualizarAjustesPartida(){
+    protected void actualizarFiltros(){
         TextView viewMode = (TextView) this.findViewById(R.id.textViewFiltroModo);
         TextView viewLanguage = (TextView) this.findViewById(R.id.textViewFiltroIdioma);
         TextView viewDifficulty = (TextView) this.findViewById(R.id.textViewFiltroDificultad);
@@ -83,6 +91,37 @@ public class HistorialActivity extends WordGuesserActivity {
         viewMode.setText(getTranslatedText(filtroModo));
         viewLanguage.setText(getTranslatedText(filtroLenguaje));
         viewDifficulty.setText(getTranslatedText(filtroDificultad));
+    }
+
+    protected Cursor filtrar() {
+        filtro.clear();
+        filtroValores.clear();
+        hayFiltro = false;
+        Cursor cursor;
+
+        if (!filtroModo.equalsIgnoreCase(MODO)) {
+            filtro.add(getDbManager().GAME_COLUMN_MODO);
+            filtroValores.add(filtroModo);
+            hayFiltro = true;
+        }
+        if (!filtroLenguaje.equalsIgnoreCase(IDIOMA)) {
+            filtro.add(getDbManager().GAME_COLUMN_IDIOMA);
+            filtroValores.add(filtroLenguaje);
+            hayFiltro = true;
+        }
+        if (!filtroDificultad.equalsIgnoreCase(DIFICULTAD)) {
+            filtro.add(getDbManager().GAME_COLUMN_DIFICULTAD);
+            filtroValores.add(filtroDificultad);
+            hayFiltro = true;
+        }
+        if (hayFiltro) {
+            filtro.add(getDbManager().GAME_COLUMN_JUGADOR);
+            filtroValores.add(String.valueOf(getJugadorLogueado().getIdJugador()));
+            cursor = getDbManager().findGamesResult(filtro, filtroValores);
+        } else{
+            cursor = getDbManager().findGames(getJugadorLogueado().getIdJugador());
+        }
+        return cursor;
     }
 
     @Override
@@ -146,7 +185,8 @@ public class HistorialActivity extends WordGuesserActivity {
                 toret = true;
                 break;
         }
-        actualizarAjustesPartida();
+        actualizarFiltros();
+        juegoCursorAdapter.changeCursor(filtrar());
         return toret;
     }
 }

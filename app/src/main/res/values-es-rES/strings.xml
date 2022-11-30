@@ -66,4 +66,5 @@
     <string name="msg_log_out">¿Estás seguro de que quieres cerrar la sesión?</string>
     <string name="seguro">SEGURO</string>
     <string name="cancelar">CANCELAR</string>
+    <string name="filtro">FILTRO</string>
 </resources>
