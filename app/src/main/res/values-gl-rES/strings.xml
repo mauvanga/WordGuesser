@@ -67,4 +67,6 @@
     <string name="username_cannot_edit">Ese nome de usuario non está dispoñible</string>
     <string name="msg_delete_user">Estás seguro de que queres eliminar o usuario?</string>
     <string name="filtro">FILTRO</string>
+    <string name="trucos">Ver trucos para xogar</string>
+    <string name="limpiar">limpar</string>
 </resources>

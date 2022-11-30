@@ -1,10 +1,12 @@
 package com.proyectodm.wordguesser.iu;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -34,6 +36,7 @@ public class HistorialActivity extends WordGuesserActivity {
         TextView textViewRachaMejor = findViewById(R.id.textViewMejorRacha);
         TextView textViewNumPartidas = findViewById(R.id.textViewPartidasJugadas);
         TextView textViewNumVictorias = findViewById(R.id.textViewVictorias);
+        Button buttonLimpiar = (Button) findViewById(R.id.buttonLimpiar);
 
         textViewRachaActual.setText(String.valueOf(getJugadorLogueado().getRachaActual()));
         textViewRachaMejor.setText(String.valueOf(getJugadorLogueado().getMejorRacha()));
@@ -69,8 +72,24 @@ public class HistorialActivity extends WordGuesserActivity {
         }
 
         juegoCursorAdapter.changeCursor(cursor);
-        // todo hay que traducir los datos del listview
-        //  es decir cambiar "gl" por "GALLEGO", "GALICIAN" o "GALEGO"
+
+        buttonLimpiar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                filterGameDifficulty.setText(getString(R.string.difficulty));
+                filterGameMode.setText(getString(R.string.mode));
+                filterGameLanguage.setText(getString(R.string.language));
+                Cursor cursor = getDbManager().findGames(getJugadorLogueado().getIdJugador());
+                filtro.add(getDbManager().GAME_COLUMN_JUGADOR);
+                filtro.add(getDbManager().GAME_COLUMN_RESULTADO);
+                filtroValores.add(String.valueOf(getJugadorLogueado().getIdJugador()));
+                filtroValores.add(String.valueOf(1));
+                juegoCursorAdapter.changeCursor(cursor);
+
+            }
+        });
+
     }
 
     // todo hay que añadir filtros
