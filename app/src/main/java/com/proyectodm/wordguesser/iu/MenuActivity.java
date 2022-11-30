@@ -81,8 +81,8 @@ public class MenuActivity extends WordGuesserActivity {
                 break;
             case R.id.cerrarSesionMenu:
                 AlertDialog.Builder seguroCerrarSesion = new AlertDialog.Builder(MenuActivity.this);
-                seguroCerrarSesion.setMessage("¿Seguro que quieres cerrar la sesión?").setCancelable(false)
-                        .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                seguroCerrarSesion.setMessage(getString(R.string.msg_log_out)).setCancelable(false)
+                        .setPositiveButton(getString(R.string.seguro), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 // volvemos a la actividad MainActivity que nos llevará al LoginActivity
@@ -94,7 +94,7 @@ public class MenuActivity extends WordGuesserActivity {
                                 finish();
                             }
                         })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        .setNegativeButton(getString(R.string.cancelar), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.cancel();
