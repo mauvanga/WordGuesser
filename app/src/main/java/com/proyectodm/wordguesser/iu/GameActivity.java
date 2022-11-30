@@ -25,7 +25,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class GameActivity extends WordGuesserActivity {
 
     private Bundle bundle;
@@ -165,7 +164,7 @@ public class GameActivity extends WordGuesserActivity {
 
                 @Override
                 public void onFinish() {
-                    partidaPerdida(palabraJuego, juego, getString(R.string.derrota_msg));
+                    partidaPerdida(palabraJuego, juego, getString(R.string.derrota_time_trial));
                 }
             };
             countDownTimer.start();
@@ -235,7 +234,7 @@ public class GameActivity extends WordGuesserActivity {
                     //si el jugador agota el numero de intentos correspondiente a la dificultad escogida significa que ha perdido
                     if(juego.getIntentos()==juego.getMaximo_intentos()){
                         partidaPerdida(palabraJuego, juego, getString(R.string.derrota_msg));
-                    } // TODO extraer a un método
+                    }
 
                     //si el jugador ha acertado la palabra antes de agotar el numero de intentos:
                     if(juego.isPartidaGanada()){

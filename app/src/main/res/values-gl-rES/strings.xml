@@ -69,4 +69,5 @@
     <string name="filtro">FILTRO</string>
     <string name="trucos">Ver trucos para xogar</string>
     <string name="limpiar">limpar</string>
+    <string name="derrota_time_trial">Perdeches! Rematou o tempo. A palabra era:</string>
 </resources>
