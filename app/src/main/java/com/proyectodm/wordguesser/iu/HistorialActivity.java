@@ -51,9 +51,11 @@ public class HistorialActivity extends WordGuesserActivity {
         }
 
         juegoCursorAdapter.changeCursor(cursor);
+        // todo hay que traducir los datos del listview
+        //  es decir cambiar "gl" por "GALLEGO", "GALICIAN" o "GALEGO"
     }
 
-    // todo hay que añadir filtros el profe me dijo que lo podiamos ver el miercoles
+    // todo hay que añadir filtros
 
     @Override
     protected void onResume() {

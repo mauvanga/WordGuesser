@@ -107,6 +107,7 @@ public class GameActivity extends WordGuesserActivity {
             palabraJuego = listaPalabras.get((int) (Math.random() * listaPalabras.size()));
         }
 
+        // todo introducir método contrarreloj
         Button buttonAceptarJuegoClasico = findViewById(R.id.buttonAceptarJuegoClasico);
 
         int intentos = 0;
