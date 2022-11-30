@@ -2,6 +2,9 @@ package com.proyectodm.wordguesser.iu;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -17,6 +20,9 @@ public class HistorialActivity extends WordGuesserActivity {
     private JuegoCursorAdapter juegoCursorAdapter;
     List<String> filtro;
     List<String> filtroValores;
+    String filtroModo;
+    String filtroLenguaje;
+    String filtroDificultad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +36,10 @@ public class HistorialActivity extends WordGuesserActivity {
 
         textViewRachaActual.setText(String.valueOf(getJugadorLogueado().getRachaActual()));
         textViewRachaMejor.setText(String.valueOf(getJugadorLogueado().getMejorRacha()));
+        filtroModo = "<" + getTranslatedText(MODO) + ">";
+        filtroLenguaje = "<" + getTranslatedText(IDIOMA) + ">";
+        filtroDificultad = "<" + getTranslatedText(DIFICULTAD) + ">";
+
         juegoCursorAdapter = new JuegoCursorAdapter(HistorialActivity.this, null, getDbManager());
         lvHistorial.setAdapter(juegoCursorAdapter);
 
@@ -62,6 +72,17 @@ public class HistorialActivity extends WordGuesserActivity {
         super.onResume();
         Cursor cursor = getDbManager().findGames(getJugadorLogueado().getIdJugador());
         juegoCursorAdapter.changeCursor(cursor);
+        actualizarAjustesPartida();
+    }
+
+    protected void actualizarAjustesPartida(){
+        TextView viewMode = (TextView) this.findViewById(R.id.textViewFiltroModo);
+        TextView viewLanguage = (TextView) this.findViewById(R.id.textViewFiltroIdioma);
+        TextView viewDifficulty = (TextView) this.findViewById(R.id.textViewFiltroDificultad);
+
+        viewMode.setText(getTranslatedText(filtroModo));
+        viewLanguage.setText(getTranslatedText(filtroLenguaje));
+        viewDifficulty.setText(getTranslatedText(filtroDificultad));
     }
 
     @Override
@@ -69,5 +90,63 @@ public class HistorialActivity extends WordGuesserActivity {
         super.onPause();
         getDbManager().close();
         juegoCursorAdapter.getCursor().close();
+    }
+
+    public void onCreateContextMenu(ContextMenu contxt, View v, ContextMenu.ContextMenuInfo cmi) {
+        if (v.getId() == R.id.textViewFiltroModo) {
+            this.getMenuInflater().inflate(R.menu.menu_contextual_modo, contxt);
+        }
+        if (v.getId() == R.id.textViewFiltroIdioma) {
+            this.getMenuInflater().inflate(R.menu.menu_contextual_lenguaje, contxt);
+        }
+        if (v.getId() == R.id.textViewFiltroDificultad) {
+            this.getMenuInflater().inflate(R.menu.menu_contextual_dificultad, contxt);
+        }
+    }
+
+    @Override
+    public boolean onContextItemSelected (MenuItem menuItem)
+    {
+        boolean toret = false;
+        switch (menuItem.getItemId()) {
+            case R.id.facil:
+                this.filtroDificultad = FACIL;
+                toret = true;
+                break;
+            case R.id.normal:
+                this.filtroDificultad = NORMAL;
+                toret = true;
+                break;
+            case R.id.dificil:
+                this.filtroDificultad = DIFICIL;
+                toret = true;
+                break;
+            case R.id.es:
+                this.filtroLenguaje = CASTELLANO;
+                toret = true;
+                break;
+            case R.id.en:
+                this.filtroLenguaje = INGLES;
+                toret = true;
+                break;
+            case R.id.gl:
+                this.filtroLenguaje = GALLEGO;
+                toret = true;
+                break;
+            case R.id.clasico:
+                this.filtroModo = CLASICO;
+                toret = true;
+                break;
+            case R.id.contrarreloj:
+                this.filtroModo = CONTRARRELOJ;
+                toret = true;
+                break;
+            case R.id.cientifico:
+                this.filtroModo = CIENTIFICO;
+                toret = true;
+                break;
+        }
+        actualizarAjustesPartida();
+        return toret;
     }
 }

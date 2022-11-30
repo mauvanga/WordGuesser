@@ -28,6 +28,10 @@ public class WordGuesserActivity extends AppCompatActivity {
     protected final String CIENTIFICO = "cientifico";
     protected final String CONTRARRELOJ = "contrarreloj";
 
+    protected final String MODO = "modo";
+    protected final String DIFICULTAD = "dificultad";
+    protected final String IDIOMA = "idioma";
+
     protected DBManager getDbManager(){
         return ((WordGuesserApplication) getApplication()).getDbManager();
     }
@@ -93,6 +97,15 @@ public class WordGuesserActivity extends AppCompatActivity {
         }
         if (txt.equalsIgnoreCase(CONTRARRELOJ)){
             toret = getString(R.string.contrarreloj);
+        }
+        if (txt.equalsIgnoreCase(MODO)){
+            toret = getString(R.string.mode);
+        }
+        if (txt.equalsIgnoreCase(DIFICULTAD)){
+            toret = getString(R.string.difficulty);
+        }
+        if (txt.equalsIgnoreCase(IDIOMA)){
+            toret = getString(R.string.select_idioma);
         }
         return toret;
     }

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.proyectodm.wordguesser.R;
 import com.proyectodm.wordguesser.database.DBManager;
+import com.proyectodm.wordguesser.iu.WordGuesserActivity;
 
 public class JuegoCursorAdapter extends CursorAdapter {
 
@@ -53,10 +54,12 @@ public class JuegoCursorAdapter extends CursorAdapter {
         }
 
         final Juego juego = dbManager.readJuego(cursor);
-        viewHolder.textViewPalabra.setText(juego.getPalabra());
-        viewHolder.textViewIdioma.setText(juego.getIdioma());
-        viewHolder.textViewModo.setText(juego.getModo());
-        viewHolder.textViewDificultad.setText(juego.getDificultad());
+        viewHolder.textViewPalabra.setText(juego.getPalabra().toUpperCase());
+        viewHolder.textViewIdioma.setText(juego.getIdioma().toUpperCase()); //TODO ver con cual nos quedamos
+        String modo = ((WordGuesserActivity) context).getTranslatedText(juego.getModo());
+        viewHolder.textViewModo.setText(modo);
+        String dificultad = ((WordGuesserActivity) context).getTranslatedText(juego.getDificultad());
+        viewHolder.textViewDificultad.setText(dificultad);
         if (juego.getResultado()){
             viewHolder.linearLayout.setBackgroundColor(Color.GREEN); //Igual poner la fila de color verde=Victoria
         }else{
