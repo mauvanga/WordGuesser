@@ -7,18 +7,13 @@ public class Juego {
     private String idioma;
     private String palabra;
     private boolean resultado; //false derrota, true victoria
-
-    int intentos=0;
+    int maximo_intentos;
+    boolean partidaGanada = false;
+    int intentos = 0;
 
     public int getMaximo_intentos() {
         return maximo_intentos;
     }
-
-    int maximo_intentos;
-    boolean partidaGanada=false;
-
-    String palabraGanadora;
-    String palabraUsuario;
 
     public Juego(int intentos, boolean partidaGanada, int maximo_intentos,String modo, String dificultad, String idioma){
         this.intentos=intentos;
@@ -47,23 +42,6 @@ public class Juego {
 
     public void setPartidaGanada(boolean partidaGanada) {
         this.partidaGanada = partidaGanada;
-    }
-
-    //Comprueba si un caracter de la palabra introducida por el usuario es igual al de la palabra ganadora
-    public String comprobarCaracter(String palabra, String palabraCorrecta, int n) {
-
-        char caracter1= Character.toUpperCase(palabraGanadora.charAt(n));
-        char caracter2= Character.toUpperCase(palabraUsuario.charAt(n));
-
-        if(caracter2 == caracter1){
-            return "verde";
-        }
-
-        else if(palabraCorrecta.indexOf(caracter2)!=-1)
-            return "amarillo";
-
-        return "gris";
-
     }
 
     public String getDificultad() {
