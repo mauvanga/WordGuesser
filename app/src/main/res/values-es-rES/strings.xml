@@ -67,4 +67,6 @@
     <string name="seguro">SEGURO</string>
     <string name="cancelar">CANCELAR</string>
     <string name="filtro">FILTRO</string>
+    <string name="trucos">Ver trucos para jugar</string>
+    <string name="limpiar">limpiar</string>
 </resources>
