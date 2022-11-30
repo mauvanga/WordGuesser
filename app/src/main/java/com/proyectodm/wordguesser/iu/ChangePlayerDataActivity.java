@@ -67,7 +67,7 @@ public class ChangePlayerDataActivity extends WordGuesserActivity{
                     setJugadorLogueado(getJugadorLogueado());
                     finish();
                 } else {
-                    Snackbar.make(findViewById(R.id.changePlayerDataLayout), "No se ha podido modificar el usuario", Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(findViewById(R.id.changePlayerDataLayout), getString(R.string.username_cannot_edit), Snackbar.LENGTH_SHORT).show();
                 }
             }
         });

@@ -43,8 +43,8 @@ public class ConfiguracionActivity extends WordGuesserActivity{
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder seguroBorrarUsuario = new AlertDialog.Builder(ConfiguracionActivity.this);
-                seguroBorrarUsuario.setMessage("¿Seguro que quieres borrar el usuario?").setCancelable(false)
-                        .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                seguroBorrarUsuario.setMessage(getString(R.string.msg_delete_user)).setCancelable(false)
+                        .setPositiveButton(getString(R.string.seguro), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 // volvemos a la actividad MainActivity que nos llevará al LoginActivity
@@ -57,7 +57,7 @@ public class ConfiguracionActivity extends WordGuesserActivity{
                                 finish();
                             }
                         })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        .setNegativeButton(getString(R.string.cancelar), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.cancel();

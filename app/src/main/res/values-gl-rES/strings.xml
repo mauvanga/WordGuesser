@@ -57,4 +57,13 @@
     <string name="old_passwd_not_match">O contrasinal antigo non coincide</string>
     <string name="must_5_letters">A palabra ten que ter 5 letras</string>
     <string name="word_not_valid">A palabra non é válida</string>
+    <string name="derrota_msg">Perdeches! A palabra era:</string>
+    <string name="play_again">Xogar de novo</string>
+    <string name="return_menu">Volver ao menú de inicio</string>
+    <string name="victoria_msg">Parabéns! Acertaches a palabra</string>
+    <string name="msg_log_out">Estás seguro de que queres pechar a sesión?</string>
+    <string name="seguro">SEGURO</string>
+    <string name="cancelar">CANCELAR</string>
+    <string name="username_cannot_edit">Ese nome de usuario non está dispoñible</string>
+    <string name="msg_delete_user">Estás seguro de que queres eliminar o usuario?</string>
 </resources>

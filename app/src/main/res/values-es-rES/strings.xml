@@ -57,4 +57,13 @@
     <string name="old_passwd_not_match">La contraseña antigua no coincide</string>
     <string name="must_5_letters">La palabra tiene que tener 5 letras</string>
     <string name="word_not_valid">La palabra no es válida</string>
+    <string name="derrota_msg">¡Has perdido! La palabra era:</string>
+    <string name="play_again">Jugar de nuevo</string>
+    <string name="return_menu">Volver al menú de inicio</string>
+    <string name="victoria_msg">Enhorabuena! Has acertado la palabra</string>
+    <string name="username_cannot_edit">Ese nombre de usuario no está disponible</string>
+    <string name="msg_delete_user">¿Estás seguro de que quieres eliminar el usuario?</string>
+    <string name="msg_log_out">¿Estás seguro de que quieres cerrar la sesión?</string>
+    <string name="seguro">SEGURO</string>
+    <string name="cancelar">CANCELAR</string>
 </resources>

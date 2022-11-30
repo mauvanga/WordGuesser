@@ -183,15 +183,15 @@ public class GameActivity extends WordGuesserActivity {
                             getJugadorLogueado().setRachaActual(0);
                         }
                         AlertDialog.Builder perdido = new AlertDialog.Builder(GameActivity.this);
-                        perdido.setMessage("¡Has perdido! La palabra era: " + palabraJuego).setCancelable(false)
-                                .setPositiveButton("Volver a jugar", new DialogInterface.OnClickListener() {
+                        perdido.setMessage(getString(R.string.derrota_msg) + " " + palabraJuego).setCancelable(false)
+                                .setPositiveButton(getString(R.string.play_again), new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         //cerramos el juego para volver a la actividad de selección de juego
                                         finish();
                                     }
                                 })
-                                .setNegativeButton("Volver al menú de inicio", new DialogInterface.OnClickListener() {
+                                .setNegativeButton(getString(R.string.return_menu), new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         //volvemos a la actividad de menú
@@ -219,16 +219,15 @@ public class GameActivity extends WordGuesserActivity {
                             }
                         }
                         AlertDialog.Builder ganado = new AlertDialog.Builder(GameActivity.this);
-                        ganado.setMessage("¡Felicidades! Has acertado la palabra").setCancelable(false)
-                                .setPositiveButton("Volver a jugar", new DialogInterface.OnClickListener() {
+                        ganado.setMessage(getString(R.string.victoria_msg)).setCancelable(false)
+                                .setPositiveButton(getString(R.string.play_again), new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         //volvemos a la seleccion de juego
                                         finish();
-
                                     }
                                 })
-                                .setNegativeButton("Volver al menú de inicio", new DialogInterface.OnClickListener() {
+                                .setNegativeButton(getString(R.string.return_menu), new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         //volvemos a la actividad de menú

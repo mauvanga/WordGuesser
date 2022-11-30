@@ -56,4 +56,13 @@
     <string name="old_passwd_not_match">Old password does not match</string>
     <string name="must_5_letters">The word must be 5 letters long</string>
     <string name="word_not_valid">The word is not valid</string>
+    <string name="derrota_msg">You have lost! The word was:</string>
+    <string name="play_again">Play again</string>
+    <string name="return_menu">Return to the start menu</string>
+    <string name="victoria_msg">Congratulations! You got the word right</string>
+    <string name="username_cannot_edit">That username is not available</string>
+    <string name="msg_delete_user">Are you sure you want to delete the user?</string>
+    <string name="seguro">SURE</string>
+    <string name="cancelar">CANCEL</string>
+    <string name="msg_log_out">Are you sure you want to log out?</string>
 </resources>
