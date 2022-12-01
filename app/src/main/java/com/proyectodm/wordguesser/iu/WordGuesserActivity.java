@@ -31,6 +31,10 @@ public class WordGuesserActivity extends AppCompatActivity {
     protected final String MODO = "modo";
     protected final String DIFICULTAD = "dificultad";
     protected final String IDIOMA = "idioma";
+    protected final String RESULTADO = "resultado";
+
+    protected final String VICTORIA = "victoria";
+    protected final String DERROTA = "derrota";
 
     protected DBManager getDbManager(){
         return ((WordGuesserApplication) getApplication()).getDbManager();
@@ -106,6 +110,15 @@ public class WordGuesserActivity extends AppCompatActivity {
         }
         if (txt.equalsIgnoreCase(IDIOMA)){
             toret = getString(R.string.select_idioma);
+        }
+        if (txt.equalsIgnoreCase(RESULTADO)){
+            toret = getString(R.string.resultado);
+        }
+        if (txt.equalsIgnoreCase(VICTORIA)){
+            toret = getString(R.string.victoria);
+        }
+        if (txt.equalsIgnoreCase(DERROTA)){
+            toret = getString(R.string.derrota);
         }
         return toret;
     }

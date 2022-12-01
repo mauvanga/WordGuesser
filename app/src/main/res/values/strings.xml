@@ -69,4 +69,7 @@
     <string name="trucos">See tricks to play</string>
     <string name="limpiar">clear</string>
     <string name="derrota_time_trial">You have lost! Timer ended. The word was:</string>
+    <string name="resultado">RESULT</string>
+    <string name="victoria">VICTORY</string>
+    <string name="derrota">DEFEAT</string>
 </resources>

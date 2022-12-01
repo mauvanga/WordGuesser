@@ -70,4 +70,7 @@
     <string name="trucos">Ver trucos para jugar</string>
     <string name="limpiar">limpiar</string>
     <string name="derrota_time_trial">¡Has perdido! Acabo el tiempo. La palabra era:</string>
+    <string name="resultado">RESULT</string>
+    <string name="victoria">VICTORY</string>
+    <string name="derrota">DEFEAT</string>
 </resources>

@@ -335,10 +335,19 @@ public class GameActivity extends WordGuesserActivity {
     private void compartirRedesSociales() {
         Intent i = new Intent(Intent.ACTION_SEND);
         i.setType("text/plain");
-        String body = "Prueba"; // TODO cambiar por getString(R.string.<>)
-        String sub = "http://play.google.com"; // TODO cambiar por getString(R.string.<>)
-        i.putExtra(Intent.EXTRA_TEXT, body);
-        i.putExtra(Intent.EXTRA_TEXT, sub);
+        StringBuilder msg = new StringBuilder();
+        msg.append("El resultado de mi última partida:\n"); // TODO traducir
+        msg.append("- ").append(getTranslatedText(IDIOMA)).append(" : ").append(getTranslatedText(juego.getIdioma())).append("\n");
+        msg.append("- ").append(getTranslatedText(MODO)).append(" : ").append(getTranslatedText(juego.getModo())).append("\n");
+        msg.append("- ").append(getTranslatedText(DIFICULTAD)).append(" : ").append(getTranslatedText(juego.getDificultad())).append("\n");
+        msg.append("- ").append(getTranslatedText(RESULTADO)).append(" : ").append(getTranslatedText(juego.getResultado() ? VICTORIA : DERROTA)).append("\n");
+        if (juego.getResultado()){
+            msg.append(getJugadorLogueado().getRachaActual()).append(" ").append("victorias seguidas").append("\n"); //TODO ver como traducirlo en inglés
+        }
+        msg.append("\n").append("Juega tu también en:"); // TODO traducir
+        msg.append("\n").append("https://github.com/mauvanga/WordGuesser");
+        String text = msg.toString();
+        i.putExtra(Intent.EXTRA_TEXT, text);
         startActivity(Intent.createChooser(i,"share using")); // TODO cambiar por getString(R.string.<>)
         compartir = true;
     }
