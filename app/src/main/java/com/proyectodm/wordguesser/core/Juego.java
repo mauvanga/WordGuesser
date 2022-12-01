@@ -6,22 +6,22 @@ public class Juego {
     private String modo;
     private String idioma;
     private String palabra;
-    private boolean resultado; //false derrota, true victoria
-    int maximo_intentos;
-    boolean partidaGanada = false;
-    int intentos = 0;
+    private boolean resultado = false; //false derrota, true victoria
+    private int maximo_intentos;
+    private int intentos = 0;
 
     public int getMaximo_intentos() {
         return maximo_intentos;
     }
 
-    public Juego(int intentos, boolean partidaGanada, int maximo_intentos,String modo, String dificultad, String idioma){
+    public Juego(int intentos, boolean resultado, int maximo_intentos,String modo, String dificultad, String idioma, String palabra){
         this.intentos=intentos;
-        this.partidaGanada=partidaGanada;
+        this.resultado=resultado;
         this.maximo_intentos=maximo_intentos;
         this.modo=modo;
         this.dificultad=dificultad;
         this.idioma=idioma;
+        this.palabra = palabra;
     }
 
     public Juego() {
@@ -34,14 +34,6 @@ public class Juego {
 
     public void incrementarIntento(){
         this.intentos++;
-    }
-
-    public boolean isPartidaGanada() {
-        return partidaGanada;
-    }
-
-    public void setPartidaGanada(boolean partidaGanada) {
-        this.partidaGanada = partidaGanada;
     }
 
     public String getDificultad() {

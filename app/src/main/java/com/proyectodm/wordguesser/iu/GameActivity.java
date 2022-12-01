@@ -36,6 +36,8 @@ public class GameActivity extends WordGuesserActivity {
     private long SEGUNDO = 1000;
     private long MINUTO = 60;
     private long PUNTO_PROGRESSBAR = 1;
+    private boolean compartir = false;
+    Juego juego;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,10 +137,9 @@ public class GameActivity extends WordGuesserActivity {
         Button buttonAceptarJuegoClasico = findViewById(R.id.buttonAceptarJuegoClasico);
 
         int intentos = 0;
-        boolean partidaGanada = false;
 
         //inicializamos el constructor del objeto juego que representara la partida actual
-        Juego juego = new Juego(intentos, partidaGanada, maximo_intentos, modo_partida, dificultad_partida, lenguaje_partida);
+        juego = new Juego(intentos, false, maximo_intentos, modo_partida, dificultad_partida, lenguaje_partida, palabraJuego);
 
         if(modo_partida.equalsIgnoreCase(CONTRARRELOJ)) {
             TextView finalTempText = tempText;
@@ -227,7 +228,7 @@ public class GameActivity extends WordGuesserActivity {
                             break;
                     }
                     //si el jugador no ha acertado la palabra, se incrementa un intento
-                    if (!juego.isPartidaGanada()) {
+                    if (!juego.getResultado()) {
                         juego.incrementarIntento();
                     }
 
@@ -237,7 +238,7 @@ public class GameActivity extends WordGuesserActivity {
                     }
 
                     //si el jugador ha acertado la palabra antes de agotar el numero de intentos:
-                    if(juego.isPartidaGanada()){
+                    if(juego.getResultado()){
                         getDbManager().addResultGame(palabraJuego, juego.getModo(), juego.getDificultad() , juego.getIdioma(), true, getJugadorLogueado().getIdJugador());
                         int nuevaRachaActual = getJugadorLogueado().getRachaActual() + 1;
                         if (getDbManager().editPlayerRacha(getJugadorLogueado().getIdJugador(), nuevaRachaActual)){
@@ -255,6 +256,13 @@ public class GameActivity extends WordGuesserActivity {
                                     public void onClick(DialogInterface dialog, int which) {
                                         //volvemos a la seleccion de juego
                                         finish();
+                                    }
+                                })
+                                // TODO cambiar por getString(R.string.<>)
+                                .setNeutralButton("compartir", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        compartirRedesSociales();
                                     }
                                 })
                                 .setNegativeButton(getString(R.string.return_menu), new DialogInterface.OnClickListener() {
@@ -276,6 +284,65 @@ public class GameActivity extends WordGuesserActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // El flag compartir se activa cuando un jugador acaba la partida y le da a compartir
+        if (compartir) {
+            AlertDialog.Builder perdido = new AlertDialog.Builder(GameActivity.this);
+            String msg = "";
+            if (!juego.getResultado()) {
+                if (juego.getModo().equalsIgnoreCase(CONTRARRELOJ)){
+                    msg = getString(R.string.derrota_time_trial);
+                } else {
+                    msg = getString(R.string.derrota_msg);
+                }
+                msg = msg + " " + juego.getPalabra();
+            } else{
+                msg = getString(R.string.victoria_msg);
+            }
+            perdido.setMessage(msg).setCancelable(false)
+                    .setPositiveButton(getString(R.string.play_again), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //cerramos el juego para volver a la actividad de selección de juego
+                            finish();
+                        }
+                    })
+                    // TODO cambiar por getString(R.string.<>)
+                    .setNeutralButton("compartir", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            compartirRedesSociales();
+                        }
+                    })
+                    .setNegativeButton(getString(R.string.return_menu), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //volvemos a la actividad de menú
+                            Intent i = new Intent(GameActivity.this, MenuActivity.class);
+                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(i);
+                            finish();
+                        }
+                    });
+
+            AlertDialog alert = perdido.create();
+            alert.show();
+        }
+    }
+
+    private void compartirRedesSociales() {
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.setType("text/plain");
+        String body = "Prueba"; // TODO cambiar por getString(R.string.<>)
+        String sub = "http://play.google.com"; // TODO cambiar por getString(R.string.<>)
+        i.putExtra(Intent.EXTRA_TEXT, body);
+        i.putExtra(Intent.EXTRA_TEXT, sub);
+        startActivity(Intent.createChooser(i,"share using")); // TODO cambiar por getString(R.string.<>)
+        compartir = true;
+    }
+
     private void partidaPerdida(String palabraJuego, Juego juego, String derrota) {
         getDbManager().addResultGame(palabraJuego, juego.getModo(), juego.getDificultad() , juego.getIdioma(), false, getJugadorLogueado().getIdJugador());
         if (getDbManager().editPlayerRacha(getJugadorLogueado().getIdJugador(), 0)){
@@ -288,6 +355,13 @@ public class GameActivity extends WordGuesserActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         //cerramos el juego para volver a la actividad de selección de juego
                         finish();
+                    }
+                })
+                // TODO cambiar por getString(R.string.<>)
+                .setNeutralButton("compartir", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        compartirRedesSociales();
                     }
                 })
                 .setNegativeButton(getString(R.string.return_menu), new DialogInterface.OnClickListener() {
@@ -320,7 +394,7 @@ public class GameActivity extends WordGuesserActivity {
                 TextView aux = (TextView) l.getChildAt(i);
                 aux.setBackgroundColor(Color.parseColor("#019A01"));
             }
-            juego.setPartidaGanada(true);
+            juego.setResultado(true);
         } else {
             for (int i = 0; i < l.getChildCount(); i++) {
                 TextView aux = (TextView) l.getChildAt(i);
