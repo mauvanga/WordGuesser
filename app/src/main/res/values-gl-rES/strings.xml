@@ -70,11 +70,11 @@
     <string name="trucos">Ver trucos para xogar</string>
     <string name="limpiar">limpar</string>
     <string name="derrota_time_trial">Perdeches! Rematou o tempo. A palabra era:</string>
-    <string name="resultado">RESULT</string>
-    <string name="victoria">VICTORY</string>
-    <string name="derrota">DEFEAT</string>
-    <string name="play_you_too">\"Juega tu también en:\"</string>
-    <string name="share">Share</string>
-    <string name="last_game_result">El resultado de mi última partida:</string>
+    <string name="resultado">RESULTADO</string>
+    <string name="victoria">VICTORIA</string>
+    <string name="derrota">DERROTA</string>
+    <string name="play_you_too">Xoga tamén en:</string>
+    <string name="share">COMPARTIR</string>
+    <string name="last_game_result">O resultado da miña última partida:</string>
     <string name="victorias_seguidas">victorias seguidas</string>
 </resources>
