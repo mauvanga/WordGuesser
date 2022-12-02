@@ -32,10 +32,10 @@ public class GameActivity extends WordGuesserActivity {
     private String lenguaje_partida;
     private String dificultad_partida;
     private int maximo_intentos;
-    private long TIEMPO_CUENTAATRAS_SEG = 200;
-    private long SEGUNDO = 1000;
-    private long MINUTO = 60;
-    private long PUNTO_PROGRESSBAR = 1;
+    private final long TIEMPO_CUENTAATRAS_SEG = 200;
+    private final long SEGUNDO = 1000;
+    private final long MINUTO = 60;
+    private final long PUNTO_PROGRESSBAR = 1;
     private boolean compartir = false;
     Juego juego;
 
@@ -258,8 +258,7 @@ public class GameActivity extends WordGuesserActivity {
                                         finish();
                                     }
                                 })
-                                // TODO cambiar por getString(R.string.<>)
-                                .setNeutralButton("compartir", new DialogInterface.OnClickListener() {
+                                .setNeutralButton(getString(R.string.share), new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         compartirRedesSociales();
@@ -309,8 +308,7 @@ public class GameActivity extends WordGuesserActivity {
                             finish();
                         }
                     })
-                    // TODO cambiar por getString(R.string.<>)
-                    .setNeutralButton("compartir", new DialogInterface.OnClickListener() {
+                    .setNeutralButton(getString(R.string.share), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             compartirRedesSociales();
@@ -336,19 +334,19 @@ public class GameActivity extends WordGuesserActivity {
         Intent i = new Intent(Intent.ACTION_SEND);
         i.setType("text/plain");
         StringBuilder msg = new StringBuilder();
-        msg.append("El resultado de mi última partida:\n"); // TODO traducir
+        msg.append(getString(R.string.last_game_result)).append("\n");
         msg.append("- ").append(getTranslatedText(IDIOMA)).append(" : ").append(getTranslatedText(juego.getIdioma())).append("\n");
         msg.append("- ").append(getTranslatedText(MODO)).append(" : ").append(getTranslatedText(juego.getModo())).append("\n");
         msg.append("- ").append(getTranslatedText(DIFICULTAD)).append(" : ").append(getTranslatedText(juego.getDificultad())).append("\n");
         msg.append("- ").append(getTranslatedText(RESULTADO)).append(" : ").append(getTranslatedText(juego.getResultado() ? VICTORIA : DERROTA)).append("\n");
         if (juego.getResultado()){
-            msg.append(getJugadorLogueado().getRachaActual()).append(" ").append("victorias seguidas").append("\n"); //TODO ver como traducirlo en inglés
+            msg.append(getJugadorLogueado().getRachaActual()).append(" ").append(getString(R.string.victorias_seguidas)).append("\n");
         }
-        msg.append("\n").append("Juega tu también en:"); // TODO traducir
+        msg.append("\n").append(getString(R.string.play_you_too));
         msg.append("\n").append("https://github.com/mauvanga/WordGuesser");
         String text = msg.toString();
         i.putExtra(Intent.EXTRA_TEXT, text);
-        startActivity(Intent.createChooser(i,"share using")); // TODO cambiar por getString(R.string.<>)
+        startActivity(Intent.createChooser(i,getString(R.string.share)));
         compartir = true;
     }
 
@@ -366,8 +364,7 @@ public class GameActivity extends WordGuesserActivity {
                         finish();
                     }
                 })
-                // TODO cambiar por getString(R.string.<>)
-                .setNeutralButton("compartir", new DialogInterface.OnClickListener() {
+                .setNeutralButton(getString(R.string.share), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         compartirRedesSociales();

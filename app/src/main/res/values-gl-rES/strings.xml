@@ -73,4 +73,8 @@
     <string name="resultado">RESULT</string>
     <string name="victoria">VICTORY</string>
     <string name="derrota">DEFEAT</string>
+    <string name="play_you_too">\"Juega tu también en:\"</string>
+    <string name="share">Share</string>
+    <string name="last_game_result">El resultado de mi última partida:</string>
+    <string name="victorias_seguidas">victorias seguidas</string>
 </resources>
