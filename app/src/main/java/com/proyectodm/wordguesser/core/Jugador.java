@@ -1,5 +1,8 @@
 package com.proyectodm.wordguesser.core;
 
+/**
+ * Clase que representa el jugador
+ */
 public class Jugador {
     private int idJugador;
     private String nombre;

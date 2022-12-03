@@ -56,6 +56,7 @@ public class LoginActivity extends WordGuesserActivity{
 
             @Override
             public void afterTextChanged(Editable s) {
+                // Si los campos no son vacíos activa el botón
                 if(editTextUsername.getText().toString().trim().length() > 0 &&
                         editTextPassword.getText().toString().trim().length() > 0){
                     buttonLogin.setEnabled(true);

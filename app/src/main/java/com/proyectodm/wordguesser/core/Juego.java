@@ -1,12 +1,15 @@
 package com.proyectodm.wordguesser.core;
 
+/**
+ * Clase que representa una partida
+ */
 public class Juego {
     private int id;
     private String dificultad;
     private String modo;
     private String idioma;
     private String palabra;
-    private boolean resultado = false; //false derrota, true victoria
+    private boolean resultado = false; //false DERROTA, true VICTORIA
     private int maximo_intentos;
     private int intentos = 0;
 

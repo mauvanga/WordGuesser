@@ -14,6 +14,9 @@ import com.proyectodm.wordguesser.R;
 import com.proyectodm.wordguesser.database.DBManager;
 import com.proyectodm.wordguesser.iu.WordGuesserActivity;
 
+/**
+ * Clase para dar apoyo al historial
+ */
 public class JuegoCursorAdapter extends CursorAdapter {
 
     private DBManager dbManager;
@@ -61,9 +64,9 @@ public class JuegoCursorAdapter extends CursorAdapter {
         String dificultad = ((WordGuesserActivity) context).getTranslatedText(juego.getDificultad());
         viewHolder.textViewDificultad.setText(dificultad);
         if (juego.getResultado()){
-            viewHolder.linearLayout.setBackgroundColor(Color.GREEN); //Igual poner la fila de color verde=Victoria
+            viewHolder.linearLayout.setBackgroundColor(Color.GREEN); //Fila color verde = Victoria
         }else{
-            viewHolder.linearLayout.setBackgroundColor(Color.RED); //Fila color roja=Derrota
+            viewHolder.linearLayout.setBackgroundColor(Color.RED); //Fila color roja = Derrota
         }
     }
 }

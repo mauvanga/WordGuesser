@@ -55,32 +55,34 @@ public class GameActivity extends WordGuesserActivity {
 
         TextView tempText = null;
         ProgressBar progressBar = null;
+
+        // Se comprueba el modo de la partida y la dificultad para seleccionar y mostrar el layout
+        // correspondiente
         if(modo_partida.equalsIgnoreCase(CONTRARRELOJ)){
             if(dificultad_partida.equalsIgnoreCase(NORMAL) ){
-                setContentView(R.layout.activity_juego_normal_time_trial); // Cargar la del modo correspondiente
+                setContentView(R.layout.activity_juego_normal_time_trial);
                 tempText = findViewById(R.id.textViewTemporizadorNormal);
                 progressBar = findViewById(R.id.progressBarNormal);
             }
             if(dificultad_partida.equalsIgnoreCase(FACIL) ){
-                setContentView(R.layout.activity_juego_facil_time_trial); // Cargar la del modo correspondiente
+                setContentView(R.layout.activity_juego_facil_time_trial);
                 tempText = findViewById(R.id.textViewTemporizadorFacil);
                 progressBar = findViewById(R.id.progressBarFacil);
             }
             if(dificultad_partida.equalsIgnoreCase(DIFICIL) ){
-                setContentView(R.layout.activity_juego_dificil_time_trial); // Cargar la del modo correspondiente
+                setContentView(R.layout.activity_juego_dificil_time_trial);
                 tempText = findViewById(R.id.textViewTemporizadorDificil);
                 progressBar = findViewById(R.id.progressBarDificil);
             }
         } else {
-            //dependiendo de la dificultad escogida se mostrara un layout u otro debido a que el numero de filas cambia
             if(dificultad_partida.equalsIgnoreCase(NORMAL) ){
-                setContentView(R.layout.activity_juego_normal); // Cargar la del modo correspondiente
+                setContentView(R.layout.activity_juego_normal);
             }
             if(dificultad_partida.equalsIgnoreCase(FACIL) ){
-                setContentView(R.layout.activity_juego_facil); // Cargar la del modo correspondiente
+                setContentView(R.layout.activity_juego_facil);
             }
             if(dificultad_partida.equalsIgnoreCase(DIFICIL) ){
-                setContentView(R.layout.activity_juego_dificil); // Cargar la del modo correspondiente
+                setContentView(R.layout.activity_juego_dificil);
             }
         }
 
@@ -90,6 +92,7 @@ public class GameActivity extends WordGuesserActivity {
         List<String> listaPalabras = new ArrayList<>();
         List<String> cientifico = new ArrayList<>();
 
+        // Leemos los ficheros de texto con las palabras cientificas si corresponde
         try {
             String line;
             InputStream in = null;
@@ -110,7 +113,7 @@ public class GameActivity extends WordGuesserActivity {
             listaPalabras.add("error");
         }
 
-        //Leemos los ficheros de texto con las palabras cientificas si corresponde
+        // Leemos los ficheros de texto con las palabras cientificas si corresponde
         if(modo_partida.equalsIgnoreCase(CIENTIFICO)) {
             try {
                 String line;
@@ -136,13 +139,13 @@ public class GameActivity extends WordGuesserActivity {
             palabraJuego = listaPalabras.get((int) (Math.random() * listaPalabras.size()));
         }
 
-        Button buttonAceptarJuegoClasico = findViewById(R.id.buttonAceptarJuegoClasico);
+        Button buttonAceptarPalabraJuego = findViewById(R.id.buttonAceptarPalabraJuego);
 
         int intentos = 0;
-
-        //inicializamos el constructor del objeto juego que representara la partida actual
+        // Inicializamos el constructor del objeto Juego que representara la partida actual
         juego = new Juego(intentos, false, maximo_intentos, modo_partida, dificultad_partida, lenguaje_partida, palabraJuego);
 
+        // Si estamos en el modo contrarreloj inicializamos y empezamos el temporizador
         if(modo_partida.equalsIgnoreCase(CONTRARRELOJ)) {
             TextView finalTempText = tempText;
             ProgressBar finalProgressBar = progressBar;
@@ -168,13 +171,13 @@ public class GameActivity extends WordGuesserActivity {
                 @Override
                 public void onFinish() {
                     perderTiempo = true;
-                    partidaPerdida(palabraJuego, juego, getString(R.string.derrota_time_trial));
+                    partidaPerdida(palabraJuego, juego);
                 }
             };
             countDownTimer.start();
         }
 
-        buttonAceptarJuegoClasico.setOnClickListener(new View.OnClickListener() {
+        buttonAceptarPalabraJuego.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String palabra = palabraUsuario.getText().toString();
@@ -237,11 +240,13 @@ public class GameActivity extends WordGuesserActivity {
 
                     //si el jugador agota el numero de intentos correspondiente a la dificultad escogida significa que ha perdido
                     if(juego.getIntentos()==juego.getMaximo_intentos()){
-                        countDownTimer.cancel();
-                        partidaPerdida(palabraJuego, juego, getString(R.string.derrota_msg));
+                        if (juego.getModo().equalsIgnoreCase(CONTRARRELOJ)) {
+                            countDownTimer.cancel();
+                        }
+                        partidaPerdida(palabraJuego, juego);
                     }
 
-                    //si el jugador ha acertado la palabra antes de agotar el numero de intentos:
+                    //si el jugador ha acertado la palabra gana la partida
                     if(juego.getResultado()){
                         countDownTimer.cancel();
                         getDbManager().addResultGame(palabraJuego, juego.getModo(), juego.getDificultad() , juego.getIdioma(), true, getJugadorLogueado().getIdJugador());
@@ -331,7 +336,7 @@ public class GameActivity extends WordGuesserActivity {
         compartir = true;
     }
 
-    private void partidaPerdida(String palabraJuego, Juego juego, String derrota) {
+    private void partidaPerdida(String palabraJuego, Juego juego) {
         getDbManager().addResultGame(palabraJuego, juego.getModo(), juego.getDificultad() , juego.getIdioma(), false, getJugadorLogueado().getIdJugador());
         if (getDbManager().editPlayerRacha(getJugadorLogueado().getIdJugador(), 0)){
             getJugadorLogueado().setRachaActual(0);

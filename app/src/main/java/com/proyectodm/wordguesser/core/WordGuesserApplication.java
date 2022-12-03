@@ -4,6 +4,9 @@ import android.app.Application;
 
 import com.proyectodm.wordguesser.database.DBManager;
 
+/**
+ * Clase general de la aplicación
+ */
 public class WordGuesserApplication extends Application {
 
     private DBManager dbManager;

@@ -35,6 +35,7 @@ public class ChangePlayerPasswdActivity extends WordGuesserActivity{
 
             @Override
             public void afterTextChanged(Editable s) {
+                // Si los campos no son vacíos activa el botón
                 if(editTextOldPasswd.getText().toString().trim().length() > 0 &&
                         editTextOldPasswd.getText().toString().trim().length() > 0 &&
                         editTextNewPasswdRepeat.getText().toString().trim().length() > 0){

@@ -38,6 +38,7 @@ public class ChangePlayerDataActivity extends WordGuesserActivity{
 
             @Override
             public void afterTextChanged(Editable s) {
+                // Si todos los campos no son vacíos activa el botón
                 if(editTextPlayerName.getText().toString().trim().length() > 0 &&
                         editTextPlayerSurname.getText().toString().trim().length() > 0 &&
                         editTextPlayerUsername.getText().toString().trim().length() > 0){

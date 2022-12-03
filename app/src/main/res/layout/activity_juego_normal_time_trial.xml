@@ -271,7 +271,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/buttonAceptarJuegoClasico"
+            android:id="@+id/buttonAceptarPalabraJuego"
             android:layout_width="214dp"
             android:layout_height="match_parent"
             android:text="@string/accept" />

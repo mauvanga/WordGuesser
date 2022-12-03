@@ -58,6 +58,7 @@ public class RegistroActivity extends WordGuesserActivity{
 
             @Override
             public void afterTextChanged(Editable s) {
+                // Si los campos no son vacíos activa el botón
                 if(editNombre.getText().toString().trim().length() > 0 &&
                         editApellidos.getText().toString().trim().length() > 0 &&
                         editUsuario.getText().toString().trim().length() > 0 &&

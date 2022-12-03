@@ -126,7 +126,7 @@ public class DBManager extends SQLiteOpenHelper {
             }
             db.endTransaction();
         }
-        return toret;
+        return toret; //True si se añadió sin problemas, False si fallo
     }
 
     public boolean editPlayerPassword(Integer idJugador, String newPasswd){
@@ -147,7 +147,7 @@ public class DBManager extends SQLiteOpenHelper {
         }finally{
             db.endTransaction();
         }
-        return toret;
+        return toret; //True si se editó sin problemas, False si fallo
     }
 
     public boolean editPlayerData(Integer idJugador, String newName, String newSurname, String newUsername){
@@ -170,7 +170,7 @@ public class DBManager extends SQLiteOpenHelper {
         }finally{
             db.endTransaction();
         }
-        return toret;
+        return toret; //True si se editó sin problemas, False si fallo
     }
 
     public boolean editPlayerRacha(Integer idJugador, Integer nuevaRacha){
@@ -191,7 +191,7 @@ public class DBManager extends SQLiteOpenHelper {
         }finally{
             db.endTransaction();
         }
-        return toret;
+        return toret; //True si se editó sin problemas, False si fallo
     }
 
     public boolean editPlayerMejorRacha(Integer idJugador, Integer nuevaRachaMejor){
@@ -212,9 +212,12 @@ public class DBManager extends SQLiteOpenHelper {
         }finally{
             db.endTransaction();
         }
-        return toret;
+        return toret; //True si se editó sin problemas, False si fallo
     }
 
+    /**
+     * @return El jugador si existe, null en caso contrario
+     */
     @SuppressLint("Range")
     public Jugador checkLogin(String usuario, String passwd){
         Cursor cursor = null;
@@ -309,6 +312,10 @@ public class DBManager extends SQLiteOpenHelper {
                 null, expresion, valoresFiltro.toArray(new String[0]), null, null, GAME_COLUMN_ID+" DESC");
     }
 
+    /**
+     * Lee el juego de la base de datos
+     * @return Si hay juego lo devuelve, en caso contrario devuelve null.
+     */
     @SuppressLint("Range")
     public static Juego readJuego(Cursor cursor){
         Juego toret = null;
