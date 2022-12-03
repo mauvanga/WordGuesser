@@ -76,4 +76,5 @@
     <string name="share">SHARE</string>
     <string name="last_game_result">The result of my last game:</string>
     <string name="victorias_seguidas">victories in a row</string>
+    <string name="manten_pulsado_filtro">PARA FILTRAR MANTEN PULSADO</string>
 </resources>

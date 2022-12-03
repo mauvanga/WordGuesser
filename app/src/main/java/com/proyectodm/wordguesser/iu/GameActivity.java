@@ -37,7 +37,9 @@ public class GameActivity extends WordGuesserActivity {
     private final long MINUTO = 60;
     private final long PUNTO_PROGRESSBAR = 1;
     private boolean compartir = false;
+    private boolean perderTiempo = false;
     Juego juego;
+    CountDownTimer countDownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,7 +146,7 @@ public class GameActivity extends WordGuesserActivity {
         if(modo_partida.equalsIgnoreCase(CONTRARRELOJ)) {
             TextView finalTempText = tempText;
             ProgressBar finalProgressBar = progressBar;
-            CountDownTimer countDownTimer = new CountDownTimer(TIEMPO_CUENTAATRAS_SEG*SEGUNDO,SEGUNDO) {
+            countDownTimer = new CountDownTimer(TIEMPO_CUENTAATRAS_SEG*SEGUNDO,SEGUNDO) {
                 int cont = 100;
                 boolean decrementar = false;
                 @Override
@@ -165,6 +167,7 @@ public class GameActivity extends WordGuesserActivity {
 
                 @Override
                 public void onFinish() {
+                    perderTiempo = true;
                     partidaPerdida(palabraJuego, juego, getString(R.string.derrota_time_trial));
                 }
             };
@@ -234,11 +237,13 @@ public class GameActivity extends WordGuesserActivity {
 
                     //si el jugador agota el numero de intentos correspondiente a la dificultad escogida significa que ha perdido
                     if(juego.getIntentos()==juego.getMaximo_intentos()){
+                        countDownTimer.cancel();
                         partidaPerdida(palabraJuego, juego, getString(R.string.derrota_msg));
                     }
 
                     //si el jugador ha acertado la palabra antes de agotar el numero de intentos:
                     if(juego.getResultado()){
+                        countDownTimer.cancel();
                         getDbManager().addResultGame(palabraJuego, juego.getModo(), juego.getDificultad() , juego.getIdioma(), true, getJugadorLogueado().getIdJugador());
                         int nuevaRachaActual = getJugadorLogueado().getRachaActual() + 1;
                         if (getDbManager().editPlayerRacha(getJugadorLogueado().getIdJugador(), nuevaRachaActual)){
@@ -249,34 +254,7 @@ public class GameActivity extends WordGuesserActivity {
                                 getJugadorLogueado().setMejorRacha(nuevaRachaActual);
                             }
                         }
-                        AlertDialog.Builder ganado = new AlertDialog.Builder(GameActivity.this);
-                        ganado.setMessage(getString(R.string.victoria_msg)).setCancelable(false)
-                                .setPositiveButton(getString(R.string.play_again), new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        //volvemos a la seleccion de juego
-                                        finish();
-                                    }
-                                })
-                                .setNeutralButton(getString(R.string.share), new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        compartirRedesSociales();
-                                    }
-                                })
-                                .setNegativeButton(getString(R.string.return_menu), new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        //volvemos a la actividad de menú
-                                        Intent i = new Intent(GameActivity.this, MenuActivity.class);
-                                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                        startActivity(i);
-                                        finish();
-                                    }
-                                });
-
-                        AlertDialog alert = ganado.create();
-                        alert.show();
+                        showEndGameDialog();
                     }
                 }
             }
@@ -288,46 +266,49 @@ public class GameActivity extends WordGuesserActivity {
         super.onResume();
         // El flag compartir se activa cuando un jugador acaba la partida y le da a compartir
         if (compartir) {
-            AlertDialog.Builder perdido = new AlertDialog.Builder(GameActivity.this);
-            String msg = "";
-            if (!juego.getResultado()) {
-                if (juego.getModo().equalsIgnoreCase(CONTRARRELOJ)){
-                    msg = getString(R.string.derrota_time_trial);
-                } else {
-                    msg = getString(R.string.derrota_msg);
-                }
-                msg = msg + " " + juego.getPalabra();
-            } else{
-                msg = getString(R.string.victoria_msg);
-            }
-            perdido.setMessage(msg).setCancelable(false)
-                    .setPositiveButton(getString(R.string.play_again), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            //cerramos el juego para volver a la actividad de selección de juego
-                            finish();
-                        }
-                    })
-                    .setNeutralButton(getString(R.string.share), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            compartirRedesSociales();
-                        }
-                    })
-                    .setNegativeButton(getString(R.string.return_menu), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            //volvemos a la actividad de menú
-                            Intent i = new Intent(GameActivity.this, MenuActivity.class);
-                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(i);
-                            finish();
-                        }
-                    });
-
-            AlertDialog alert = perdido.create();
-            alert.show();
+            showEndGameDialog();
         }
+    }
+
+    private void showEndGameDialog() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(GameActivity.this);
+        String msg = "";
+        if (!juego.getResultado()) {
+            if (perderTiempo){
+                msg = getString(R.string.derrota_time_trial);
+            } else {
+                msg = getString(R.string.derrota_msg);
+            }
+            msg = msg + " " + juego.getPalabra();
+        } else{
+            msg = getString(R.string.victoria_msg);
+        }
+        alertDialogBuilder.setMessage(msg).setCancelable(false)
+                .setPositiveButton(getString(R.string.play_again), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //cerramos el juego para volver a la actividad de selección de juego
+                        finish();
+                    }
+                })
+                .setNeutralButton(getString(R.string.share), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        compartirRedesSociales();
+                    }
+                })
+                .setNegativeButton(getString(R.string.return_menu), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //volvemos a la actividad de menú
+                        Intent i = new Intent(GameActivity.this, MenuActivity.class);
+                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(i);
+                        finish();
+                    }
+                });
+
+        alertDialogBuilder.create().show();
     }
 
     private void compartirRedesSociales() {
@@ -355,34 +336,7 @@ public class GameActivity extends WordGuesserActivity {
         if (getDbManager().editPlayerRacha(getJugadorLogueado().getIdJugador(), 0)){
             getJugadorLogueado().setRachaActual(0);
         }
-        AlertDialog.Builder perdido = new AlertDialog.Builder(GameActivity.this);
-        perdido.setMessage(derrota + " " + palabraJuego).setCancelable(false)
-                .setPositiveButton(getString(R.string.play_again), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //cerramos el juego para volver a la actividad de selección de juego
-                        finish();
-                    }
-                })
-                .setNeutralButton(getString(R.string.share), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        compartirRedesSociales();
-                    }
-                })
-                .setNegativeButton(getString(R.string.return_menu), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //volvemos a la actividad de menú
-                        Intent i = new Intent(GameActivity.this, MenuActivity.class);
-                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(i);
-                        finish();
-                    }
-                });
-
-        AlertDialog alert = perdido.create();
-        alert.show();
+        showEndGameDialog();
     }
 
     //escribimos las letras de la palabra introducida por el usuario en una fila

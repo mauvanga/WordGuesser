@@ -123,6 +123,13 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/manten_pulsado_filtro" />
+
     <LinearLayout
         android:id="@+id/linearLayoutFiltro"
         android:layout_width="match_parent"
