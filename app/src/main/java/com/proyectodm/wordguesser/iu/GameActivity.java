@@ -248,7 +248,9 @@ public class GameActivity extends WordGuesserActivity {
 
                     //si el jugador ha acertado la palabra gana la partida
                     if(juego.getResultado()){
-                        countDownTimer.cancel();
+                        if (juego.getModo().equalsIgnoreCase(CONTRARRELOJ)) {
+                            countDownTimer.cancel();
+                        }
                         getDbManager().addResultGame(palabraJuego, juego.getModo(), juego.getDificultad() , juego.getIdioma(), true, getJugadorLogueado().getIdJugador());
                         int nuevaRachaActual = getJugadorLogueado().getRachaActual() + 1;
                         if (getDbManager().editPlayerRacha(getJugadorLogueado().getIdJugador(), nuevaRachaActual)){
@@ -312,7 +314,6 @@ public class GameActivity extends WordGuesserActivity {
                         finish();
                     }
                 });
-
         alertDialogBuilder.create().show();
     }
 
